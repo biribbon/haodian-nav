@@ -717,6 +717,7 @@
   </footer>
 
   <script src="haodianai-data.js"></script>
+  <script src="haodianai-parks.js"></script>
   <script>
     /* ===== 配置 ===== */
     // 好点 AI 热搜 API (Cloudflare Worker)
@@ -963,33 +964,7 @@
 
     var mapMode = "events"; // "events" | "policy"
 
-    var policyParks = [
-      { id: "pk-01", name: "南山「模力营」AI 生态社区", city: "深圳", district: "南山区", lng: 113.930, lat: 22.533, area: "10万m²", policy: "最高200万代码贡献补贴，1000万股权投资", tags: ["AI","OPC"] },
-      { id: "pk-02", name: "龙岗「模力谷」AI 生态社区", city: "深圳", district: "龙岗区", lng: 114.247, lat: 22.720, area: "11.7万m²", policy: "最高200万代码贡献补贴", tags: ["AI","OPC"] },
-      { id: "pk-03", name: "宝安 OPC 智造基地", city: "深圳", district: "宝安区", lng: 113.883, lat: 22.555, area: "5万m²", policy: "租金减免50%，人才公寓配套", tags: ["智造","OPC"] },
-      { id: "pk-04", name: "福田 AI 创新中心", city: "深圳", district: "福田区", lng: 114.055, lat: 22.526, area: "3万m²", policy: "落户奖励100万，研发补贴最高500万", tags: ["AI","OPC"] },
-      { id: "pk-05", name: "光明 AI 算力谷", city: "深圳", district: "光明区", lng: 113.935, lat: 22.748, area: "8万m²", policy: "算力补贴最高300万/年", tags: ["算力","OPC"] },
-      { id: "pk-06", name: "中关村 AI 科技园", city: "北京", district: "海淀区", lng: 116.310, lat: 39.982, area: "15万m²", policy: "最高1000万研发补助，优质人才落户", tags: ["AI","OPC"] },
-      { id: "pk-07", name: "海淀 OPC 开源街区", city: "北京", district: "海淀区", lng: 116.337, lat: 39.960, area: "6万m²", policy: "开源项目奖励最高200万", tags: ["开源","OPC"] },
-      { id: "pk-08", name: "朝阳工业 AI 创新园", city: "北京", district: "朝阳区", lng: 116.486, lat: 39.921, area: "9万m²", policy: "智能制造企业三年免租", tags: ["AI","工业"] },
-      { id: "pk-09", name: "亦庄大模型产业基地", city: "北京", district: "大兴区", lng: 116.506, lat: 39.795, area: "12万m²", policy: "大模型企业落地奖励500万起", tags: ["大模型","OPC"] },
-      { id: "pk-10", name: "张江 AI 创新小镇", city: "上海", district: "浦东新区", lng: 121.590, lat: 31.203, area: "20万m²", policy: "研发费用加计扣除，最高500万资金扶持", tags: ["AI","OPC"] },
-      { id: "pk-11", name: "漕河泾 OPC 生态园", city: "上海", district: "徐汇区", lng: 121.398, lat: 31.168, area: "7万m²", policy: "优秀项目股权投资最高2000万", tags: ["AI","OPC"] },
-      { id: "pk-12", name: "萧山 OPC 数字产业园", city: "杭州", district: "萧山区", lng: 120.264, lat: 30.185, area: "8万m²", policy: "最高300万落地奖励，三年租金全免", tags: ["数字","OPC"] },
-      { id: "pk-13", name: "余杭 AI 小镇", city: "杭州", district: "余杭区", lng: 120.023, lat: 30.290, area: "12万m²", policy: "人才购房补贴最高200万", tags: ["AI","OPC"] },
-      { id: "pk-14", name: "苏州工业园 OPC 基地", city: "苏州", district: "工业园区", lng: 120.710, lat: 31.325, area: "10万m²", policy: "最高500万研发补贴，人才安居保障", tags: ["AI","OPC"] },
-      { id: "pk-15", name: "南京江北新区 AI 港", city: "南京", district: "江北新区", lng: 118.726, lat: 32.216, area: "14万m²", policy: "企业落户奖200万，核心团队安居补贴", tags: ["AI","OPC"] },
-      { id: "pk-16", name: "合肥高新区 AI 产业园", city: "合肥", district: "高新区", lng: 117.153, lat: 31.831, area: "9万m²", policy: "最高300万研发资金支持", tags: ["AI","OPC"] },
-      { id: "pk-17", name: "无锡物联网 OPC 园区", city: "无锡", district: "滨湖区", lng: 120.293, lat: 31.570, area: "6万m²", policy: "物联网+AI项目最高200万补贴", tags: ["物联网","OPC"] },
-      { id: "pk-18", name: "青岛崂山 AI 科创中心", city: "青岛", district: "崂山区", lng: 120.468, lat: 36.107, area: "7万m²", policy: "最高500万产业扶持资金", tags: ["AI","OPC"] },
-      { id: "pk-19", name: "青岛西海岸 OPC 数字港", city: "青岛", district: "西海岸新区", lng: 120.198, lat: 35.960, area: "10万m²", policy: "三年租金减免，人才补贴100万", tags: ["数字","OPC"] },
-      { id: "pk-20", name: "青岛高新区 AI 加速器", city: "青岛", district: "高新区", lng: 120.489, lat: 36.158, area: "5万m²", policy: "种子期项目最高100万资助", tags: ["AI","OPC"] },
-      { id: "pk-21", name: "武汉光谷 AI 研发基地", city: "武汉", district: "东湖高新区", lng: 114.429, lat: 30.506, area: "11万m²", policy: "最高1000万产业引导基金", tags: ["AI","OPC"] },
-      { id: "pk-22", name: "成都高新区 AI 创新谷", city: "成都", district: "高新区", lng: 104.068, lat: 30.585, area: "8万m²", policy: "落地奖励最高200万，人才公寓配套", tags: ["AI","OPC"] },
-      { id: "pk-23", name: "长沙岳麓 OPC 智慧园", city: "长沙", district: "岳麓区", lng: 112.931, lat: 28.235, area: "6万m²", policy: "最高300万研发补贴，创业团队免租", tags: ["AI","OPC"] },
-      { id: "pk-24", name: "济南高新区 AI 产业港", city: "济南", district: "高新区", lng: 117.128, lat: 36.681, area: "7万m²", policy: "AI企业落地奖励最高500万", tags: ["AI","OPC"] },
-      { id: "pk-25", name: "厦门软件园 OPC 基地", city: "厦门", district: "集美区", lng: 118.100, lat: 24.580, area: "5万m²", policy: "软件企业三年免税，最高200万引才奖励", tags: ["软件","OPC"] }
-    ];
+    var policyParks = window.HaodianParks || [];
 
     function loadEvents() {
       if (EVENTS_API) {
@@ -1354,6 +1329,7 @@
         '<span style="color:#888;font-size:12px;">' + park.city + ' · ' + park.district + '</span>' +
         (park.area ? '<br><span style="color:#888;font-size:12px;">面积：' + park.area + '</span>' : '') +
         '<br><span style="color:#6b4cf6;font-size:12px;font-weight:600;">政策：' + park.policy + '</span>' +
+        '<br><a href="park-detail.html?id=' + park.id + '" style="color:#6b4cf6;font-size:12px;font-weight:700;display:inline-block;margin-top:6px;">查看详情 →</a>' +
         '</div>';
       amapInfoWindow.setContent(content);
       amapInfoWindow.open(amapInstance, [park.lng, park.lat]);
@@ -1369,7 +1345,7 @@
       }
 
       listEl.innerHTML = filtered.map(function(park) {
-        return '<div class="policy-item" data-id="' + park.id + '">' +
+        return '<div class="policy-item" data-id="' + park.id + '" style="cursor:pointer;">' +
           '<div class="policy-item-name">' + park.name + '</div>' +
           '<div class="policy-item-meta">' + park.city + ' · ' + park.district + (park.area ? ' · ' + park.area : '') + '</div>' +
           '<div class="policy-item-policy">' + park.policy + '</div>' +
@@ -1378,11 +1354,7 @@
 
       Array.from(listEl.querySelectorAll(".policy-item")).forEach(function(el) {
         el.addEventListener("click", function() {
-          var park = policyParks.find(function(p) { return p.id === el.dataset.id; });
-          if (park && amapInstance) {
-            amapInstance.setZoomAndCenter(14, [park.lng, park.lat], true);
-            showPolicyInfoWindow(park);
-          }
+          window.location.href = "park-detail.html?id=" + el.dataset.id;
         });
       });
     }
