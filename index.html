@@ -863,8 +863,27 @@
       if (query && selected.queryParam) {
         var sep = url.indexOf("?") === -1 ? "?" : "&";
         url = url + sep + selected.queryParam + "=" + encodeURIComponent(query);
+      } else if (query && !selected.queryParam) {
+        navigator.clipboard.writeText(query).then(function() {
+          showToast("已复制到剪贴板，打开" + selected.name + "后可直接粘贴");
+        });
       }
       window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function showToast(msg) {
+      var el = document.getElementById("clipToast");
+      if (!el) {
+        el = document.createElement("div");
+        el.id = "clipToast";
+        el.style.cssText = "position:fixed;bottom:80px;left:50%;transform:translateX(-50%);" +
+          "background:rgba(0,0,0,.78);color:#fff;padding:10px 22px;border-radius:8px;" +
+          "font-size:14px;z-index:9999;transition:opacity .4s;pointer-events:none;";
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = "1";
+      setTimeout(function() { el.style.opacity = "0"; }, 2200);
     }
 
     /* ===== 事件绑定 ===== */
