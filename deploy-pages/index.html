@@ -421,14 +421,17 @@
       background: var(--brand); color: #fff !important; border-color: var(--brand);
     }
     .evt-view-btn.active:hover { background: #5a3de0; }
+    .evt-city-row {
+      margin-bottom: 12px;
+    }
     .evt-city-select {
-      min-height: 32px; padding: 0 10px; border-radius: 999px;
-      border: 1px solid var(--line); background: var(--chip);
-      color: var(--muted); font-size: 0.82rem; font-weight: 700; cursor: pointer;
+      width: 100%; min-height: 44px; padding: 0 16px; border-radius: 10px;
+      border: 2px solid var(--line); background: #fff;
+      color: var(--text); font-size: 1rem; font-weight: 700; cursor: pointer;
       outline: none; appearance: auto;
     }
     .evt-city-select:focus {
-      color: var(--brand); border-color: rgba(107,76,246,0.18); background: #fff;
+      border-color: var(--brand); color: var(--brand);
     }
     .evt-filter-sep {
       display: inline-block; width: 1px; height: 20px; background: var(--line);
@@ -689,30 +692,32 @@
               <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
               <span class="evt-filter-sep"></span>
             </span>
-            <select id="evtCitySelect" class="evt-city-select">
-              <option value="all">全国</option>
-              <option value="杭州">杭州</option>
-              <option value="上海">上海</option>
-              <option value="北京">北京</option>
-              <option value="深圳">深圳</option>
-              <option value="扬州">扬州</option>
-              <option value="苏州">苏州</option>
-              <option value="南京">南京</option>
-              <option value="无锡">无锡</option>
-              <option value="合肥">合肥</option>
-              <option value="广州">广州</option>
-              <option value="武汉">武汉</option>
-              <option value="成都">成都</option>
-              <option value="济南">济南</option>
-              <option value="青岛">青岛</option>
-              <option value="西安">西安</option>
-              <option value="宁波">宁波</option>
-            </select>
           </div>
         </div>
         <div class="evt-mode-tabs">
           <button class="evt-mode-btn active" data-mode="policy">OPC 政策地图</button>
           <button class="evt-mode-btn" data-mode="events">AI 线下活动</button>
+        </div>
+        <div class="evt-city-row">
+          <select id="evtCitySelect" class="evt-city-select">
+            <option value="all">全国</option>
+            <option value="杭州">杭州</option>
+            <option value="上海">上海</option>
+            <option value="北京">北京</option>
+            <option value="深圳">深圳</option>
+            <option value="扬州">扬州</option>
+            <option value="苏州">苏州</option>
+            <option value="南京">南京</option>
+            <option value="无锡">无锡</option>
+            <option value="合肥">合肥</option>
+            <option value="广州">广州</option>
+            <option value="武汉">武汉</option>
+            <option value="成都">成都</option>
+            <option value="济南">济南</option>
+            <option value="青岛">青岛</option>
+            <option value="西安">西安</option>
+            <option value="宁波">宁波</option>
+          </select>
         </div>
         <div class="events-layout">
           <div class="map-container">
