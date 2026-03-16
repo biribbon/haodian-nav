@@ -178,6 +178,20 @@ export async function existsBySourceUrl(db: D1Database, sourceUrl: string): Prom
   return row !== null
 }
 
+/** 删除过期活动（结束日期早于 7 天前） */
+export async function deleteExpiredEvents(db: D1Database): Promise<number> {
+  const cutoff = new Date()
+  cutoff.setDate(cutoff.getDate() - 7)
+  const cutoffStr = cutoff.toISOString().slice(0, 10)
+
+  const result = await db
+    .prepare('DELETE FROM events WHERE COALESCE(end_date, date) < ?')
+    .bind(cutoffStr)
+    .run()
+
+  return result.meta.changes
+}
+
 /** 写入审核日志 */
 export async function insertAuditLog(
   db: D1Database,

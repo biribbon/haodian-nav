@@ -4,7 +4,9 @@ compatibility_date = "2026-03-16"
 compatibility_flags = ["nodejs_compat"]
 
 [triggers]
-crons = ["0 8 * * *"]
+crons = ["0 8 * * *", "0 4 * * *"]
+# 0 8 UTC = 北京 16:00 爬虫
+# 0 4 UTC = 北京 12:00 清理过期活动
 
 [[routes]]
 pattern = "api.haodianai.com/*"

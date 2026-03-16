@@ -14,7 +14,7 @@ import {
   handleAdminReview,
   handleAdminBatch,
 } from './routes/admin'
-import { runScheduledCrawl } from './crawlers/scheduler'
+import { runScheduledCrawl, runCleanup } from './crawlers/scheduler'
 import ADMIN_HTML from '../admin/index.html'
 
 export default {
@@ -79,6 +79,10 @@ export default {
   },
 
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    ctx.waitUntil(runScheduledCrawl(env))
+    if (event.cron === '0 4 * * *') {
+      ctx.waitUntil(runCleanup(env))
+    } else {
+      ctx.waitUntil(runScheduledCrawl(env))
+    }
   },
 }

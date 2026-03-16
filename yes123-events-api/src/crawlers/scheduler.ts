@@ -1,8 +1,9 @@
-// 爬虫调度器 + 高德地理编码
+// 爬虫调度器 + 高德地理编码 + 过期清理
 
 import type { Env } from '../env'
 import { crawlHuodongxing } from './huodongxing'
 import { crawlJuejin } from './juejin'
+import { deleteExpiredEvents } from '../services/event-store'
 
 interface GeocodeResult {
   lng: number
@@ -48,4 +49,11 @@ export async function runScheduledCrawl(env: Env): Promise<void> {
   console.log(`[Scheduler] 掘金爬取完成，新增 ${jjCount} 条`)
 
   console.log(`[Scheduler] 爬虫任务完成，共新增 ${hdxCount + jjCount} 条`)
+}
+
+/** 定时清理过期活动 — Cron 触发 */
+export async function runCleanup(env: Env): Promise<void> {
+  console.log('[Cleanup] 开始清理过期活动')
+  const deleted = await deleteExpiredEvents(env.DB)
+  console.log(`[Cleanup] 清理完成，删除 ${deleted} 条过期活动`)
 }
