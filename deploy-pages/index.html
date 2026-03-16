@@ -669,7 +669,7 @@
     <section class="events-section" id="events">
       <div class="shell">
         <div class="events-header">
-          <h2 id="eventsTitle">AI 活动地图</h2>
+          <h2 id="eventsTitle">OPC 政策地图</h2>
           <div class="events-filters">
             <button class="evt-filter-btn evt-mode-btn active" data-mode="policy">OPC 政策地图</button>
             <button class="evt-filter-btn evt-mode-btn" data-mode="events">AI 活动</button>
@@ -1242,7 +1242,12 @@
         }));
       });
       amapInfoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
-      switchMapMode("policy");
+      // 地图就绪后，根据当前模式渲染标记
+      if (mapMode === "policy") {
+        renderPolicyMap();
+      } else {
+        updateMap();
+      }
     }
 
     function showInfoWindow(evt) {
@@ -1408,6 +1413,8 @@
 
       initCalendar();
       renderEventList();
+      // 默认切换到政策地图模式（UI 先切，地图等加载后渲染）
+      switchMapMode("policy");
       if (window.AMap) {
         initMap();
       } else if (AMAP_KEY) {
