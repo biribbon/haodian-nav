@@ -37,7 +37,7 @@
       backdrop-filter: blur(14px);
     }
     .topbar-inner {
-      min-height: 56px;
+      min-height: 86px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -66,16 +66,16 @@
 
     .search-dock {
       position: sticky;
-      top: 56px;
+      top: 86px;
       z-index: 35;
-      padding: 4px 0 4px;
+      padding: 8px 0 6px;
       background: linear-gradient(180deg, rgba(244, 244, 246, 0.96), rgba(244, 244, 246, 0.84));
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(17, 19, 24, 0.05);
     }
     .search-dock-inner {
       display: grid;
-      grid-template-columns: 120px minmax(0, 1fr) 120px;
+      grid-template-columns: 120px minmax(0, 1fr) 220px;
       gap: 18px;
       align-items: center;
     }
@@ -91,11 +91,11 @@
       font-size: 0.94rem;
       white-space: nowrap;
     }
-    .search-stack { display: grid; gap: 4px; }
+    .search-stack { display: grid; gap: 8px; }
     .mode-switch { display: inline-flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .mode-btn {
-      min-height: 30px;
-      padding: 0 12px;
+      min-height: 36px;
+      padding: 0 13px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: var(--panel);
@@ -109,7 +109,7 @@
       border-color: rgba(107, 76, 246, 0.16);
       box-shadow: 0 10px 28px rgba(107, 76, 246, 0.12);
     }
-    .search-box { display: grid; gap: 4px; }
+    .search-box { display: grid; gap: 8px; }
     .search-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 48px;
@@ -118,7 +118,7 @@
     }
     .search-row.ai-mode { grid-template-columns: 152px minmax(0, 1fr) 48px; }
     .search-input, .search-select {
-      min-height: 40px;
+      min-height: 46px;
       border-radius: 999px;
       border: 1px solid #d2d5df;
       background: rgba(255, 255, 255, 0.94);
@@ -128,8 +128,8 @@
       outline: none;
     }
     .search-button {
-      width: 42px;
-      height: 42px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       border: 0;
       background: var(--brand);
@@ -140,7 +140,7 @@
     }
     .search-note { color: var(--muted); font-size: 0.82rem; }
     .headline-strip {
-      margin-top: 2px;
+      margin-top: 8px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px 14px;
@@ -386,28 +386,11 @@
 
     /* ===== Events Section ===== */
     .events-section { padding: 32px 0 24px; }
-
     .events-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
     }
     .events-header h2 { margin: 0; font-size: 1.3rem; font-weight: 900; }
-    .evt-mode-tabs {
-      display: flex; gap: 0; margin-bottom: 16px;
-    }
-    .evt-mode-btn {
-      flex: 1; min-height: 48px; padding: 0 24px; border: 2px solid var(--line);
-      background: #fff; color: var(--muted); font-size: 1.05rem; font-weight: 800;
-      cursor: pointer; transition: all 0.15s;
-    }
-    .evt-mode-btn:first-child { border-radius: 10px 0 0 10px; }
-    .evt-mode-btn:last-child { border-radius: 0 10px 10px 0; border-left: none; }
-    .evt-mode-btn.active {
-      color: #fff; background: var(--brand); border-color: var(--brand);
-    }
-    .evt-mode-btn:not(.active):hover {
-      color: var(--brand); border-color: rgba(107,76,246,0.3);
-    }
     .events-filters { display: flex; gap: 8px; flex-wrap: wrap; }
     .evt-filter-btn {
       min-height: 32px; padding: 0 14px; border-radius: 999px;
@@ -417,41 +400,21 @@
     .evt-filter-btn.active, .evt-filter-btn:hover {
       color: var(--brand); border-color: rgba(107,76,246,0.18); background: #fff;
     }
-    .evt-view-btn.active {
-      background: var(--brand); color: #fff !important; border-color: var(--brand);
-    }
-    .evt-view-btn.active:hover { background: #5a3de0; }
-    .evt-city-row {
-      margin-bottom: 12px;
-    }
-    .evt-city-select {
-      width: 100%; min-height: 44px; padding: 0 16px; border-radius: 10px;
-      border: 2px solid var(--line); background: #fff;
-      color: var(--text); font-size: 1rem; font-weight: 700; cursor: pointer;
-      outline: none; appearance: auto;
-    }
-    .evt-city-select:focus {
-      border-color: var(--brand); color: var(--brand);
-    }
-    .evt-filter-sep {
-      display: inline-block; width: 1px; height: 20px; background: var(--line);
-      margin: 0 4px; vertical-align: middle;
-    }
     .events-layout {
-      display: grid; grid-template-columns: minmax(0, 1fr) 340px;
+      display: grid; grid-template-columns: 1fr;
       gap: 16px; align-items: start;
     }
     .map-container {
       border-radius: 20px; overflow: hidden; background: #e8e8ec;
-      min-height: 600px; position: relative;
+      min-height: 500px; position: relative;
       border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 30px rgba(17,19,24,0.05);
     }
-    .map-container #eventsMap { width: 100%; height: 600px; }
+    .map-container #eventsMap { width: 100%; height: 500px; }
     .map-placeholder {
       position: absolute; inset: 0; display: grid; place-items: center;
       color: var(--muted); font-size: 0.92rem; text-align: center; padding: 20px; line-height: 1.7;
     }
-    .events-bottom { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: start; }
+    .events-bottom { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 16px; align-items: start; }
     .cal-card {
       border-radius: 20px; background: #fff;
       border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 26px rgba(17,19,24,0.05); padding: 12px;
@@ -502,28 +465,6 @@
     .evt-item-meta { font-size: 0.76rem; color: var(--muted); display: flex; gap: 10px; }
     .evt-empty { color: var(--muted); font-size: 0.86rem; text-align: center; padding: 24px 0; }
 
-    /* ===== Policy Map Styles ===== */
-    .policy-list-card {
-      border-radius: 20px; background: #fff;
-      border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 26px rgba(17,19,24,0.05);
-      padding: 16px; max-height: 420px; overflow-y: auto;
-    }
-    .policy-list-card h3 { margin: 0 0 12px; font-size: 0.92rem; font-weight: 800; }
-    .policy-item { display: grid; gap: 4px; padding: 10px 0; border-bottom: 1px dashed #eceef3; cursor: pointer; }
-    .policy-item:last-child { border-bottom: 0; }
-    .policy-item:hover { background: var(--brand-soft); margin: 0 -8px; padding: 10px 8px; border-radius: 10px; }
-    .policy-item-name { font-size: 0.88rem; font-weight: 800; }
-    .policy-item-meta { font-size: 0.76rem; color: var(--muted); }
-    .policy-item-policy { font-size: 0.76rem; color: var(--brand); font-weight: 600; }
-    .policy-marker {
-      width: 24px; height: 24px; border-radius: 50%;
-      background: #6b4cf6; border: 2px solid #fff;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-      display: grid; place-items: center;
-      color: #fff; font-size: 10px; font-weight: 900;
-    }
-    .events-bottom.policy-mode { grid-template-columns: 1fr; }
-
     .footer {
       padding: 0 0 30px;
       color: var(--muted);
@@ -539,9 +480,9 @@
       .events-bottom { grid-template-columns: 300px minmax(0,1fr); }
     }
     @media (max-width: 860px) {
-      .topbar-inner { min-height: 48px; }
+      .topbar-inner { min-height: 72px; }
       .nav { gap: 16px; font-size: 0.92rem; }
-      .search-dock { top: 48px; }
+      .search-dock { top: 72px; }
       .search-dock-inner { grid-template-columns: 1fr; }
       .search-dock-side { display: none; }
       .search-row.ai-mode, .article { grid-template-columns: 1fr; }
@@ -576,6 +517,8 @@
         <span>好点 AI</span>
       </a>
       <nav class="nav">
+        <a href="#events">OPC 地图</a>
+        <a href="#events">AI 线下活动地图</a>
         <a href="#">首页</a>
         <a href="#events">AI 活动</a>
         <a class="active" href="#">AI 网站</a>
@@ -600,11 +543,13 @@
               <input class="search-input" id="onsiteSearch" type="text" placeholder="搜索 AI 网站或 APP，例如：logo / 视频 / PPT / 客服">
               <button class="search-button" id="onsiteButton" type="button">⌕</button>
             </div>
+
           </div>
           <div class="search-box hidden" id="aiBox">
             <div class="search-row ai-mode">
               <select class="search-select" id="aiEngine">
                 <option value="doubao">豆包</option>
+
                 <option value="gemini">Gemini</option>
                 <option value="claude">Claude</option>
                 <option value="chatgpt">ChatGPT</option>
@@ -612,10 +557,9 @@
               <input class="search-input" id="aiSearch" type="text" placeholder="向大模型发起搜索，例如：帮我找一款企业 logo 生成工具">
               <button class="search-button" id="aiButton" type="button">⌕</button>
             </div>
-            <div class="search-note" id="aiNote">AI 搜索会新开页面跳转到对应大模型，不在好点 AI 内返回答案。</div>
           </div>
         </div>
-        <div class="search-dock-side"></div>
+
       </div>
       <div class="headline-strip" id="headlineStrip"></div>
     </div>
@@ -684,40 +628,16 @@
     <section class="events-section" id="events">
       <div class="shell">
         <div class="events-header">
-          <h2 id="eventsTitle">OPC 政策地图</h2>
+          <h2>AI 活动地图</h2>
           <div class="events-filters">
-            <span id="evtViewBtns">
-              <button class="evt-filter-btn evt-view-btn active" data-view="today">今日活动</button>
-              <button class="evt-filter-btn evt-view-btn" data-view="all">全部活动</button>
-              <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
-              <span class="evt-filter-sep"></span>
-            </span>
+            <button class="evt-filter-btn active" data-city="all">全部城市</button>
+            <button class="evt-filter-btn" data-city="上海">上海</button>
+            <button class="evt-filter-btn" data-city="北京">北京</button>
+            <button class="evt-filter-btn" data-city="深圳">深圳</button>
+            <button class="evt-filter-btn" data-city="杭州">杭州</button>
+            <button class="evt-filter-btn" data-city="苏州">苏州</button>
+            <button class="evt-filter-btn" data-city="南京">南京</button>
           </div>
-        </div>
-        <div class="evt-mode-tabs">
-          <button class="evt-mode-btn active" data-mode="policy">OPC 政策地图</button>
-          <button class="evt-mode-btn" data-mode="events">AI 线下活动</button>
-        </div>
-        <div class="evt-city-row">
-          <select id="evtCitySelect" class="evt-city-select">
-            <option value="all">全国</option>
-            <option value="杭州">杭州</option>
-            <option value="上海">上海</option>
-            <option value="北京">北京</option>
-            <option value="深圳">深圳</option>
-            <option value="扬州">扬州</option>
-            <option value="苏州">苏州</option>
-            <option value="南京">南京</option>
-            <option value="无锡">无锡</option>
-            <option value="合肥">合肥</option>
-            <option value="广州">广州</option>
-            <option value="武汉">武汉</option>
-            <option value="成都">成都</option>
-            <option value="济南">济南</option>
-            <option value="青岛">青岛</option>
-            <option value="西安">西安</option>
-            <option value="宁波">宁波</option>
-          </select>
         </div>
         <div class="events-layout">
           <div class="map-container">
@@ -740,10 +660,6 @@
               <h3 id="evtListTitle">近期活动</h3>
               <div id="evtList"></div>
             </div>
-            <div class="policy-list-card" id="policyListCard" style="display:none;">
-              <h3>园区政策一览</h3>
-              <div id="policyList"></div>
-            </div>
           </div>
         </div>
       </div>
@@ -756,7 +672,6 @@
   </footer>
 
   <script src="haodianai-data.js"></script>
-  <script src="haodianai-parks.js"></script>
   <script>
     /* ===== 配置 ===== */
     // 好点 AI 热搜 API (Cloudflare Worker)
@@ -778,7 +693,6 @@
     var aiSearch = document.getElementById("aiSearch");
     var aiButton = document.getElementById("aiButton");
     var aiEngine = document.getElementById("aiEngine");
-    var aiNote = document.getElementById("aiNote");
     var categoryChips = document.getElementById("categoryChips");
     var cardsGrid = document.getElementById("cardsGrid");
     var resultCount = document.getElementById("resultCount");
@@ -792,9 +706,9 @@
     var activeKeyword = "";
 
     var engines = {
-      doubao: { name: "豆包", url: "https://www.doubao.com/chat/", queryParam: null },
-      gemini: { name: "Gemini", url: "https://gemini.google.com/app", queryParam: "q" },
-      claude: { name: "Claude", url: "https://claude.ai/new", queryParam: null },
+      doubao:  { name: "豆包",    url: "https://www.doubao.com/chat/" },
+      gemini:  { name: "Gemini",  url: "https://gemini.google.com/app" },
+      claude:  { name: "Claude",  url: "https://claude.ai/new" },
       chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/", queryParam: "q" }
     };
 
@@ -947,12 +861,31 @@
       var selected = engines[aiEngine.value];
       if (!selected) return;
       var query = aiSearch.value.trim();
-      var targetUrl = selected.url;
+      var url = selected.url;
       if (query && selected.queryParam) {
-        var sep = targetUrl.indexOf("?") > -1 ? "&" : "?";
-        targetUrl = targetUrl + sep + selected.queryParam + "=" + encodeURIComponent(query);
+        var sep = url.indexOf("?") === -1 ? "?" : "&";
+        url = url + sep + selected.queryParam + "=" + encodeURIComponent(query);
+      } else if (query && !selected.queryParam) {
+        navigator.clipboard.writeText(query).then(function() {
+          showToast("已复制到剪贴板，打开" + selected.name + "后可直接粘贴");
+        });
       }
-      window.open(targetUrl, "_blank", "noopener,noreferrer");
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function showToast(msg) {
+      var el = document.getElementById("clipToast");
+      if (!el) {
+        el = document.createElement("div");
+        el.id = "clipToast";
+        el.style.cssText = "position:fixed;bottom:80px;left:50%;transform:translateX(-50%);" +
+          "background:rgba(0,0,0,.78);color:#fff;padding:10px 22px;border-radius:8px;" +
+          "font-size:14px;z-index:9999;transition:opacity .4s;pointer-events:none;";
+        document.body.appendChild(el);
+      }
+      el.textContent = msg;
+      el.style.opacity = "1";
+      setTimeout(function() { el.style.opacity = "0"; }, 2200);
     }
 
     /* ===== 事件绑定 ===== */
@@ -962,13 +895,7 @@
     onsiteSearch.addEventListener("input", function() { activeKeyword = onsiteSearch.value; renderCards(); });
     onsiteSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") { activeKeyword = onsiteSearch.value; renderCards(); } });
     onsiteButton.addEventListener("click", function() { activeKeyword = onsiteSearch.value; renderCards(); });
-    aiEngine.addEventListener("change", function() {
-      var eng = engines[aiEngine.value];
-      var note = eng.queryParam
-        ? "AI 搜索将跳转到 " + eng.name + " 并自动填入搜索内容，不在好点 AI 内返回答案。"
-        : "AI 搜索将跳转到 " + eng.name + " 页面，需手动输入搜索内容。";
-      aiNote.textContent = note;
-    });
+    aiEngine.addEventListener("change", function() {});
     aiButton.addEventListener("click", submitAiSearch);
     aiSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") submitAiSearch(); });
 
@@ -988,12 +915,10 @@
     });
 
     /* ===== Events 活动地图模块 ===== */
-    var EVENTS_API = "https://api.haodianai.com/api/events";
+    var EVENTS_API = "";
     var eventsData = [];
     var evtCityFilter = "all";
     var evtDateFilter = null;
-    var evtViewMode = "today"; // today | all | nearby
-    var userLocation = null; // { lng, lat }
     var calYear, calMonth;
     var amapInstance = null;
     var amapMarkers = [];
@@ -1001,15 +926,9 @@
 
     var categoryLabels = { conference: "峰会", salon: "沙龙", hackathon: "黑客松", meetup: "聚会" };
 
-    var mapMode = "policy"; // "events" | "policy"
-
-    var policyParks = window.HaodianParks || [];
-
     function loadEvents() {
       if (EVENTS_API) {
-        return fetch(EVENTS_API).then(function(r) { return r.json(); }).then(function(data) {
-          return data.events || data;
-        });
+        return fetch(EVENTS_API).then(function(r) { return r.json(); });
       }
       return Promise.resolve((seed.events || []).slice());
     }
@@ -1018,25 +937,11 @@
     function fmtDate(d) { return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
 
     function filterEvents() {
-      var today = fmtDate(new Date());
       return eventsData.filter(function(evt) {
-        // 城市筛选
         if (evtCityFilter !== "all" && evt.city !== evtCityFilter) return false;
-        // 日历选择（优先级最高）
         if (evtDateFilter) {
           var ds = evt.date, de = evt.endDate || evt.date;
           if (evtDateFilter < ds || evtDateFilter > de) return false;
-          return true;
-        }
-        // 视图模式
-        if (evtViewMode === "today") {
-          var ds2 = evt.date, de2 = evt.endDate || evt.date;
-          if (today < ds2 || today > de2) return false;
-        } else if (evtViewMode === "nearby" && userLocation) {
-          // 50km 半径内
-          var dlng = (evt.lng - userLocation.lng) * 111 * Math.cos(evt.lat * Math.PI / 180);
-          var dlat = (evt.lat - userLocation.lat) * 111;
-          if (Math.sqrt(dlng * dlng + dlat * dlat) > 50) return false;
         }
         return true;
       });
@@ -1091,14 +996,7 @@
       Array.from(grid.querySelectorAll(".cal-day.has-event")).forEach(function(el) {
         el.addEventListener("click", function() {
           var clicked = el.dataset.date;
-          if (evtDateFilter === clicked) {
-            // 取消日历选择，回到当前视图模式
-            evtDateFilter = null;
-          } else {
-            evtDateFilter = clicked;
-            // 清除视图按钮 active（进入日历自选模式）
-            document.querySelectorAll(".evt-view-btn").forEach(function(b) { b.classList.remove("active"); });
-          }
+          evtDateFilter = evtDateFilter === clicked ? null : clicked;
           renderCalendar();
           renderEventList();
           updateMap();
@@ -1125,14 +1023,10 @@
 
       if (evtDateFilter) {
         titleEl.textContent = evtDateFilter + " 的活动";
-      } else if (evtViewMode === "today") {
-        titleEl.textContent = (evtCityFilter !== "all" ? evtCityFilter + " · " : "") + "今日活动";
-      } else if (evtViewMode === "nearby") {
-        titleEl.textContent = "附近活动";
       } else if (evtCityFilter !== "all") {
-        titleEl.textContent = evtCityFilter + " · 全部活动";
+        titleEl.textContent = evtCityFilter + " · 近期活动";
       } else {
-        titleEl.textContent = "全部活动";
+        titleEl.textContent = "近期活动";
       }
 
       if (!filtered.length) {
@@ -1157,7 +1051,7 @@
           var id = el.dataset.id;
           var evt = eventsData.find(function(e) { return e.id === id; });
           if (evt && amapInstance) {
-            amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat], true);
+            amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat]);
             showInfoWindow(evt);
           }
           if (evt && evt.url) window.open(evt.url, "_blank");
@@ -1165,52 +1059,17 @@
       });
     }
 
-    /* --- 视图模式切换 --- */
-    Array.from(document.querySelectorAll(".evt-view-btn")).forEach(function(btn) {
+    /* --- 城市筛选 --- */
+    Array.from(document.querySelectorAll(".evt-filter-btn")).forEach(function(btn) {
       btn.addEventListener("click", function() {
-        var mode = btn.dataset.view;
-        if (mode === "nearby") {
-          // 请求定位权限
-          if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function(pos) {
-              userLocation = { lng: pos.coords.longitude, lat: pos.coords.latitude };
-              evtViewMode = "nearby";
-              evtDateFilter = null;
-              document.querySelectorAll(".evt-view-btn").forEach(function(b) { b.classList.remove("active"); });
-              btn.classList.add("active");
-              renderCalendar();
-              renderEventList();
-              updateMap();
-            }, function() {
-              alert("无法获取位置信息，请检查定位权限");
-            });
-            return;
-          }
-          alert("浏览器不支持定位功能");
-          return;
-        }
-        evtViewMode = mode;
+        evtCityFilter = btn.dataset.city;
         evtDateFilter = null;
-        document.querySelectorAll(".evt-view-btn").forEach(function(b) { b.classList.remove("active"); });
+        document.querySelectorAll(".evt-filter-btn").forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
         renderCalendar();
         renderEventList();
         updateMap();
       });
-    });
-
-    /* --- 城市筛选 --- */
-    document.getElementById("evtCitySelect").addEventListener("change", function() {
-      evtCityFilter = this.value;
-      evtDateFilter = null;
-      if (mapMode === "policy") {
-        renderPolicyMap();
-        renderPolicyList();
-      } else {
-        renderCalendar();
-        renderEventList();
-        updateMap();
-      }
     });
 
     /* --- 地图 --- */
@@ -1221,23 +1080,7 @@
       "深圳": [114.06, 22.55],
       "杭州": [120.15, 30.28],
       "苏州": [120.62, 31.30],
-      "南京": [118.80, 32.06],
-      "扬州": [119.44, 32.39],
-      "无锡": [120.31, 31.57],
-      "合肥": [117.23, 31.82],
-      "广州": [113.26, 23.13],
-      "武汉": [114.30, 30.59],
-      "成都": [104.07, 30.57],
-      "济南": [117.12, 36.65],
-      "青岛": [120.38, 36.07],
-      "西安": [108.94, 34.26],
-      "宁波": [121.55, 29.87],
-      "南通": [121.07, 32.03],
-      "连云港": [119.16, 34.57],
-      "宿迁": [118.82, 34.11],
-      "南昌": [115.86, 28.68],
-      "石家庄": [114.48, 38.04],
-      "玉林": [110.16, 22.60]
+      "南京": [118.80, 32.06]
     };
     var cityZoom = { "all": 4.5 };
 
@@ -1260,12 +1103,7 @@
         }));
       });
       amapInfoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
-      // 地图就绪后，根据当前模式渲染标记
-      if (mapMode === "policy") {
-        renderPolicyMap();
-      } else {
-        updateMap();
-      }
+      updateMap();
     }
 
     function showInfoWindow(evt) {
@@ -1296,123 +1134,16 @@
           title: evt.title
         });
         marker.on("click", function() {
-          amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat], true);
+          amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat]);
           showInfoWindow(evt);
         });
         amapMarkers.push(marker);
         amapInstance.add(marker);
       });
 
-      // 智能定位策略（全部禁用动画，避免地图"飞来飞去"）
-      if (filtered.length > 0) {
-        amapInstance.setFitView(amapMarkers, true, [60, 60, 60, 60], 16);
-      } else if (evtViewMode === "nearby" && userLocation) {
-        amapInstance.setZoomAndCenter(11, [userLocation.lng, userLocation.lat], true);
-      } else if (evtCityFilter !== "all") {
-        var coord = cityCoords[evtCityFilter] || cityCoords["all"];
-        var zoom = cityZoom[evtCityFilter] || 11;
-        amapInstance.setZoomAndCenter(zoom, coord, true);
-      } else {
-        amapInstance.setZoomAndCenter(4.5, [104.0, 35.0], true);
-      }
-    }
-
-    /* --- 模式切换：活动 / 政策 --- */
-    function switchMapMode(mode) {
-      mapMode = mode;
-      document.querySelectorAll(".evt-mode-btn").forEach(function(b) { b.classList.remove("active"); });
-      document.querySelector('[data-mode="' + mode + '"]').classList.add("active");
-      var titleEl = document.getElementById("eventsTitle");
-      var bottomEl = document.querySelector(".events-bottom");
-
-      if (mode === "policy") {
-        titleEl.textContent = "OPC 政策地图";
-        document.getElementById("evtViewBtns").style.display = "none";
-        document.querySelector(".cal-card").style.display = "none";
-        document.querySelector(".evt-list-card").style.display = "none";
-        document.getElementById("policyListCard").style.display = "";
-        bottomEl.classList.add("policy-mode");
-        renderPolicyMap();
-        renderPolicyList();
-      } else {
-        titleEl.textContent = "AI 活动地图";
-        document.getElementById("evtViewBtns").style.display = "";
-        document.querySelector(".cal-card").style.display = "";
-        document.querySelector(".evt-list-card").style.display = "";
-        document.getElementById("policyListCard").style.display = "none";
-        bottomEl.classList.remove("policy-mode");
-        updateMap();
-        renderEventList();
-      }
-    }
-
-    document.querySelectorAll(".evt-mode-btn").forEach(function(btn) {
-      btn.addEventListener("click", function() { switchMapMode(btn.dataset.mode); });
-    });
-
-    function renderPolicyMap() {
-      if (!amapInstance) return;
-      amapMarkers.forEach(function(m) { amapInstance.remove(m); });
-      amapMarkers = [];
-
-      var filtered = evtCityFilter === "all" ? policyParks : policyParks.filter(function(p) { return p.city === evtCityFilter; });
-
-      filtered.forEach(function(park) {
-        var marker = new AMap.Marker({
-          position: [park.lng, park.lat],
-          title: park.name,
-          content: '<div class="policy-marker">P</div>'
-        });
-        marker.on("click", function() {
-          amapInstance.setZoomAndCenter(14, [park.lng, park.lat], true);
-          showPolicyInfoWindow(park);
-        });
-        amapMarkers.push(marker);
-        amapInstance.add(marker);
-      });
-
-      if (filtered.length > 0) {
-        amapInstance.setFitView(amapMarkers, true, [60, 60, 60, 60], 16);
-      } else {
-        amapInstance.setZoomAndCenter(4.5, [104.0, 35.0], true);
-      }
-    }
-
-    function showPolicyInfoWindow(park) {
-      if (!amapInfoWindow) return;
-      var content = '<div style="padding:6px 2px;max-width:280px;">' +
-        '<strong style="font-size:14px;">' + park.name + '</strong><br>' +
-        '<span style="color:#888;font-size:12px;">' + park.city + ' · ' + park.district + '</span>' +
-        (park.area ? '<br><span style="color:#888;font-size:12px;">面积：' + park.area + '</span>' : '') +
-        '<br><span style="color:#6b4cf6;font-size:12px;font-weight:600;">政策：' + park.policy + '</span>' +
-        '<br><a href="park-detail.html?id=' + park.id + '" style="color:#6b4cf6;font-size:12px;font-weight:700;display:inline-block;margin-top:6px;">查看详情 →</a>' +
-        '</div>';
-      amapInfoWindow.setContent(content);
-      amapInfoWindow.open(amapInstance, [park.lng, park.lat]);
-    }
-
-    function renderPolicyList() {
-      var filtered = evtCityFilter === "all" ? policyParks : policyParks.filter(function(p) { return p.city === evtCityFilter; });
-      var listEl = document.getElementById("policyList");
-
-      if (!filtered.length) {
-        listEl.innerHTML = '<div class="evt-empty">暂无匹配的园区</div>';
-        return;
-      }
-
-      listEl.innerHTML = filtered.map(function(park) {
-        return '<div class="policy-item" data-id="' + park.id + '" style="cursor:pointer;">' +
-          '<div class="policy-item-name">' + park.name + '</div>' +
-          '<div class="policy-item-meta">' + park.city + ' · ' + park.district + (park.area ? ' · ' + park.area : '') + '</div>' +
-          '<div class="policy-item-policy">' + park.policy + '</div>' +
-          '</div>';
-      }).join("");
-
-      Array.from(listEl.querySelectorAll(".policy-item")).forEach(function(el) {
-        el.addEventListener("click", function() {
-          window.location.href = "park-detail.html?id=" + el.dataset.id;
-        });
-      });
+      var coord = cityCoords[evtCityFilter] || cityCoords["all"];
+      var zoom = cityZoom[evtCityFilter] || 11;
+      amapInstance.setZoomAndCenter(zoom, coord);
     }
 
     /* --- Events 初始化 --- */
@@ -1425,14 +1156,8 @@
         var endDate = evt.endDate || evt.date;
         return endDate >= cutoffStr;
       });
-
-      // 默认显示今日活动
-      evtViewMode = "today";
-
       initCalendar();
       renderEventList();
-      // 默认切换到政策地图模式（UI 先切，地图等加载后渲染）
-      switchMapMode("policy");
       if (window.AMap) {
         initMap();
       } else if (AMAP_KEY) {
