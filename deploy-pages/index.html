@@ -37,7 +37,7 @@
       backdrop-filter: blur(14px);
     }
     .topbar-inner {
-      min-height: 86px;
+      min-height: 56px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -66,9 +66,9 @@
 
     .search-dock {
       position: sticky;
-      top: 86px;
+      top: 56px;
       z-index: 35;
-      padding: 8px 0 6px;
+      padding: 4px 0 4px;
       background: linear-gradient(180deg, rgba(244, 244, 246, 0.96), rgba(244, 244, 246, 0.84));
       backdrop-filter: blur(12px);
       border-bottom: 1px solid rgba(17, 19, 24, 0.05);
@@ -91,11 +91,11 @@
       font-size: 0.94rem;
       white-space: nowrap;
     }
-    .search-stack { display: grid; gap: 8px; }
+    .search-stack { display: grid; gap: 4px; }
     .mode-switch { display: inline-flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
     .mode-btn {
-      min-height: 36px;
-      padding: 0 13px;
+      min-height: 30px;
+      padding: 0 12px;
       border-radius: 999px;
       border: 1px solid var(--line);
       background: var(--panel);
@@ -109,7 +109,7 @@
       border-color: rgba(107, 76, 246, 0.16);
       box-shadow: 0 10px 28px rgba(107, 76, 246, 0.12);
     }
-    .search-box { display: grid; gap: 8px; }
+    .search-box { display: grid; gap: 4px; }
     .search-row {
       display: grid;
       grid-template-columns: minmax(0, 1fr) 48px;
@@ -118,7 +118,7 @@
     }
     .search-row.ai-mode { grid-template-columns: 152px minmax(0, 1fr) 48px; }
     .search-input, .search-select {
-      min-height: 46px;
+      min-height: 40px;
       border-radius: 999px;
       border: 1px solid #d2d5df;
       background: rgba(255, 255, 255, 0.94);
@@ -128,8 +128,8 @@
       outline: none;
     }
     .search-button {
-      width: 48px;
-      height: 48px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       border: 0;
       background: var(--brand);
@@ -140,7 +140,7 @@
     }
     .search-note { color: var(--muted); font-size: 0.82rem; }
     .headline-strip {
-      margin-top: 8px;
+      margin-top: 2px;
       display: flex;
       flex-wrap: wrap;
       gap: 10px 14px;
@@ -386,6 +386,32 @@
 
     /* ===== Events Section ===== */
     .events-section { padding: 32px 0 24px; }
+
+    .policy-section { padding: 0 0 32px; }
+    .policy-card {
+      display: flex; justify-content: space-between; align-items: center; gap: 32px;
+      background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 100%);
+      border-radius: 22px; padding: 32px 40px; color: #fff;
+    }
+    .policy-info h2 { font-size: 1.3rem; font-weight: 900; margin-bottom: 8px; }
+    .policy-info p { color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.6; max-width: 560px; margin-bottom: 16px; }
+    .policy-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 24px; border-radius: 999px;
+      background: rgba(255,255,255,0.15); color: #fff;
+      font-weight: 700; font-size: 0.92rem;
+      border: 1px solid rgba(255,255,255,0.2);
+      transition: background 0.2s;
+    }
+    .policy-link:hover { background: rgba(255,255,255,0.25); }
+    .policy-stats { display: flex; gap: 24px; }
+    .policy-stat {
+      text-align: center; padding: 12px 16px;
+      background: rgba(255,255,255,0.08); border-radius: 14px;
+      min-width: 80px;
+    }
+    .policy-stat strong { display: block; font-size: 1.4rem; font-weight: 900; }
+    .policy-stat span { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
     .events-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
@@ -488,12 +514,14 @@
       .events-bottom { grid-template-columns: 300px minmax(0,1fr); }
     }
     @media (max-width: 860px) {
-      .topbar-inner { min-height: 72px; }
+      .topbar-inner { min-height: 48px; }
       .nav { gap: 16px; font-size: 0.92rem; }
-      .search-dock { top: 72px; }
+      .search-dock { top: 48px; }
       .search-dock-inner { grid-template-columns: 1fr; }
       .search-dock-side { display: none; }
       .search-row.ai-mode, .article { grid-template-columns: 1fr; }
+      .policy-card { flex-direction: column; padding: 24px; }
+      .policy-stats { gap: 12px; }
     }
     @media (max-width: 560px) {
       .shell { width: min(calc(100% - 20px), var(--max)); }
@@ -555,7 +583,6 @@
             <div class="search-row ai-mode">
               <select class="search-select" id="aiEngine">
                 <option value="doubao">豆包</option>
-                <option value="qwen">千问</option>
                 <option value="gemini">Gemini</option>
                 <option value="claude">Claude</option>
                 <option value="chatgpt">ChatGPT</option>
@@ -676,6 +703,25 @@
       </div>
     </section>
 
+    <section class="policy-section" id="policy">
+      <div class="shell">
+        <div class="policy-card">
+          <div class="policy-info">
+            <h2>AI 政策地图</h2>
+            <p>全国 OPC 园区及创业政策分布图，覆盖江苏、浙江、广东、上海、北京等地 80+ 园区据点。点击查看各地政策红利、园区详情与优惠措施。</p>
+            <a class="policy-link" href="https://atomclub.cn/#/policy-map" target="_blank" rel="noopener noreferrer">查看政策地图 →</a>
+          </div>
+          <div class="policy-preview">
+            <div class="policy-stats">
+              <div class="policy-stat"><strong>80+</strong><span>园区据点</span></div>
+              <div class="policy-stat"><strong>200+</strong><span>地方政策</span></div>
+              <div class="policy-stat"><strong>14</strong><span>省市覆盖</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="footer">
@@ -718,11 +764,10 @@
     var activeKeyword = "";
 
     var engines = {
-      doubao: { name: "豆包", url: "https://www.doubao.com/chat/" },
-      qwen: { name: "千问", url: "https://chat.qwen.ai/" },
-      gemini: { name: "Gemini", url: "https://gemini.google.com/app" },
-      claude: { name: "Claude", url: "https://claude.ai/new" },
-      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/" }
+      doubao: { name: "豆包", url: "https://www.doubao.com/chat/", queryParam: null },
+      gemini: { name: "Gemini", url: "https://gemini.google.com/app", queryParam: "q" },
+      claude: { name: "Claude", url: "https://claude.ai/new", queryParam: null },
+      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/", queryParam: "q" }
     };
 
     /* ===== 热搜 API 请求 ===== */
@@ -873,7 +918,13 @@
     function submitAiSearch() {
       var selected = engines[aiEngine.value];
       if (!selected) return;
-      window.open(selected.url, "_blank", "noopener,noreferrer");
+      var query = aiSearch.value.trim();
+      var targetUrl = selected.url;
+      if (query && selected.queryParam) {
+        var sep = targetUrl.indexOf("?") > -1 ? "&" : "?";
+        targetUrl = targetUrl + sep + selected.queryParam + "=" + encodeURIComponent(query);
+      }
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
     }
 
     /* ===== 事件绑定 ===== */
@@ -884,7 +935,11 @@
     onsiteSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") { activeKeyword = onsiteSearch.value; renderCards(); } });
     onsiteButton.addEventListener("click", function() { activeKeyword = onsiteSearch.value; renderCards(); });
     aiEngine.addEventListener("change", function() {
-      aiNote.textContent = "AI 搜索将跳转到 " + engines[aiEngine.value].name + " 页面打开，不在好点 AI 内返回答案。";
+      var eng = engines[aiEngine.value];
+      var note = eng.queryParam
+        ? "AI 搜索将跳转到 " + eng.name + " 并自动填入搜索内容，不在好点 AI 内返回答案。"
+        : "AI 搜索将跳转到 " + eng.name + " 页面，需手动输入搜索内容。";
+      aiNote.textContent = note;
     });
     aiButton.addEventListener("click", submitAiSearch);
     aiSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") submitAiSearch(); });
