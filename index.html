@@ -691,7 +691,6 @@
     var aiSearch = document.getElementById("aiSearch");
     var aiButton = document.getElementById("aiButton");
     var aiEngine = document.getElementById("aiEngine");
-    var aiNote = document.getElementById("aiNote");
     var categoryChips = document.getElementById("categoryChips");
     var cardsGrid = document.getElementById("cardsGrid");
     var resultCount = document.getElementById("resultCount");
@@ -705,11 +704,10 @@
     var activeKeyword = "";
 
     var engines = {
-      doubao: { name: "豆包", url: "https://www.doubao.com/chat/" },
-      qwen: { name: "千问", url: "https://chat.qwen.ai/" },
-      gemini: { name: "Gemini", url: "https://gemini.google.com/app" },
-      claude: { name: "Claude", url: "https://claude.ai/new" },
-      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/" }
+      doubao: { name: "豆包", url: "https://www.doubao.com/chat/", queryParam: "q" },
+      gemini: { name: "Gemini", url: "https://gemini.google.com/app", queryParam: "q" },
+      claude: { name: "Claude", url: "https://claude.ai/new", queryParam: "q" },
+      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/", queryParam: "q" }
     };
 
     /* ===== 热搜 API 请求 ===== */
@@ -860,7 +858,13 @@
     function submitAiSearch() {
       var selected = engines[aiEngine.value];
       if (!selected) return;
-      window.open(selected.url, "_blank", "noopener,noreferrer");
+      var query = aiSearch.value.trim();
+      var url = selected.url;
+      if (query) {
+        var sep = url.indexOf("?") === -1 ? "?" : "&";
+        url = url + sep + selected.queryParam + "=" + encodeURIComponent(query);
+      }
+      window.open(url, "_blank", "noopener,noreferrer");
     }
 
     /* ===== 事件绑定 ===== */
@@ -870,9 +874,7 @@
     onsiteSearch.addEventListener("input", function() { activeKeyword = onsiteSearch.value; renderCards(); });
     onsiteSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") { activeKeyword = onsiteSearch.value; renderCards(); } });
     onsiteButton.addEventListener("click", function() { activeKeyword = onsiteSearch.value; renderCards(); });
-    aiEngine.addEventListener("change", function() {
-      aiNote.textContent = "AI 搜索将跳转到 " + engines[aiEngine.value].name + " 页面打开，不在好点 AI 内返回答案。";
-    });
+    aiEngine.addEventListener("change", function() {});
     aiButton.addEventListener("click", submitAiSearch);
     aiSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") submitAiSearch(); });
 
