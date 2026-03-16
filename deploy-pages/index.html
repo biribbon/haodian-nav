@@ -387,31 +387,6 @@
     /* ===== Events Section ===== */
     .events-section { padding: 32px 0 24px; }
 
-    .policy-section { padding: 0 0 32px; }
-    .policy-card {
-      display: flex; justify-content: space-between; align-items: center; gap: 32px;
-      background: linear-gradient(135deg, #1a1a2e 0%, #2d1b69 100%);
-      border-radius: 22px; padding: 32px 40px; color: #fff;
-    }
-    .policy-info h2 { font-size: 1.3rem; font-weight: 900; margin-bottom: 8px; }
-    .policy-info p { color: rgba(255,255,255,0.7); font-size: 0.88rem; line-height: 1.6; max-width: 560px; margin-bottom: 16px; }
-    .policy-link {
-      display: inline-flex; align-items: center; gap: 6px;
-      padding: 10px 24px; border-radius: 999px;
-      background: rgba(255,255,255,0.15); color: #fff;
-      font-weight: 700; font-size: 0.92rem;
-      border: 1px solid rgba(255,255,255,0.2);
-      transition: background 0.2s;
-    }
-    .policy-link:hover { background: rgba(255,255,255,0.25); }
-    .policy-stats { display: flex; gap: 24px; }
-    .policy-stat {
-      text-align: center; padding: 12px 16px;
-      background: rgba(255,255,255,0.08); border-radius: 14px;
-      min-width: 80px;
-    }
-    .policy-stat strong { display: block; font-size: 1.4rem; font-weight: 900; }
-    .policy-stat span { font-size: 0.78rem; color: rgba(255,255,255,0.6); }
     .events-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
@@ -499,6 +474,32 @@
     .evt-item-meta { font-size: 0.76rem; color: var(--muted); display: flex; gap: 10px; }
     .evt-empty { color: var(--muted); font-size: 0.86rem; text-align: center; padding: 24px 0; }
 
+    /* ===== Policy Map Styles ===== */
+    .evt-mode-btn.active {
+      background: var(--brand); color: #fff !important; border-color: var(--brand);
+    }
+    .evt-mode-btn.active:hover { background: #5a3de0; }
+    .policy-list-card {
+      border-radius: 20px; background: #fff;
+      border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 26px rgba(17,19,24,0.05);
+      padding: 16px; max-height: 420px; overflow-y: auto;
+    }
+    .policy-list-card h3 { margin: 0 0 12px; font-size: 0.92rem; font-weight: 800; }
+    .policy-item { display: grid; gap: 4px; padding: 10px 0; border-bottom: 1px dashed #eceef3; cursor: pointer; }
+    .policy-item:last-child { border-bottom: 0; }
+    .policy-item:hover { background: var(--brand-soft); margin: 0 -8px; padding: 10px 8px; border-radius: 10px; }
+    .policy-item-name { font-size: 0.88rem; font-weight: 800; }
+    .policy-item-meta { font-size: 0.76rem; color: var(--muted); }
+    .policy-item-policy { font-size: 0.76rem; color: var(--brand); font-weight: 600; }
+    .policy-marker {
+      width: 24px; height: 24px; border-radius: 50%;
+      background: #6b4cf6; border: 2px solid #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      display: grid; place-items: center;
+      color: #fff; font-size: 10px; font-weight: 900;
+    }
+    .events-bottom.policy-mode { grid-template-columns: 1fr; }
+
     .footer {
       padding: 0 0 30px;
       color: var(--muted);
@@ -520,8 +521,6 @@
       .search-dock-inner { grid-template-columns: 1fr; }
       .search-dock-side { display: none; }
       .search-row.ai-mode, .article { grid-template-columns: 1fr; }
-      .policy-card { flex-direction: column; padding: 24px; }
-      .policy-stats { gap: 12px; }
     }
     @media (max-width: 560px) {
       .shell { width: min(calc(100% - 20px), var(--max)); }
@@ -661,12 +660,17 @@
     <section class="events-section" id="events">
       <div class="shell">
         <div class="events-header">
-          <h2>AI 活动地图</h2>
+          <h2 id="eventsTitle">AI 活动地图</h2>
           <div class="events-filters">
-            <button class="evt-filter-btn evt-view-btn active" data-view="today">今日活动</button>
-            <button class="evt-filter-btn evt-view-btn" data-view="all">全部活动</button>
-            <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
+            <button class="evt-filter-btn evt-mode-btn active" data-mode="events">AI 活动</button>
+            <button class="evt-filter-btn evt-mode-btn" data-mode="policy">OPC 政策地图</button>
             <span class="evt-filter-sep"></span>
+            <span id="evtViewBtns">
+              <button class="evt-filter-btn evt-view-btn active" data-view="today">今日活动</button>
+              <button class="evt-filter-btn evt-view-btn" data-view="all">全部活动</button>
+              <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
+              <span class="evt-filter-sep"></span>
+            </span>
             <button class="evt-filter-btn evt-city-btn" data-city="all">全部城市</button>
             <button class="evt-filter-btn evt-city-btn" data-city="上海">上海</button>
             <button class="evt-filter-btn evt-city-btn" data-city="北京">北京</button>
@@ -697,24 +701,9 @@
               <h3 id="evtListTitle">近期活动</h3>
               <div id="evtList"></div>
             </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="policy-section" id="policy">
-      <div class="shell">
-        <div class="policy-card">
-          <div class="policy-info">
-            <h2>AI 政策地图</h2>
-            <p>全国 OPC 园区及创业政策分布图，覆盖江苏、浙江、广东、上海、北京等地 80+ 园区据点。点击查看各地政策红利、园区详情与优惠措施。</p>
-            <a class="policy-link" href="https://atomclub.cn/#/policy-map" target="_blank" rel="noopener noreferrer">查看政策地图 →</a>
-          </div>
-          <div class="policy-preview">
-            <div class="policy-stats">
-              <div class="policy-stat"><strong>80+</strong><span>园区据点</span></div>
-              <div class="policy-stat"><strong>200+</strong><span>地方政策</span></div>
-              <div class="policy-stat"><strong>14</strong><span>省市覆盖</span></div>
+            <div class="policy-list-card" id="policyListCard" style="display:none;">
+              <h3>园区政策一览</h3>
+              <div id="policyList"></div>
             </div>
           </div>
         </div>
@@ -972,6 +961,36 @@
 
     var categoryLabels = { conference: "峰会", salon: "沙龙", hackathon: "黑客松", meetup: "聚会" };
 
+    var mapMode = "events"; // "events" | "policy"
+
+    var policyParks = [
+      { id: "pk-01", name: "南山「模力营」AI 生态社区", city: "深圳", district: "南山区", lng: 113.930, lat: 22.533, area: "10万m²", policy: "最高200万代码贡献补贴，1000万股权投资", tags: ["AI","OPC"] },
+      { id: "pk-02", name: "龙岗「模力谷」AI 生态社区", city: "深圳", district: "龙岗区", lng: 114.247, lat: 22.720, area: "11.7万m²", policy: "最高200万代码贡献补贴", tags: ["AI","OPC"] },
+      { id: "pk-03", name: "宝安 OPC 智造基地", city: "深圳", district: "宝安区", lng: 113.883, lat: 22.555, area: "5万m²", policy: "租金减免50%，人才公寓配套", tags: ["智造","OPC"] },
+      { id: "pk-04", name: "福田 AI 创新中心", city: "深圳", district: "福田区", lng: 114.055, lat: 22.526, area: "3万m²", policy: "落户奖励100万，研发补贴最高500万", tags: ["AI","OPC"] },
+      { id: "pk-05", name: "光明 AI 算力谷", city: "深圳", district: "光明区", lng: 113.935, lat: 22.748, area: "8万m²", policy: "算力补贴最高300万/年", tags: ["算力","OPC"] },
+      { id: "pk-06", name: "中关村 AI 科技园", city: "北京", district: "海淀区", lng: 116.310, lat: 39.982, area: "15万m²", policy: "最高1000万研发补助，优质人才落户", tags: ["AI","OPC"] },
+      { id: "pk-07", name: "海淀 OPC 开源街区", city: "北京", district: "海淀区", lng: 116.337, lat: 39.960, area: "6万m²", policy: "开源项目奖励最高200万", tags: ["开源","OPC"] },
+      { id: "pk-08", name: "朝阳工业 AI 创新园", city: "北京", district: "朝阳区", lng: 116.486, lat: 39.921, area: "9万m²", policy: "智能制造企业三年免租", tags: ["AI","工业"] },
+      { id: "pk-09", name: "亦庄大模型产业基地", city: "北京", district: "大兴区", lng: 116.506, lat: 39.795, area: "12万m²", policy: "大模型企业落地奖励500万起", tags: ["大模型","OPC"] },
+      { id: "pk-10", name: "张江 AI 创新小镇", city: "上海", district: "浦东新区", lng: 121.590, lat: 31.203, area: "20万m²", policy: "研发费用加计扣除，最高500万资金扶持", tags: ["AI","OPC"] },
+      { id: "pk-11", name: "漕河泾 OPC 生态园", city: "上海", district: "徐汇区", lng: 121.398, lat: 31.168, area: "7万m²", policy: "优秀项目股权投资最高2000万", tags: ["AI","OPC"] },
+      { id: "pk-12", name: "萧山 OPC 数字产业园", city: "杭州", district: "萧山区", lng: 120.264, lat: 30.185, area: "8万m²", policy: "最高300万落地奖励，三年租金全免", tags: ["数字","OPC"] },
+      { id: "pk-13", name: "余杭 AI 小镇", city: "杭州", district: "余杭区", lng: 120.023, lat: 30.290, area: "12万m²", policy: "人才购房补贴最高200万", tags: ["AI","OPC"] },
+      { id: "pk-14", name: "苏州工业园 OPC 基地", city: "苏州", district: "工业园区", lng: 120.710, lat: 31.325, area: "10万m²", policy: "最高500万研发补贴，人才安居保障", tags: ["AI","OPC"] },
+      { id: "pk-15", name: "南京江北新区 AI 港", city: "南京", district: "江北新区", lng: 118.726, lat: 32.216, area: "14万m²", policy: "企业落户奖200万，核心团队安居补贴", tags: ["AI","OPC"] },
+      { id: "pk-16", name: "合肥高新区 AI 产业园", city: "合肥", district: "高新区", lng: 117.153, lat: 31.831, area: "9万m²", policy: "最高300万研发资金支持", tags: ["AI","OPC"] },
+      { id: "pk-17", name: "无锡物联网 OPC 园区", city: "无锡", district: "滨湖区", lng: 120.293, lat: 31.570, area: "6万m²", policy: "物联网+AI项目最高200万补贴", tags: ["物联网","OPC"] },
+      { id: "pk-18", name: "青岛崂山 AI 科创中心", city: "青岛", district: "崂山区", lng: 120.468, lat: 36.107, area: "7万m²", policy: "最高500万产业扶持资金", tags: ["AI","OPC"] },
+      { id: "pk-19", name: "青岛西海岸 OPC 数字港", city: "青岛", district: "西海岸新区", lng: 120.198, lat: 35.960, area: "10万m²", policy: "三年租金减免，人才补贴100万", tags: ["数字","OPC"] },
+      { id: "pk-20", name: "青岛高新区 AI 加速器", city: "青岛", district: "高新区", lng: 120.489, lat: 36.158, area: "5万m²", policy: "种子期项目最高100万资助", tags: ["AI","OPC"] },
+      { id: "pk-21", name: "武汉光谷 AI 研发基地", city: "武汉", district: "东湖高新区", lng: 114.429, lat: 30.506, area: "11万m²", policy: "最高1000万产业引导基金", tags: ["AI","OPC"] },
+      { id: "pk-22", name: "成都高新区 AI 创新谷", city: "成都", district: "高新区", lng: 104.068, lat: 30.585, area: "8万m²", policy: "落地奖励最高200万，人才公寓配套", tags: ["AI","OPC"] },
+      { id: "pk-23", name: "长沙岳麓 OPC 智慧园", city: "长沙", district: "岳麓区", lng: 112.931, lat: 28.235, area: "6万m²", policy: "最高300万研发补贴，创业团队免租", tags: ["AI","OPC"] },
+      { id: "pk-24", name: "济南高新区 AI 产业港", city: "济南", district: "高新区", lng: 117.128, lat: 36.681, area: "7万m²", policy: "AI企业落地奖励最高500万", tags: ["AI","OPC"] },
+      { id: "pk-25", name: "厦门软件园 OPC 基地", city: "厦门", district: "集美区", lng: 118.100, lat: 24.580, area: "5万m²", policy: "软件企业三年免税，最高200万引才奖励", tags: ["软件","OPC"] }
+    ];
+
     function loadEvents() {
       if (EVENTS_API) {
         return fetch(EVENTS_API).then(function(r) { return r.json(); }).then(function(data) {
@@ -1173,9 +1192,14 @@
         evtDateFilter = null;
         document.querySelectorAll(".evt-city-btn").forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
-        renderCalendar();
-        renderEventList();
-        updateMap();
+        if (mapMode === "policy") {
+          renderPolicyMap();
+          renderPolicyList();
+        } else {
+          renderCalendar();
+          renderEventList();
+          updateMap();
+        }
       });
     });
 
@@ -1260,6 +1284,107 @@
       } else {
         amapInstance.setZoomAndCenter(4.5, [104.0, 35.0], true);
       }
+    }
+
+    /* --- 模式切换：活动 / 政策 --- */
+    function switchMapMode(mode) {
+      mapMode = mode;
+      document.querySelectorAll(".evt-mode-btn").forEach(function(b) { b.classList.remove("active"); });
+      document.querySelector('[data-mode="' + mode + '"]').classList.add("active");
+      var titleEl = document.getElementById("eventsTitle");
+      var bottomEl = document.querySelector(".events-bottom");
+
+      if (mode === "policy") {
+        titleEl.textContent = "OPC 政策地图";
+        document.getElementById("evtViewBtns").style.display = "none";
+        document.querySelector(".cal-card").style.display = "none";
+        document.querySelector(".evt-list-card").style.display = "none";
+        document.getElementById("policyListCard").style.display = "";
+        bottomEl.classList.add("policy-mode");
+        renderPolicyMap();
+        renderPolicyList();
+      } else {
+        titleEl.textContent = "AI 活动地图";
+        document.getElementById("evtViewBtns").style.display = "";
+        document.querySelector(".cal-card").style.display = "";
+        document.querySelector(".evt-list-card").style.display = "";
+        document.getElementById("policyListCard").style.display = "none";
+        bottomEl.classList.remove("policy-mode");
+        updateMap();
+        renderEventList();
+      }
+    }
+
+    document.querySelectorAll(".evt-mode-btn").forEach(function(btn) {
+      btn.addEventListener("click", function() { switchMapMode(btn.dataset.mode); });
+    });
+
+    function renderPolicyMap() {
+      if (!amapInstance) return;
+      amapMarkers.forEach(function(m) { amapInstance.remove(m); });
+      amapMarkers = [];
+
+      var filtered = evtCityFilter === "all" ? policyParks : policyParks.filter(function(p) { return p.city === evtCityFilter; });
+
+      filtered.forEach(function(park) {
+        var marker = new AMap.Marker({
+          position: [park.lng, park.lat],
+          title: park.name,
+          content: '<div class="policy-marker">P</div>'
+        });
+        marker.on("click", function() {
+          amapInstance.setZoomAndCenter(14, [park.lng, park.lat], true);
+          showPolicyInfoWindow(park);
+        });
+        amapMarkers.push(marker);
+        amapInstance.add(marker);
+      });
+
+      if (filtered.length > 0) {
+        amapInstance.setFitView(amapMarkers, true, [60, 60, 60, 60], 16);
+      } else {
+        amapInstance.setZoomAndCenter(4.5, [104.0, 35.0], true);
+      }
+    }
+
+    function showPolicyInfoWindow(park) {
+      if (!amapInfoWindow) return;
+      var content = '<div style="padding:6px 2px;max-width:280px;">' +
+        '<strong style="font-size:14px;">' + park.name + '</strong><br>' +
+        '<span style="color:#888;font-size:12px;">' + park.city + ' · ' + park.district + '</span>' +
+        (park.area ? '<br><span style="color:#888;font-size:12px;">面积：' + park.area + '</span>' : '') +
+        '<br><span style="color:#6b4cf6;font-size:12px;font-weight:600;">政策：' + park.policy + '</span>' +
+        '</div>';
+      amapInfoWindow.setContent(content);
+      amapInfoWindow.open(amapInstance, [park.lng, park.lat]);
+    }
+
+    function renderPolicyList() {
+      var filtered = evtCityFilter === "all" ? policyParks : policyParks.filter(function(p) { return p.city === evtCityFilter; });
+      var listEl = document.getElementById("policyList");
+
+      if (!filtered.length) {
+        listEl.innerHTML = '<div class="evt-empty">暂无匹配的园区</div>';
+        return;
+      }
+
+      listEl.innerHTML = filtered.map(function(park) {
+        return '<div class="policy-item" data-id="' + park.id + '">' +
+          '<div class="policy-item-name">' + park.name + '</div>' +
+          '<div class="policy-item-meta">' + park.city + ' · ' + park.district + (park.area ? ' · ' + park.area : '') + '</div>' +
+          '<div class="policy-item-policy">' + park.policy + '</div>' +
+          '</div>';
+      }).join("");
+
+      Array.from(listEl.querySelectorAll(".policy-item")).forEach(function(el) {
+        el.addEventListener("click", function() {
+          var park = policyParks.find(function(p) { return p.id === el.dataset.id; });
+          if (park && amapInstance) {
+            amapInstance.setZoomAndCenter(14, [park.lng, park.lat], true);
+            showPolicyInfoWindow(park);
+          }
+        });
+      });
     }
 
     /* --- Events 初始化 --- */
