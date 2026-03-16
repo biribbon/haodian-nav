@@ -1,4 +1,4 @@
--- 种子数据：从 yes123-data.js 导入活动数据
+-- 种子数据：从 haodianai-data.js 导入活动数据
 
 INSERT OR IGNORE INTO events (id, title, date, end_date, city, address, lng, lat, category, tags, url, source, organizer, theme, free, status) VALUES
 ('evt-001', '2026 北京国际人工智能与机器人创新博览会', '2026-03-18', '2026-03-20', '北京', '朝阳区北三环东路6号·中国国际展览中心朝阳馆', 116.4417, 39.9656, 'conference', '["大模型","机器人","AIoT"]', '', '北京人工智能学会', '北京人工智能学会、北京恒辉国际展览有限公司', '京聚全球智，AI创未来', 0, 'approved'),

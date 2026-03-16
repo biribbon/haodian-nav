@@ -1,4 +1,4 @@
-// yes123-events-api 入口 — 路由分发 + scheduled handler
+// haodianai-events-api 入口 — 路由分发 + scheduled handler
 
 import type { Env } from './env'
 import { handleCORS } from './utils/cors'

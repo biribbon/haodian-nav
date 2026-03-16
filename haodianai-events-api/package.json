@@ -1,13 +1,13 @@
 {
-  "name": "yes123-events-api",
+  "name": "haodianai-events-api",
   "version": "1.0.0",
   "private": true,
   "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "deploy": "wrangler deploy",
-    "migrate:local": "wrangler d1 execute yes123-events --local --file",
-    "migrate:remote": "wrangler d1 execute yes123-events --remote --file"
+    "migrate:local": "wrangler d1 execute haodianai-events --local --file",
+    "migrate:remote": "wrangler d1 execute haodianai-events --remote --file"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20260101.0",

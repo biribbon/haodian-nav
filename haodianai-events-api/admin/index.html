@@ -97,12 +97,12 @@
 
   <script>
     const API_BASE = location.origin
-    let apiKey = localStorage.getItem('yes123_admin_key') || ''
+    let apiKey = localStorage.getItem('haodianai_admin_key') || ''
     if (apiKey) document.getElementById('apiKey').value = '••••••••'
 
     function saveApiKey() {
       const v = document.getElementById('apiKey').value.trim()
-      if (v && v !== '••••••••') { apiKey = v; localStorage.setItem('yes123_admin_key', v) }
+      if (v && v !== '••••••••') { apiKey = v; localStorage.setItem('haodianai_admin_key', v) }
       showToast('API Key 已保存')
     }
 

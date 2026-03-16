@@ -1,4 +1,4 @@
-window.YES123Seed = {
+window.HaodianSeed = {
   tools: [
     {
       id: "lovart",

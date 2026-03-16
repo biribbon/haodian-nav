@@ -1,5 +1,5 @@
 {
-  "name": "yes123-hot-worker",
+  "name": "haodianai-hot-worker",
   "private": true,
   "scripts": {
     "dev": "wrangler dev",

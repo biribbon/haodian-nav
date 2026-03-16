@@ -29,7 +29,7 @@ export async function crawlJuejin(env: Env): Promise<number> {
   try {
     const resp = await fetch(JUEJIN_EVENTS_URL, {
       headers: {
-        'User-Agent': 'Mozilla/5.0 (compatible; yes123-bot/1.0)',
+        'User-Agent': 'Mozilla/5.0 (compatible; haodianai-bot/1.0)',
       },
     })
 

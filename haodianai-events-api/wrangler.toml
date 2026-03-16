@@ -1,4 +1,4 @@
-name = "yes123-events-api"
+name = "haodianai-events-api"
 main = "src/index.ts"
 compatibility_date = "2026-03-16"
 compatibility_flags = ["nodejs_compat"]
@@ -14,7 +14,7 @@ zone_name = "haodianai.com"
 
 [[d1_databases]]
 binding = "DB"
-database_name = "yes123-events"
+database_name = "haodianai-events"
 database_id = "1c55f927-5ff7-4476-8cd7-5972f853d4a7"
 
 [[rules]]

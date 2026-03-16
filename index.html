@@ -669,14 +669,14 @@
     好点 AI — 精选最好用的 AI 网站和 APP
   </footer>
 
-  <script src="yes123-data.js"></script>
+  <script src="haodianai-data.js"></script>
   <script>
     /* ===== 配置 ===== */
     // 好点 AI 热搜 API (Cloudflare Worker)
     var HOT_API = "https://haodianai-hot-api.blikous1998.workers.dev";
 
     /* ===== 种子数据 ===== */
-    var seed = window.YES123Seed;
+    var seed = window.HaodianSeed;
     var content = {
       tools: seed.tools,
       categories: Array.from(new Set(seed.tools.map(function(t) { return t.category; }).filter(Boolean)))

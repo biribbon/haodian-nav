@@ -45,7 +45,7 @@ interface DetailResult {
 async function fetchEventLinks(): Promise<string[]> {
   try {
     const resp = await fetch(HDX_LIST_URL, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; yes123-bot/1.0)' },
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; haodianai-bot/1.0)' },
     })
     if (!resp.ok) {
       console.error(`[活动行] 列表页请求失败: ${resp.status}`)
@@ -81,7 +81,7 @@ async function extractDetailPage(
 ): Promise<DetailResult | null> {
   try {
     const resp = await fetch(url, {
-      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; yes123-bot/1.0)' },
+      headers: { 'User-Agent': 'Mozilla/5.0 (compatible; haodianai-bot/1.0)' },
     })
     if (!resp.ok) return null
 
