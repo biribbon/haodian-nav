@@ -348,7 +348,7 @@ window.HaodianParks = [
   // ===== 北京市 =====
   {
     id: "pk-34", name: "北京模数 OPC 社区",
-    city: "北京", province: "北京市",
+    city: "北京", province: "北京市", district: "经开区",
     address: "北京经济技术开发区通明湖信息城",
     lng: 116.575554, lat: 39.786629,
     advantages: [], policy: "",
@@ -750,7 +750,7 @@ window.HaodianParks = [
   // ===== 安徽省 - 合肥 =====
   {
     id: "pk-75", name: "合肥'模立方' OPC 创业空间",
-    city: "合肥", province: "安徽省",
+    city: "合肥", province: "安徽省", district: "高新区",
     address: "合肥市高新区安徽人工智能产业先导区模立方AI社区一层",
     lng: 117.197964, lat: 31.780087,
     advantages: ["依托安徽人工智能产业先导区，提供载体、算力、数据、资本、场景、政策一站式生态服务"],
