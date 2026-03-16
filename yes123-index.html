@@ -545,7 +545,6 @@
             <div class="search-row ai-mode">
               <select class="search-select" id="aiEngine">
                 <option value="doubao">豆包</option>
-                <option value="qwen">千问</option>
                 <option value="gemini">Gemini</option>
                 <option value="claude">Claude</option>
                 <option value="chatgpt">ChatGPT</option>
@@ -704,11 +703,10 @@
     var activeKeyword = "";
 
     var engines = {
-      doubao: { name: "豆包", url: "https://www.doubao.com/chat/" },
-      qwen: { name: "千问", url: "https://chat.qwen.ai/" },
-      gemini: { name: "Gemini", url: "https://gemini.google.com/app" },
-      claude: { name: "Claude", url: "https://claude.ai/new" },
-      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/" }
+      doubao: { name: "豆包", url: "https://www.doubao.com/chat/", queryParam: null },
+      gemini: { name: "Gemini", url: "https://gemini.google.com/app", queryParam: "q" },
+      claude: { name: "Claude", url: "https://claude.ai/new", queryParam: null },
+      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/", queryParam: "q" }
     };
 
     /* ===== 热搜 API 请求 ===== */
@@ -859,7 +857,13 @@
     function submitAiSearch() {
       var selected = engines[aiEngine.value];
       if (!selected) return;
-      window.open(selected.url, "_blank", "noopener,noreferrer");
+      var query = aiSearch.value.trim();
+      var targetUrl = selected.url;
+      if (query && selected.queryParam) {
+        var sep = targetUrl.indexOf("?") > -1 ? "&" : "?";
+        targetUrl = targetUrl + sep + selected.queryParam + "=" + encodeURIComponent(query);
+      }
+      window.open(targetUrl, "_blank", "noopener,noreferrer");
     }
 
     /* ===== 事件绑定 ===== */
@@ -870,7 +874,11 @@
     onsiteSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") { activeKeyword = onsiteSearch.value; renderCards(); } });
     onsiteButton.addEventListener("click", function() { activeKeyword = onsiteSearch.value; renderCards(); });
     aiEngine.addEventListener("change", function() {
-      aiNote.textContent = "AI 搜索将跳转到 " + engines[aiEngine.value].name + " 页面打开，不在好点 AI 内返回答案。";
+      var eng = engines[aiEngine.value];
+      var note = eng.queryParam
+        ? "AI 搜索将跳转到 " + eng.name + " 并自动填入搜索内容，不在好点 AI 内返回答案。"
+        : "AI 搜索将跳转到 " + eng.name + " 页面，需手动输入搜索内容。";
+      aiNote.textContent = note;
     });
     aiButton.addEventListener("click", submitAiSearch);
     aiSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") submitAiSearch(); });
