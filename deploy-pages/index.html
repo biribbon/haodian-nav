@@ -392,6 +392,22 @@
       margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
     }
     .events-header h2 { margin: 0; font-size: 1.3rem; font-weight: 900; }
+    .evt-mode-tabs {
+      display: flex; gap: 0; margin-bottom: 16px;
+    }
+    .evt-mode-btn {
+      flex: 1; min-height: 48px; padding: 0 24px; border: 2px solid var(--line);
+      background: #fff; color: var(--muted); font-size: 1.05rem; font-weight: 800;
+      cursor: pointer; transition: all 0.15s;
+    }
+    .evt-mode-btn:first-child { border-radius: 10px 0 0 10px; }
+    .evt-mode-btn:last-child { border-radius: 0 10px 10px 0; border-left: none; }
+    .evt-mode-btn.active {
+      color: #fff; background: var(--brand); border-color: var(--brand);
+    }
+    .evt-mode-btn:not(.active):hover {
+      color: var(--brand); border-color: rgba(107,76,246,0.3);
+    }
     .events-filters { display: flex; gap: 8px; flex-wrap: wrap; }
     .evt-filter-btn {
       min-height: 32px; padding: 0 14px; border-radius: 999px;
@@ -484,10 +500,6 @@
     .evt-empty { color: var(--muted); font-size: 0.86rem; text-align: center; padding: 24px 0; }
 
     /* ===== Policy Map Styles ===== */
-    .evt-mode-btn.active {
-      background: var(--brand); color: #fff !important; border-color: var(--brand);
-    }
-    .evt-mode-btn.active:hover { background: #5a3de0; }
     .policy-list-card {
       border-radius: 20px; background: #fff;
       border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 26px rgba(17,19,24,0.05);
@@ -671,9 +683,6 @@
         <div class="events-header">
           <h2 id="eventsTitle">OPC 政策地图</h2>
           <div class="events-filters">
-            <button class="evt-filter-btn evt-mode-btn active" data-mode="policy">OPC 政策地图</button>
-            <button class="evt-filter-btn evt-mode-btn" data-mode="events">AI 活动</button>
-            <span class="evt-filter-sep"></span>
             <span id="evtViewBtns">
               <button class="evt-filter-btn evt-view-btn active" data-view="today">今日活动</button>
               <button class="evt-filter-btn evt-view-btn" data-view="all">全部活动</button>
@@ -700,6 +709,10 @@
               <option value="宁波">宁波</option>
             </select>
           </div>
+        </div>
+        <div class="evt-mode-tabs">
+          <button class="evt-mode-btn active" data-mode="policy">OPC 政策地图</button>
+          <button class="evt-mode-btn" data-mode="events">AI 线下活动</button>
         </div>
         <div class="events-layout">
           <div class="map-container">
