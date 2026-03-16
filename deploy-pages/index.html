@@ -400,6 +400,14 @@
     .evt-filter-btn.active, .evt-filter-btn:hover {
       color: var(--brand); border-color: rgba(107,76,246,0.18); background: #fff;
     }
+    .evt-view-btn.active {
+      background: var(--brand); color: #fff !important; border-color: var(--brand);
+    }
+    .evt-view-btn.active:hover { background: #5a3de0; }
+    .evt-filter-sep {
+      display: inline-block; width: 1px; height: 20px; background: var(--line);
+      margin: 0 4px; vertical-align: middle;
+    }
     .events-layout {
       display: grid; grid-template-columns: 1fr;
       gap: 16px; align-items: start;
@@ -629,13 +637,17 @@
         <div class="events-header">
           <h2>AI 活动地图</h2>
           <div class="events-filters">
-            <button class="evt-filter-btn active" data-city="all">全部城市</button>
-            <button class="evt-filter-btn" data-city="上海">上海</button>
-            <button class="evt-filter-btn" data-city="北京">北京</button>
-            <button class="evt-filter-btn" data-city="深圳">深圳</button>
-            <button class="evt-filter-btn" data-city="杭州">杭州</button>
-            <button class="evt-filter-btn" data-city="苏州">苏州</button>
-            <button class="evt-filter-btn" data-city="南京">南京</button>
+            <button class="evt-filter-btn evt-view-btn active" data-view="today">今日活动</button>
+            <button class="evt-filter-btn evt-view-btn" data-view="all">全部活动</button>
+            <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
+            <span class="evt-filter-sep"></span>
+            <button class="evt-filter-btn evt-city-btn" data-city="all">全部城市</button>
+            <button class="evt-filter-btn evt-city-btn" data-city="上海">上海</button>
+            <button class="evt-filter-btn evt-city-btn" data-city="北京">北京</button>
+            <button class="evt-filter-btn evt-city-btn" data-city="深圳">深圳</button>
+            <button class="evt-filter-btn evt-city-btn" data-city="杭州">杭州</button>
+            <button class="evt-filter-btn evt-city-btn" data-city="苏州">苏州</button>
+            <button class="evt-filter-btn evt-city-btn" data-city="南京">南京</button>
           </div>
         </div>
         <div class="events-layout">
@@ -893,10 +905,12 @@
     });
 
     /* ===== Events 活动地图模块 ===== */
-    var EVENTS_API = "";
+    var EVENTS_API = "https://api.haodianai.com/api/events";
     var eventsData = [];
     var evtCityFilter = "all";
     var evtDateFilter = null;
+    var evtViewMode = "today"; // today | all | nearby
+    var userLocation = null; // { lng, lat }
     var calYear, calMonth;
     var amapInstance = null;
     var amapMarkers = [];
@@ -906,7 +920,9 @@
 
     function loadEvents() {
       if (EVENTS_API) {
-        return fetch(EVENTS_API).then(function(r) { return r.json(); });
+        return fetch(EVENTS_API).then(function(r) { return r.json(); }).then(function(data) {
+          return data.events || data;
+        });
       }
       return Promise.resolve((seed.events || []).slice());
     }
@@ -915,11 +931,25 @@
     function fmtDate(d) { return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
 
     function filterEvents() {
+      var today = fmtDate(new Date());
       return eventsData.filter(function(evt) {
+        // 城市筛选
         if (evtCityFilter !== "all" && evt.city !== evtCityFilter) return false;
+        // 日历选择（优先级最高）
         if (evtDateFilter) {
           var ds = evt.date, de = evt.endDate || evt.date;
           if (evtDateFilter < ds || evtDateFilter > de) return false;
+          return true;
+        }
+        // 视图模式
+        if (evtViewMode === "today") {
+          var ds2 = evt.date, de2 = evt.endDate || evt.date;
+          if (today < ds2 || today > de2) return false;
+        } else if (evtViewMode === "nearby" && userLocation) {
+          // 50km 半径内
+          var dlng = (evt.lng - userLocation.lng) * 111 * Math.cos(evt.lat * Math.PI / 180);
+          var dlat = (evt.lat - userLocation.lat) * 111;
+          if (Math.sqrt(dlng * dlng + dlat * dlat) > 50) return false;
         }
         return true;
       });
@@ -974,7 +1004,14 @@
       Array.from(grid.querySelectorAll(".cal-day.has-event")).forEach(function(el) {
         el.addEventListener("click", function() {
           var clicked = el.dataset.date;
-          evtDateFilter = evtDateFilter === clicked ? null : clicked;
+          if (evtDateFilter === clicked) {
+            // 取消日历选择，回到当前视图模式
+            evtDateFilter = null;
+          } else {
+            evtDateFilter = clicked;
+            // 清除视图按钮 active（进入日历自选模式）
+            document.querySelectorAll(".evt-view-btn").forEach(function(b) { b.classList.remove("active"); });
+          }
           renderCalendar();
           renderEventList();
           updateMap();
@@ -1001,10 +1038,14 @@
 
       if (evtDateFilter) {
         titleEl.textContent = evtDateFilter + " 的活动";
+      } else if (evtViewMode === "today") {
+        titleEl.textContent = (evtCityFilter !== "all" ? evtCityFilter + " · " : "") + "今日活动";
+      } else if (evtViewMode === "nearby") {
+        titleEl.textContent = "附近活动";
       } else if (evtCityFilter !== "all") {
-        titleEl.textContent = evtCityFilter + " · 近期活动";
+        titleEl.textContent = evtCityFilter + " · 全部活动";
       } else {
-        titleEl.textContent = "近期活动";
+        titleEl.textContent = "全部活动";
       }
 
       if (!filtered.length) {
@@ -1029,7 +1070,7 @@
           var id = el.dataset.id;
           var evt = eventsData.find(function(e) { return e.id === id; });
           if (evt && amapInstance) {
-            amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat]);
+            amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat], true);
             showInfoWindow(evt);
           }
           if (evt && evt.url) window.open(evt.url, "_blank");
@@ -1037,12 +1078,46 @@
       });
     }
 
+    /* --- 视图模式切换 --- */
+    Array.from(document.querySelectorAll(".evt-view-btn")).forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var mode = btn.dataset.view;
+        if (mode === "nearby") {
+          // 请求定位权限
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(function(pos) {
+              userLocation = { lng: pos.coords.longitude, lat: pos.coords.latitude };
+              evtViewMode = "nearby";
+              evtDateFilter = null;
+              document.querySelectorAll(".evt-view-btn").forEach(function(b) { b.classList.remove("active"); });
+              btn.classList.add("active");
+              renderCalendar();
+              renderEventList();
+              updateMap();
+            }, function() {
+              alert("无法获取位置信息，请检查定位权限");
+            });
+            return;
+          }
+          alert("浏览器不支持定位功能");
+          return;
+        }
+        evtViewMode = mode;
+        evtDateFilter = null;
+        document.querySelectorAll(".evt-view-btn").forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        renderCalendar();
+        renderEventList();
+        updateMap();
+      });
+    });
+
     /* --- 城市筛选 --- */
-    Array.from(document.querySelectorAll(".evt-filter-btn")).forEach(function(btn) {
+    Array.from(document.querySelectorAll(".evt-city-btn")).forEach(function(btn) {
       btn.addEventListener("click", function() {
         evtCityFilter = btn.dataset.city;
         evtDateFilter = null;
-        document.querySelectorAll(".evt-filter-btn").forEach(function(b) { b.classList.remove("active"); });
+        document.querySelectorAll(".evt-city-btn").forEach(function(b) { b.classList.remove("active"); });
         btn.classList.add("active");
         renderCalendar();
         renderEventList();
@@ -1112,16 +1187,25 @@
           title: evt.title
         });
         marker.on("click", function() {
-          amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat]);
+          amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat], true);
           showInfoWindow(evt);
         });
         amapMarkers.push(marker);
         amapInstance.add(marker);
       });
 
-      var coord = cityCoords[evtCityFilter] || cityCoords["all"];
-      var zoom = cityZoom[evtCityFilter] || 11;
-      amapInstance.setZoomAndCenter(zoom, coord);
+      // 智能定位策略（全部禁用动画，避免地图"飞来飞去"）
+      if (filtered.length > 0) {
+        amapInstance.setFitView(amapMarkers, true, [60, 60, 60, 60], 16);
+      } else if (evtViewMode === "nearby" && userLocation) {
+        amapInstance.setZoomAndCenter(11, [userLocation.lng, userLocation.lat], true);
+      } else if (evtCityFilter !== "all") {
+        var coord = cityCoords[evtCityFilter] || cityCoords["all"];
+        var zoom = cityZoom[evtCityFilter] || 11;
+        amapInstance.setZoomAndCenter(zoom, coord, true);
+      } else {
+        amapInstance.setZoomAndCenter(4.5, [104.0, 35.0], true);
+      }
     }
 
     /* --- Events 初始化 --- */
@@ -1134,6 +1218,10 @@
         var endDate = evt.endDate || evt.date;
         return endDate >= cutoffStr;
       });
+
+      // 默认显示今日活动
+      evtViewMode = "today";
+
       initCalendar();
       renderEventList();
       if (window.AMap) {
