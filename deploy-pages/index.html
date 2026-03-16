@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好点 AI 资讯平台</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 986 769'%3E%3Cg transform='translate(0,769) scale(0.1,-0.1)' fill='%231a1d2e' stroke='none'%3E%3Cpath d='M9459 7647c-46-24-100-53-119-64-37-21-145-79-270-146-41-22-79-43-85-47-5-4-55-31-110-60-120-63-321-171-465-250-58-32-136-74-175-95-38-21-92-50-120-65-75-41-170-92-270-145-49-27-106-57-125-68-72-41-118-66-222-121-59-31-125-66-145-77-80-45-389-213-410-223-50-24-40-34 137-137 114-66 116-67 288-171 156-95 187-108 208-89 5 4 45 28 89 51 44 24 94 51 111 61 17 9 75 40 130 69 54 29 104 56 109 60 6 4 45 26 88 49 126 67 230 123 266 143 18 11 36 17 38 14 3-3-6-24-19-48-14-24-41-72-60-108-97-179-112-206-291-520-134-236-297-508-435-730-95-153-439-668-524-786-40-56-107-148-148-205-41-57-79-107-85-111-14-11-25-10-25 1 0 9-103 257-140 338-11 24-20 45-20 48 0 2-13 34-30 70-16 36-30 68-30 70 0 2-12 30-26 62-14 32-33 74-42 93-28 63-118 252-187 394-245 499-504 876-735 1070-207 173-371 252-580 277-122 15-254 0-384-42-279-92-548-332-799-716-143-220-196-314-336-598-100-202-124-254-188-400-20-44-44-99-54-122-11-24-27-62-38-85-10-24-55-128-99-233-44-104-119-281-166-393-47-112-86-205-86-207 0-3-11-28-24-57-13-29-47-109-76-178-238-570-552-1173-763-1465-132-182-199-272-224-300-10-11-49-56-88-100-181-205-441-428-616-528-334-191-635-278-1034-299l-50-3-3-263-2-262 1037 3c680 3 1055 7 1088 14 47 10 87 18 218 43 28 5 70 14 92 19 22 5 65 14 95 21 30 7 71 16 90 21 19 4 53 12 75 18 45 11 184 48 230 61 17 5 46 13 65 18 169 46 628 213 855 312 818 357 1541 835 2230 1475 457 425 915 937 1310 1465 305 407 701 1002 957 1435 36 61 102 170 147 244 44 73 81 135 81 137 0 3 20 37 44 77 24 39 114 196 200 347 87 151 161 279 165 283 10 10 18-87 31-368 22-466 30-596 35-605 4-6 21-17 38-26 38-20 306-176 360-211 21-13 52-32 70-42 18-10 63-37 101-61 41-25 72-38 77-33 6 6 6 83 0 194-10 179-20 389-41 844-6 121-15 301-20 400-5 99-14 279-20 400-6 121-15 321-21 445-5 124-14 300-19 392-6 91-10 206-10 255 0 48-4 94-9 101-6 10-27 3-92-31z'/%3E%3Cpath fill='%23fff' d='M5056 5575c154-75 319-261 513-578 57-94 217-405 291-566 79-174 316-727 390-911 33-80 72-176 89-214 23-56 27-73 18-87-12-16-134-151-272-299-128-138-379-384-525-514-80-71-161-143-180-161-126-114-540-422-745-554-237-153-236-153-355-219-25-13-70-39-100-56-87-50-364-189-490-246-249-112-677-275-847-321-18-5-49-13-68-19-19-5-50-14-67-19-161-46-290-76-528-124-232-46-260-51-260-39 0 5 39 44 86 88 77 70 267 281 365 404 156 197 373 529 499 765 29 55 69 129 88 165 43 80 135 265 172 345 15 33 42 90 59 128 76 165 91 198 91 201 0 2 15 37 34 78 19 40 55 123 80 183 26 61 51 119 56 130 10 20 147 349 250 600 109 265 142 341 268 615 264 576 447 884 641 1079 171 170 307 214 447 146z'/%3E%3Cpath d='M7179 2673c-94-112-218-251-299-336-30-32-58-64-62-71-10-17 142-316 261-515 354-589 742-1039 1151-1331 252-180 445-283 720-382 30-11 65-24 78-29 13-5 205-9 428-9l404 0-2 263-3 262-45 2c-580 28-1057 239-1490 657-343 332-635 762-961 1419-46 92-87 167-90 167-4 0-44-44-90-97z'/%3E%3C/g%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f4f4f6;
+      --panel: #ffffff;
+      --line: #dfdfe6;
+      --text: #111318;
+      --muted: #747889;
+      --brand: #6b4cf6;
+      --brand-soft: rgba(107, 76, 246, 0.08);
+      --chip: #f8f8fb;
+      --max: 1280px;
+      --shadow: 0 18px 42px rgba(17, 19, 24, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(244, 244, 246, 0.92);
+      backdrop-filter: blur(14px);
+    }
+    .topbar-inner {
+      min-height: 86px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+    .brand-mark {
+      height: 36px;
+      width: auto;
+      display: block;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      font-weight: 700;
+      font-size: 0.98rem;
+    }
+    .nav a.active { color: var(--brand); }
+
+    .search-dock {
+      position: sticky;
+      top: 86px;
+      z-index: 35;
+      padding: 8px 0 6px;
+      background: linear-gradient(180deg, rgba(244, 244, 246, 0.96), rgba(244, 244, 246, 0.84));
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(17, 19, 24, 0.05);
+    }
+    .search-dock-inner {
+      display: grid;
+      grid-template-columns: 120px minmax(0, 1fr) 220px;
+      gap: 18px;
+      align-items: center;
+    }
+    .search-dock-logo {
+      font-size: 1.2rem;
+      font-weight: 900;
+      color: var(--brand);
+      letter-spacing: -0.03em;
+    }
+    .search-dock-side {
+      text-align: right;
+      color: var(--muted);
+      font-size: 0.94rem;
+      white-space: nowrap;
+    }
+    .search-stack { display: grid; gap: 8px; }
+    .mode-switch { display: inline-flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+    .mode-btn {
+      min-height: 36px;
+      padding: 0 13px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: var(--panel);
+      color: var(--muted);
+      font-size: 0.9rem;
+      font-weight: 700;
+      cursor: pointer;
+    }
+    .mode-btn.active {
+      color: var(--brand);
+      border-color: rgba(107, 76, 246, 0.16);
+      box-shadow: 0 10px 28px rgba(107, 76, 246, 0.12);
+    }
+    .search-box { display: grid; gap: 8px; }
+    .search-row {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 48px;
+      gap: 12px;
+      align-items: center;
+    }
+    .search-row.ai-mode { grid-template-columns: 152px minmax(0, 1fr) 48px; }
+    .search-input, .search-select {
+      min-height: 46px;
+      border-radius: 999px;
+      border: 1px solid #d2d5df;
+      background: rgba(255, 255, 255, 0.94);
+      font-size: 0.98rem;
+      color: #1d2230;
+      padding: 0 22px;
+      outline: none;
+    }
+    .search-button {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 0;
+      background: var(--brand);
+      color: #fff;
+      font-size: 1.35rem;
+      cursor: pointer;
+      box-shadow: 0 16px 28px rgba(107, 76, 246, 0.26);
+    }
+    .search-note { color: var(--muted); font-size: 0.82rem; }
+    .headline-strip {
+      margin-top: 8px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 14px;
+      color: var(--muted);
+      font-size: 0.88rem;
+    }
+    .headline-strip span { display: inline-flex; align-items: center; gap: 6px; }
+    .headline-hot {
+      display: inline-grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: #ff8c32;
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 800;
+    }
+    .hidden { display: none; }
+
+    .hero {
+      padding: 12px 0 6px;
+      text-align: center;
+    }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
+      font-weight: 900;
+    }
+    .hero p {
+      margin: 4px auto 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 0.8rem;
+      line-height: 1.65;
+    }
+
+    .chips { padding: 16px 0 12px; }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .chip {
+      min-height: 42px;
+      padding: 0 16px;
+      border-radius: 12px;
+      border: 1px solid var(--line);
+      background: var(--chip);
+      color: #22252d;
+      font-weight: 700;
+      font-size: 0.98rem;
+      cursor: pointer;
+    }
+    .chip.active, .chip:hover {
+      color: var(--brand);
+      border-color: rgba(107, 76, 246, 0.18);
+      background: #fff;
+    }
+
+    .portal-row { padding-bottom: 32px; }
+    .portal-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 2.1fr) minmax(320px, 0.9fr);
+      gap: 22px;
+      align-items: start;
+    }
+    .toolbar { padding: 8px 0 12px; }
+    .toolbar-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: center;
+      flex-wrap: wrap;
+      color: var(--muted);
+    }
+    .toolbar strong { color: var(--text); }
+
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+    }
+    .card {
+      border-radius: 22px;
+      overflow: hidden;
+      background: var(--panel);
+      border: 1px solid rgba(17, 19, 24, 0.06);
+      box-shadow: 0 16px 30px rgba(17, 19, 24, 0.05);
+      transition: transform 0.22s ease, box-shadow 0.22s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow);
+    }
+    .card-media {
+      position: relative;
+      aspect-ratio: 1.15 / 0.38;
+      padding: 12px 14px;
+      display: flex;
+      align-items: end;
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.88rem;
+      letter-spacing: -0.03em;
+    }
+    .media-gradient-1 { background: linear-gradient(135deg, #0b1020, #1a2668 54%, #52b0ff); }
+    .media-gradient-2 { background: linear-gradient(135deg, #151515, #4d2fbf 60%, #f9a826); }
+    .media-gradient-3 { background: linear-gradient(135deg, #191b20, #2d566d 58%, #d8f062); color: #f3fbff; }
+    .media-gradient-4 { background: linear-gradient(135deg, #161616, #692d31 52%, #f1d47a); }
+    .media-gradient-5 { background: linear-gradient(135deg, #0d1321, #174a9b 60%, #57d5c0); }
+    .media-gradient-6 { background: linear-gradient(135deg, #141414, #343e66 60%, #bb87ff); }
+    .media-gradient-7 { background: linear-gradient(135deg, #1b1c27, #375440 56%, #f3df6e); color: #fff6cf; }
+    .media-gradient-8 { background: linear-gradient(135deg, #151515, #204051 58%, #fe7f5e); }
+    .media-gradient-9 { background: linear-gradient(135deg, #121212, #223260 55%, #7dc3ff); }
+    .media-gradient-10 { background: linear-gradient(135deg, #21171c, #7542aa 57%, #ff8ba7); }
+    .media-gradient-11 { background: linear-gradient(135deg, #14181f, #2a5669 55%, #9cf5d2); color: #f2fff7; }
+    .media-gradient-12 { background: linear-gradient(135deg, #1f1d16, #8f6840 58%, #f7d67d); color: #fffaf1; }
+    .card-logo {
+      position: absolute;
+      left: 16px;
+      bottom: -12px;
+      width: 28px;
+      height: 28px;
+      border-radius: 10px;
+      background: #0c0f17;
+      color: #fff;
+      display: grid;
+      place-items: center;
+      border: 3px solid #fff;
+      font-size: 0.58rem;
+      font-weight: 900;
+      box-shadow: 0 10px 16px rgba(17, 19, 24, 0.12);
+    }
+    .card-body {
+      padding: 14px 14px 12px;
+      display: grid;
+      gap: 8px;
+    }
+    .card-title { font-size: 0.88rem; font-weight: 900; line-height: 1.2; }
+    .card-desc {
+      min-height: 36px;
+      color: var(--muted);
+      line-height: 1.45;
+      font-size: 0.74rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+    .card-foot {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      align-items: center;
+    }
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      min-height: 24px;
+      padding: 0 8px;
+      border-radius: 999px;
+      font-size: 0.68rem;
+      font-weight: 800;
+      color: var(--brand);
+      background: var(--brand-soft);
+    }
+    .arrow-link { color: var(--brand); font-size: 0.96rem; font-weight: 900; }
+    .empty-state {
+      display: none;
+      margin-top: 14px;
+      border-radius: 24px;
+      padding: 46px 20px;
+      text-align: center;
+      background: #fff;
+      border: 1px dashed #d3d6df;
+      color: var(--muted);
+    }
+
+    .news-panel {
+      display: grid;
+      gap: 16px;
+      position: sticky;
+      top: 188px;
+    }
+    .news-card, .rank-card {
+      border-radius: 24px;
+      background: #fff;
+      border: 1px solid rgba(17, 19, 24, 0.06);
+      box-shadow: 0 16px 26px rgba(17, 19, 24, 0.05);
+      overflow: hidden;
+    }
+    .rank-tabs, .news-tabs {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 18px 20px;
+      border-bottom: 1px solid #f0f1f5;
+      font-weight: 800;
+      flex-wrap: wrap;
+    }
+    .rank-tabs span, .news-tabs span { cursor: pointer; color: var(--muted); transition: color 0.15s; }
+    .rank-tabs span.active, .news-tabs span.active { color: #19b36b; }
+    .rank-tabs span:hover, .news-tabs span:hover { color: var(--text); }
+    .rank-loading, .news-loading { padding: 28px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
+    .rank-body { padding: 10px 18px 18px; }
+    .rank-item {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 10px 0;
+      border-bottom: 1px dashed #eceef3;
+      font-size: 0.94rem;
+    }
+    .rank-item:last-child { border-bottom: 0; }
+    .rank-index { font-weight: 900; color: #ff7d2d; }
+    .rank-item small, .article-meta, .video-info span { color: var(--muted); font-size: 0.82rem; }
+    .rank-refresh { margin-top: 10px; text-align: center; color: var(--muted); font-weight: 700; }
+    .news-body { padding: 18px 20px 20px; display: grid; gap: 16px; }
+    .headline-box {
+      border-radius: 18px;
+      background: linear-gradient(135deg, #fff2ef, #fff8f5);
+      padding: 18px 18px 16px;
+    }
+    .headline-box ul { margin: 0; padding-left: 20px; display: grid; gap: 10px; }
+    .headline-box li { font-size: 0.96rem; font-weight: 800; line-height: 1.55; }
+    .article {
+      display: grid;
+      grid-template-columns: 112px minmax(0, 1fr);
+      gap: 12px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid #f0f1f5;
+    }
+    .article:last-child { border-bottom: 0; padding-bottom: 0; }
+    .article-thumb {
+      border-radius: 16px;
+      min-height: 84px;
+      background: linear-gradient(135deg, #a91d12, #f08d6d);
+    }
+    .article-thumb.alt { background: linear-gradient(135deg, #1767b9, #9ac8f8); }
+    .article-thumb.third { background: linear-gradient(135deg, #674214, #f3bf7a); }
+    .article h3 { margin: 0 0 8px; font-size: 1rem; line-height: 1.4; }
+    .article p { margin: 0 0 8px; color: var(--muted); line-height: 1.65; font-size: 0.88rem; }
+
+    /* ===== Events Section ===== */
+    .events-section { padding: 32px 0 24px; }
+    .events-header {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 16px; flex-wrap: wrap; gap: 12px;
+    }
+    .events-header h2 { margin: 0; font-size: 1.3rem; font-weight: 900; }
+    .events-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .evt-filter-btn {
+      min-height: 32px; padding: 0 14px; border-radius: 999px;
+      border: 1px solid var(--line); background: var(--chip);
+      color: var(--muted); font-size: 0.82rem; font-weight: 700; cursor: pointer;
+    }
+    .evt-filter-btn.active, .evt-filter-btn:hover {
+      color: var(--brand); border-color: rgba(107,76,246,0.18); background: #fff;
+    }
+    .events-layout {
+      display: grid; grid-template-columns: 1fr;
+      gap: 16px; align-items: start;
+    }
+    .map-container {
+      border-radius: 20px; overflow: hidden; background: #e8e8ec;
+      min-height: 500px; position: relative;
+      border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 30px rgba(17,19,24,0.05);
+    }
+    .map-container #eventsMap { width: 100%; height: 500px; }
+    .map-placeholder {
+      position: absolute; inset: 0; display: grid; place-items: center;
+      color: var(--muted); font-size: 0.92rem; text-align: center; padding: 20px; line-height: 1.7;
+    }
+    .events-bottom { display: grid; grid-template-columns: 300px minmax(0,1fr); gap: 16px; align-items: start; }
+    .cal-card {
+      border-radius: 20px; background: #fff;
+      border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 26px rgba(17,19,24,0.05); padding: 12px;
+    }
+    .cal-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; }
+    .cal-nav strong { font-size: 0.98rem; }
+    .cal-nav button {
+      width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line);
+      background: #fff; cursor: pointer; font-size: 0.82rem; font-weight: 900; color: var(--text);
+    }
+    .cal-nav button:hover { background: var(--brand-soft); color: var(--brand); }
+    .cal-grid { display: grid; grid-template-columns: repeat(7,1fr); text-align: center; gap: 2px; }
+    .cal-grid .cal-weekday { font-size: 0.72rem; color: var(--muted); font-weight: 700; padding: 2px 0; }
+    .cal-grid .cal-day {
+      width: 100%; height: 32px; display: grid; place-items: center;
+      font-size: 0.82rem; border-radius: 50%; cursor: default; position: relative;
+    }
+    .cal-grid .cal-day.other-month { color: #ccc; }
+    .cal-grid .cal-day.has-event { font-weight: 800; color: var(--brand); cursor: pointer; }
+    .cal-grid .cal-day.has-event::after {
+      content: ""; position: absolute; bottom: 2px; width: 4px; height: 4px;
+      border-radius: 50%; background: var(--brand);
+    }
+    .cal-grid .cal-day.selected { background: var(--brand); color: #fff !important; }
+    .cal-grid .cal-day.selected::after { background: #fff; }
+    .cal-grid .cal-day.today { box-shadow: inset 0 0 0 1.5px var(--brand); }
+    .evt-list-card {
+      border-radius: 20px; background: #fff;
+      border: 1px solid rgba(17,19,24,0.06); box-shadow: 0 16px 26px rgba(17,19,24,0.05);
+      padding: 16px; max-height: 320px; overflow-y: auto;
+    }
+    .evt-list-card h3 { margin: 0 0 12px; font-size: 0.92rem; font-weight: 800; }
+    .evt-item {
+      display: grid; gap: 4px; padding: 10px 0; border-bottom: 1px dashed #eceef3;
+      cursor: pointer; transition: background 0.12s;
+    }
+    .evt-item:last-child { border-bottom: 0; }
+    .evt-item:hover { background: var(--brand-soft); margin: 0 -8px; padding: 10px 8px; border-radius: 10px; }
+    .evt-item-title { font-size: 0.88rem; font-weight: 800; display: flex; align-items: center; gap: 6px; }
+    .evt-tag {
+      display: inline-flex; align-items: center; min-height: 18px; padding: 0 6px;
+      border-radius: 999px; font-size: 0.62rem; font-weight: 800;
+    }
+    .evt-tag.conference { background: #fff0f0; color: #d44; }
+    .evt-tag.salon { background: #f0f4ff; color: #46a; }
+    .evt-tag.hackathon { background: #f0fff4; color: #2a8; }
+    .evt-tag.meetup { background: #fff8f0; color: #c84; }
+    .evt-item-meta { font-size: 0.76rem; color: var(--muted); display: flex; gap: 10px; }
+    .evt-empty { color: var(--muted); font-size: 0.86rem; text-align: center; padding: 24px 0; }
+
+    .footer {
+      padding: 0 0 30px;
+      color: var(--muted);
+      font-size: 0.92rem;
+      text-align: center;
+    }
+
+    @media (max-width: 1120px) {
+      .portal-grid { grid-template-columns: 1fr; }
+      .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .news-panel { position: static; }
+      .events-layout { grid-template-columns: 1fr; }
+      .events-bottom { grid-template-columns: 300px minmax(0,1fr); }
+    }
+    @media (max-width: 860px) {
+      .topbar-inner { min-height: 72px; }
+      .nav { gap: 16px; font-size: 0.92rem; }
+      .search-dock { top: 72px; }
+      .search-dock-inner { grid-template-columns: 1fr; }
+      .search-dock-side { display: none; }
+      .search-row.ai-mode, .article { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .shell { width: min(calc(100% - 20px), var(--max)); }
+      .nav { display: none; }
+      .hero { padding-top: 24px; }
+      .cards-grid { grid-template-columns: 1fr; }
+      .search-row { grid-template-columns: 1fr 60px; }
+      .search-input, .search-select { min-height: 62px; }
+      .search-button { width: 60px; height: 60px; }
+      .headline-strip { display: none; }
+      .events-bottom { grid-template-columns: 1fr; }
+    }
+  </style>
+  <script id="amap-init">
+    // 高德地图 Key 配置 —— 替换为你自己的 Key
+    var AMAP_KEY = "26b06bcb2f6ef8e3e17089acec05964e";
+    if (AMAP_KEY) {
+      var s = document.createElement("script");
+      s.src = "https://webapi.amap.com/maps?v=2.0&key=" + AMAP_KEY;
+      document.head.appendChild(s);
+    }
+  </script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="index.html">
+        <svg class="brand-mark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 986 769"><g transform="translate(0,769) scale(0.1,-0.1)" fill="#1a1d2e" stroke="none"><path d="M9459 7647c-46-24-100-53-119-64-37-21-145-79-270-146-41-22-79-43-85-47-5-4-55-31-110-60-120-63-321-171-465-250-58-32-136-74-175-95-38-21-92-50-120-65-75-41-170-92-270-145-49-27-106-57-125-68-72-41-118-66-222-121-59-31-125-66-145-77-80-45-389-213-410-223-50-24-40-34 137-137 114-66 116-67 288-171 156-95 187-108 208-89 5 4 45 28 89 51 44 24 94 51 111 61 17 9 75 40 130 69 54 29 104 56 109 60 6 4 45 26 88 49 126 67 230 123 266 143 18 11 36 17 38 14 3-3-6-24-19-48-14-24-41-72-60-108-97-179-112-206-291-520-134-236-297-508-435-730-95-153-439-668-524-786-40-56-107-148-148-205-41-57-79-107-85-111-14-11-25-10-25 1 0 9-103 257-140 338-11 24-20 45-20 48 0 2-13 34-30 70-16 36-30 68-30 70 0 2-12 30-26 62-14 32-33 74-42 93-28 63-118 252-187 394-245 499-504 876-735 1070-207 173-371 252-580 277-122 15-254 0-384-42-279-92-548-332-799-716-143-220-196-314-336-598-100-202-124-254-188-400-20-44-44-99-54-122-11-24-27-62-38-85-10-24-55-128-99-233-44-104-119-281-166-393-47-112-86-205-86-207 0-3-11-28-24-57-13-29-47-109-76-178-238-570-552-1173-763-1465-132-182-199-272-224-300-10-11-49-56-88-100-181-205-441-428-616-528-334-191-635-278-1034-299l-50-3-3-263-2-262 1037 3c680 3 1055 7 1088 14 47 10 87 18 218 43 28 5 70 14 92 19 22 5 65 14 95 21 30 7 71 16 90 21 19 4 53 12 75 18 45 11 184 48 230 61 17 5 46 13 65 18 169 46 628 213 855 312 818 357 1541 835 2230 1475 457 425 915 937 1310 1465 305 407 701 1002 957 1435 36 61 102 170 147 244 44 73 81 135 81 137 0 3 20 37 44 77 24 39 114 196 200 347 87 151 161 279 165 283 10 10 18-87 31-368 22-466 30-596 35-605 4-6 21-17 38-26 38-20 306-176 360-211 21-13 52-32 70-42 18-10 63-37 101-61 41-25 72-38 77-33 6 6 6 83 0 194-10 179-20 389-41 844-6 121-15 301-20 400-5 99-14 279-20 400-6 121-15 321-21 445-5 124-14 300-19 392-6 91-10 206-10 255 0 48-4 94-9 101-6 10-27 3-92-31z"/><path fill="#fff" d="M5056 5575c154-75 319-261 513-578 57-94 217-405 291-566 79-174 316-727 390-911 33-80 72-176 89-214 23-56 27-73 18-87-12-16-134-151-272-299-128-138-379-384-525-514-80-71-161-143-180-161-126-114-540-422-745-554-237-153-236-153-355-219-25-13-70-39-100-56-87-50-364-189-490-246-249-112-677-275-847-321-18-5-49-13-68-19-19-5-50-14-67-19-161-46-290-76-528-124-232-46-260-51-260-39 0 5 39 44 86 88 77 70 267 281 365 404 156 197 373 529 499 765 29 55 69 129 88 165 43 80 135 265 172 345 15 33 42 90 59 128 76 165 91 198 91 201 0 2 15 37 34 78 19 40 55 123 80 183 26 61 51 119 56 130 10 20 147 349 250 600 109 265 142 341 268 615 264 576 447 884 641 1079 171 170 307 214 447 146z"/><path d="M7179 2673c-94-112-218-251-299-336-30-32-58-64-62-71-10-17 142-316 261-515 354-589 742-1039 1151-1331 252-180 445-283 720-382 30-11 65-24 78-29 13-5 205-9 428-9l404 0-2 263-3 262-45 2c-580 28-1057 239-1490 657-343 332-635 762-961 1419-46 92-87 167-90 167-4 0-44-44-90-97z"/></g></svg>
+        <span>好点 AI</span>
+      </a>
+      <nav class="nav">
+        <a href="#">首页</a>
+        <a href="#events">AI 活动</a>
+        <a class="active" href="#">AI 网站</a>
+        <a href="#">AI 智能体</a>
+        <a href="#">AI 提示词</a>
+        <a href="advertise.html">招租合作</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="search-dock">
+    <div class="shell">
+      <div class="search-dock-inner">
+        <div class="search-dock-logo">好点 AI 搜索</div>
+        <div class="search-stack">
+          <div class="mode-switch">
+            <button class="mode-btn active" type="button" data-mode="onsite">站内找工具</button>
+            <button class="mode-btn" type="button" data-mode="ai">AI 大模型搜索</button>
+          </div>
+          <div class="search-box" id="onsiteBox">
+            <div class="search-row">
+              <input class="search-input" id="onsiteSearch" type="text" placeholder="搜索 AI 网站或 APP，例如：logo / 视频 / PPT / 客服">
+              <button class="search-button" id="onsiteButton" type="button">⌕</button>
+            </div>
+            <div class="search-note">站内搜索会直接筛选左侧工具卡片，用户仍停留在好点 AI 页面。</div>
+          </div>
+          <div class="search-box hidden" id="aiBox">
+            <div class="search-row ai-mode">
+              <select class="search-select" id="aiEngine">
+                <option value="doubao">豆包</option>
+                <option value="qwen">千问</option>
+                <option value="gemini">Gemini</option>
+                <option value="claude">Claude</option>
+                <option value="chatgpt">ChatGPT</option>
+              </select>
+              <input class="search-input" id="aiSearch" type="text" placeholder="向大模型发起搜索，例如：帮我找一款企业 logo 生成工具">
+              <button class="search-button" id="aiButton" type="button">⌕</button>
+            </div>
+            <div class="search-note" id="aiNote">AI 搜索会新开页面跳转到对应大模型，不在好点 AI 内返回答案。</div>
+          </div>
+        </div>
+        <div class="search-dock-side">热点资讯与短视频</div>
+      </div>
+      <div class="headline-strip" id="headlineStrip"></div>
+    </div>
+  </section>
+
+  <main>
+    <section class="hero">
+      <div class="shell">
+        <h1>精选最好用的 AI 网站和 APP</h1>
+        <p>精选最好用的 AI 网站和 APP，按分类浏览或搜索关键词快速找到你需要的工具。</p>
+      </div>
+    </section>
+
+    <section class="chips">
+      <div class="shell">
+        <div class="chip-row" id="categoryChips"></div>
+      </div>
+    </section>
+
+    <section class="portal-row">
+      <div class="shell portal-grid">
+        <div>
+          <div class="toolbar">
+            <div class="toolbar-inner">
+              <div>当前筛选：<strong id="currentFilter">全部工具</strong></div>
+              <div>结果数量：<strong id="resultCount">0</strong></div>
+            </div>
+          </div>
+          <div class="cards-grid" id="cardsGrid"></div>
+          <div class="empty-state" id="emptyState">当前没有匹配结果。你可以换个关键词，或者切换回“全部”分类。</div>
+        </div>
+
+        <aside class="news-panel">
+          <div class="rank-card">
+            <div class="rank-tabs" id="rankTabs">
+              <span class="active" data-source="toutiao">头条</span>
+              <span data-source="douyin">抖音</span>
+              <span data-source="weibo">微博</span>
+              <span data-source="baidu">百度</span>
+            </div>
+            <div class="rank-body" id="hotList"></div>
+          </div>
+
+          <div class="news-card">
+            <div class="news-tabs" id="newsTabs">
+              <span class="active" data-source="thepaper">澎湃</span>
+              <span data-source="sspai">少数派</span>
+              <span data-source="36kr">36氪</span>
+              <span data-source="ithome">IT之家</span>
+            </div>
+            <div class="news-body" id="newsList"></div>
+          </div>
+
+          <div class="rank-card">
+            <div class="rank-tabs" id="videoTabs">
+              <span class="active" data-source="bilibili">B站热门</span>
+              <span data-source="douyin">抖音热点</span>
+              <span data-source="toutiao">今日头条</span>
+            </div>
+            <div class="rank-body" id="videoHotList"></div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <section class="events-section" id="events">
+      <div class="shell">
+        <div class="events-header">
+          <h2>AI 活动地图</h2>
+          <div class="events-filters">
+            <button class="evt-filter-btn active" data-city="all">全部城市</button>
+            <button class="evt-filter-btn" data-city="上海">上海</button>
+            <button class="evt-filter-btn" data-city="北京">北京</button>
+            <button class="evt-filter-btn" data-city="深圳">深圳</button>
+            <button class="evt-filter-btn" data-city="杭州">杭州</button>
+            <button class="evt-filter-btn" data-city="苏州">苏州</button>
+            <button class="evt-filter-btn" data-city="南京">南京</button>
+          </div>
+        </div>
+        <div class="events-layout">
+          <div class="map-container">
+            <div id="eventsMap"></div>
+            <div class="map-placeholder" id="mapPlaceholder">
+              请配置高德地图 JS API Key 后刷新页面<br>
+              <small>在 script 中设置 AMAP_KEY 变量</small>
+            </div>
+          </div>
+          <div class="events-bottom">
+            <div class="cal-card">
+              <div class="cal-nav">
+                <button id="calPrev">◀</button>
+                <strong id="calTitle"></strong>
+                <button id="calNext">▶</button>
+              </div>
+              <div class="cal-grid" id="calGrid"></div>
+            </div>
+            <div class="evt-list-card">
+              <h3 id="evtListTitle">近期活动</h3>
+              <div id="evtList"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    好点 AI — 精选最好用的 AI 网站和 APP
+  </footer>
+
+  <script src="yes123-data.js"></script>
+  <script>
+    /* ===== 配置 ===== */
+    // 好点 AI 热搜 API (Cloudflare Worker)
+    var HOT_API = "https://haodianai-hot-api.blikous1998.workers.dev";
+
+    /* ===== 种子数据 ===== */
+    var seed = window.YES123Seed;
+    var content = {
+      tools: seed.tools,
+      categories: Array.from(new Set(seed.tools.map(function(t) { return t.category; }).filter(Boolean)))
+    };
+
+    /* ===== DOM ===== */
+    var modeButtons = document.querySelectorAll(".mode-btn");
+    var onsiteBox = document.getElementById("onsiteBox");
+    var aiBox = document.getElementById("aiBox");
+    var onsiteSearch = document.getElementById("onsiteSearch");
+    var onsiteButton = document.getElementById("onsiteButton");
+    var aiSearch = document.getElementById("aiSearch");
+    var aiButton = document.getElementById("aiButton");
+    var aiEngine = document.getElementById("aiEngine");
+    var aiNote = document.getElementById("aiNote");
+    var categoryChips = document.getElementById("categoryChips");
+    var cardsGrid = document.getElementById("cardsGrid");
+    var resultCount = document.getElementById("resultCount");
+    var currentFilter = document.getElementById("currentFilter");
+    var emptyState = document.getElementById("emptyState");
+    var headlineStrip = document.getElementById("headlineStrip");
+    var hotList = document.getElementById("hotList");
+    var newsList = document.getElementById("newsList");
+    var videoHotList = document.getElementById("videoHotList");
+    var activeCategory = "all";
+    var activeKeyword = "";
+
+    var engines = {
+      doubao: { name: "豆包", url: "https://www.doubao.com/chat/" },
+      qwen: { name: "千问", url: "https://chat.qwen.ai/" },
+      gemini: { name: "Gemini", url: "https://gemini.google.com/app" },
+      claude: { name: "Claude", url: "https://claude.ai/new" },
+      chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/" }
+    };
+
+    /* ===== 热搜 API 请求 ===== */
+    var hotCache = {};
+    function fetchHot(source) {
+      if (!HOT_API) return Promise.resolve(null);
+      if (hotCache[source]) return Promise.resolve(hotCache[source]);
+      return fetch(HOT_API.replace(/\/+$/, "") + "/" + source)
+        .then(function(r) { return r.json(); })
+        .then(function(json) {
+          var list = json.data || [];
+          hotCache[source] = list;
+          return list;
+        })
+        .catch(function() { return null; });
+    }
+
+    /* ===== 渲染热搜排行 ===== */
+    function renderRankList(container, items, max) {
+      max = max || 10;
+      var slice = items.slice(0, max);
+      container.innerHTML = slice.map(function(item, i) {
+        var hot = item.hot ? Number(item.hot).toLocaleString() : "";
+        return '<a class="rank-item" href="' + (item.url || "#") + '" target="_blank" rel="noreferrer">' +
+          '<span class="rank-index">' + (i + 1) + "</span>" +
+          "<span>" + item.title + "</span>" +
+          "<small>" + hot + "</small></a>";
+      }).join("");
+    }
+
+    function renderRankLoading(container) {
+      container.innerHTML = '<div class="rank-loading">加载中...</div>';
+    }
+
+    function renderRankError(container) {
+      container.innerHTML = '<div class="rank-loading">请配置 HOT_API 地址后刷新页面</div>';
+    }
+
+    /* ===== 渲染资讯列表 ===== */
+    function renderNewsList(container, items, max) {
+      max = max || 8;
+      var slice = items.slice(0, max);
+      container.innerHTML = slice.map(function(item) {
+        var desc = item.desc || "";
+        if (desc.length > 60) desc = desc.slice(0, 60) + "...";
+        return '<a class="article" href="' + (item.url || "#") + '" target="_blank" rel="noreferrer" style="grid-template-columns:minmax(0,1fr);">' +
+          "<h3>" + item.title + "</h3>" +
+          (desc ? "<p>" + desc + "</p>" : "") +
+          "</a>";
+      }).join("");
+    }
+
+    /* ===== Tab 切换通用逻辑 ===== */
+    function setupTabs(tabsId, container, renderFn) {
+      var tabsEl = document.getElementById(tabsId);
+      var tabs = tabsEl.querySelectorAll("span[data-source]");
+      var firstSource = tabs[0].dataset.source;
+
+      function loadSource(source) {
+        renderRankLoading(container);
+        fetchHot(source).then(function(data) {
+          if (data) {
+            renderFn(container, data);
+          } else {
+            renderRankError(container);
+          }
+        });
+      }
+
+      Array.from(tabs).forEach(function(tab) {
+        tab.addEventListener("click", function() {
+          Array.from(tabs).forEach(function(t) { t.classList.remove("active"); });
+          tab.classList.add("active");
+          loadSource(tab.dataset.source);
+        });
+      });
+
+      loadSource(firstSource);
+    }
+
+    /* ===== 顶部热点条 ===== */
+    function renderHeadlineStrip(items) {
+      headlineStrip.innerHTML = items.slice(0, 4).map(function(item) {
+        return '<a href="' + (item.url || "#") + '" target="_blank" rel="noreferrer" style="display:inline-flex;align-items:center;gap:6px;">' +
+          '<i class="headline-hot">热</i>' + item.title + "</a>";
+      }).join("");
+    }
+
+    /* ===== 工具区（不变） ===== */
+    function normalize(text) {
+      return String(text || "").toLowerCase().trim();
+    }
+
+    function renderCategoryChips() {
+      var categories = ["all"].concat(content.categories || []);
+      categoryChips.innerHTML = categories.map(function(category) {
+        var label = category === "all" ? "全部" : category;
+        return '<button class="chip' + (category === "all" ? " active" : "") + '" type="button" data-category="' + category + '">' + label + "</button>";
+      }).join("");
+
+      Array.from(categoryChips.querySelectorAll(".chip")).forEach(function(chip) {
+        chip.addEventListener("click", function() {
+          activeCategory = chip.dataset.category;
+          Array.from(categoryChips.querySelectorAll(".chip")).forEach(function(item) { item.classList.toggle("active", item === chip); });
+          renderCards();
+        });
+      });
+    }
+
+    function renderCards() {
+      var keyword = normalize(activeKeyword);
+      var visibleTools = (content.tools || []).filter(function(tool) {
+        var haystack = normalize([tool.title, tool.description, tool.category, (tool.tags || []).join(" ")].join(" "));
+        var matchCategory = activeCategory === "all" || tool.category === activeCategory;
+        var matchKeyword = !keyword || haystack.includes(keyword);
+        return matchCategory && matchKeyword;
+      });
+
+      cardsGrid.innerHTML = visibleTools.map(function(tool) {
+        return '<article class="card">' +
+          '<div class="card-media ' + tool.mediaClass + '">' + tool.mediaText +
+          '<div class="card-logo">' + tool.logo + "</div></div>" +
+          '<div class="card-body">' +
+          '<div class="card-title">' + tool.title + "</div>" +
+          '<div class="card-desc">' + tool.description + "</div>" +
+          '<div class="card-foot">' +
+          '<span class="badge">' + tool.category + "</span>" +
+          '<a class="arrow-link" href="' + tool.url + '" target="_blank" rel="noreferrer">→</a>' +
+          "</div></div></article>";
+      }).join("");
+
+      resultCount.textContent = visibleTools.length;
+      currentFilter.textContent = activeCategory === "all"
+        ? (keyword ? "全部工具 / 关键词：" + activeKeyword : "全部工具")
+        : (keyword ? activeCategory + " / 关键词：" + activeKeyword : activeCategory);
+      emptyState.style.display = visibleTools.length ? "none" : "block";
+    }
+
+    /* ===== 搜索模式 ===== */
+    function setMode(mode) {
+      modeButtons.forEach(function(button) {
+        button.classList.toggle("active", button.dataset.mode === mode);
+      });
+      onsiteBox.classList.toggle("hidden", mode !== "onsite");
+      aiBox.classList.toggle("hidden", mode !== "ai");
+    }
+
+    function submitAiSearch() {
+      var selected = engines[aiEngine.value];
+      if (!selected) return;
+      window.open(selected.url, "_blank", "noopener,noreferrer");
+    }
+
+    /* ===== 事件绑定 ===== */
+    modeButtons.forEach(function(button) {
+      button.addEventListener("click", function() { setMode(button.dataset.mode); });
+    });
+    onsiteSearch.addEventListener("input", function() { activeKeyword = onsiteSearch.value; renderCards(); });
+    onsiteSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") { activeKeyword = onsiteSearch.value; renderCards(); } });
+    onsiteButton.addEventListener("click", function() { activeKeyword = onsiteSearch.value; renderCards(); });
+    aiEngine.addEventListener("change", function() {
+      aiNote.textContent = "AI 搜索将跳转到 " + engines[aiEngine.value].name + " 页面打开，不在好点 AI 内返回答案。";
+    });
+    aiButton.addEventListener("click", submitAiSearch);
+    aiSearch.addEventListener("keydown", function(e) { if (e.key === "Enter") submitAiSearch(); });
+
+    /* ===== 初始化 ===== */
+    renderCategoryChips();
+    renderCards();
+    setMode("onsite");
+
+    // 右侧三个面板：热搜榜、科技资讯、热门视频
+    setupTabs("rankTabs", hotList, function(el, data) { renderRankList(el, data, 10); });
+    setupTabs("newsTabs", newsList, function(el, data) { renderNewsList(el, data, 8); });
+    setupTabs("videoTabs", videoHotList, function(el, data) { renderRankList(el, data, 8); });
+
+    // 顶部热点条：取百度热搜前4条
+    fetchHot("toutiao").then(function(data) {
+      if (data) renderHeadlineStrip(data);
+    });
+
+    /* ===== Events 活动地图模块 ===== */
+    var EVENTS_API = "";
+    var eventsData = [];
+    var evtCityFilter = "all";
+    var evtDateFilter = null;
+    var calYear, calMonth;
+    var amapInstance = null;
+    var amapMarkers = [];
+    var amapInfoWindow = null;
+
+    var categoryLabels = { conference: "峰会", salon: "沙龙", hackathon: "黑客松", meetup: "聚会" };
+
+    function loadEvents() {
+      if (EVENTS_API) {
+        return fetch(EVENTS_API).then(function(r) { return r.json(); });
+      }
+      return Promise.resolve((seed.events || []).slice());
+    }
+
+    function pad2(n) { return n < 10 ? "0" + n : "" + n; }
+    function fmtDate(d) { return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
+
+    function filterEvents() {
+      return eventsData.filter(function(evt) {
+        if (evtCityFilter !== "all" && evt.city !== evtCityFilter) return false;
+        if (evtDateFilter) {
+          var ds = evt.date, de = evt.endDate || evt.date;
+          if (evtDateFilter < ds || evtDateFilter > de) return false;
+        }
+        return true;
+      });
+    }
+
+    /* --- 日历 --- */
+    function initCalendar() {
+      var now = new Date();
+      calYear = now.getFullYear();
+      calMonth = now.getMonth();
+      renderCalendar();
+    }
+
+    function renderCalendar() {
+      document.getElementById("calTitle").textContent = calYear + "年" + (calMonth + 1) + "月";
+      var grid = document.getElementById("calGrid");
+      var weekdays = ["日", "一", "二", "三", "四", "五", "六"];
+      var html = weekdays.map(function(w) { return '<div class="cal-weekday">' + w + "</div>"; }).join("");
+
+      var firstDay = new Date(calYear, calMonth, 1).getDay();
+      var daysInMonth = new Date(calYear, calMonth + 1, 0).getDate();
+      var prevDays = new Date(calYear, calMonth, 0).getDate();
+      var today = fmtDate(new Date());
+
+      var eventDates = {};
+      eventsData.forEach(function(evt) {
+        var start = new Date(evt.date);
+        var end = new Date(evt.endDate || evt.date);
+        for (var d = new Date(start); d <= end; d.setDate(d.getDate() + 1)) {
+          eventDates[fmtDate(d)] = true;
+        }
+      });
+
+      for (var i = 0; i < firstDay; i++) {
+        html += '<div class="cal-day other-month">' + (prevDays - firstDay + 1 + i) + "</div>";
+      }
+      for (var d = 1; d <= daysInMonth; d++) {
+        var dateStr = calYear + "-" + pad2(calMonth + 1) + "-" + pad2(d);
+        var cls = "cal-day";
+        if (eventDates[dateStr]) cls += " has-event";
+        if (dateStr === today) cls += " today";
+        if (dateStr === evtDateFilter) cls += " selected";
+        html += '<div class="' + cls + '" data-date="' + dateStr + '">' + d + "</div>";
+      }
+      var totalCells = firstDay + daysInMonth;
+      var remaining = (7 - totalCells % 7) % 7;
+      for (var j = 1; j <= remaining; j++) {
+        html += '<div class="cal-day other-month">' + j + "</div>";
+      }
+      grid.innerHTML = html;
+
+      Array.from(grid.querySelectorAll(".cal-day.has-event")).forEach(function(el) {
+        el.addEventListener("click", function() {
+          var clicked = el.dataset.date;
+          evtDateFilter = evtDateFilter === clicked ? null : clicked;
+          renderCalendar();
+          renderEventList();
+          updateMap();
+        });
+      });
+    }
+
+    document.getElementById("calPrev").addEventListener("click", function() {
+      calMonth--;
+      if (calMonth < 0) { calMonth = 11; calYear--; }
+      renderCalendar();
+    });
+    document.getElementById("calNext").addEventListener("click", function() {
+      calMonth++;
+      if (calMonth > 11) { calMonth = 0; calYear++; }
+      renderCalendar();
+    });
+
+    /* --- 活动列表 --- */
+    function renderEventList() {
+      var filtered = filterEvents();
+      var listEl = document.getElementById("evtList");
+      var titleEl = document.getElementById("evtListTitle");
+
+      if (evtDateFilter) {
+        titleEl.textContent = evtDateFilter + " 的活动";
+      } else if (evtCityFilter !== "all") {
+        titleEl.textContent = evtCityFilter + " · 近期活动";
+      } else {
+        titleEl.textContent = "近期活动";
+      }
+
+      if (!filtered.length) {
+        listEl.innerHTML = '<div class="evt-empty">暂无匹配的活动</div>';
+        return;
+      }
+
+      filtered.sort(function(a, b) { return a.date < b.date ? -1 : 1; });
+      listEl.innerHTML = filtered.map(function(evt) {
+        var label = categoryLabels[evt.category] || evt.category;
+        var dateText = evt.date === evt.endDate ? evt.date : evt.date + " ~ " + evt.endDate;
+        return '<div class="evt-item" data-id="' + evt.id + '">' +
+          '<div class="evt-item-title"><span class="evt-tag ' + evt.category + '">' + label + "</span>" + evt.title + "</div>" +
+          '<div class="evt-item-meta"><span>' + dateText + "</span><span>" + evt.city + " · " + evt.address + "</span></div>" +
+          (evt.organizer ? '<div class="evt-item-meta"><span>主办：' + evt.organizer + "</span></div>" : "") +
+          (evt.theme ? '<div class="evt-item-meta"><span>主题：' + evt.theme + "</span></div>" : "") +
+          "</div>";
+      }).join("");
+
+      Array.from(listEl.querySelectorAll(".evt-item")).forEach(function(el) {
+        el.addEventListener("click", function() {
+          var id = el.dataset.id;
+          var evt = eventsData.find(function(e) { return e.id === id; });
+          if (evt && amapInstance) {
+            amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat]);
+            showInfoWindow(evt);
+          }
+          if (evt && evt.url) window.open(evt.url, "_blank");
+        });
+      });
+    }
+
+    /* --- 城市筛选 --- */
+    Array.from(document.querySelectorAll(".evt-filter-btn")).forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        evtCityFilter = btn.dataset.city;
+        evtDateFilter = null;
+        document.querySelectorAll(".evt-filter-btn").forEach(function(b) { b.classList.remove("active"); });
+        btn.classList.add("active");
+        renderCalendar();
+        renderEventList();
+        updateMap();
+      });
+    });
+
+    /* --- 地图 --- */
+    var cityCoords = {
+      "all": [104.0, 35.0],
+      "上海": [121.47, 31.23],
+      "北京": [116.40, 39.90],
+      "深圳": [114.06, 22.55],
+      "杭州": [120.15, 30.28],
+      "苏州": [120.62, 31.30],
+      "南京": [118.80, 32.06]
+    };
+    var cityZoom = { "all": 4 };
+
+    function initMap() {
+      if (!window.AMap) return;
+      document.getElementById("mapPlaceholder").style.display = "none";
+      amapInstance = new AMap.Map("eventsMap", {
+        zoom: 4,
+        center: [104.0, 35.0],
+        mapStyle: "amap://styles/whitesmoke"
+      });
+      amapInfoWindow = new AMap.InfoWindow({ offset: new AMap.Pixel(0, -30) });
+      updateMap();
+    }
+
+    function showInfoWindow(evt) {
+      if (!amapInfoWindow) return;
+      var label = categoryLabels[evt.category] || evt.category;
+      var dateText = evt.date === evt.endDate ? evt.date : evt.date + " ~ " + evt.endDate;
+      var content = '<div style="padding:6px 2px;max-width:260px;">' +
+        '<strong style="font-size:14px;">' + evt.title + "</strong><br>" +
+        '<span style="color:#888;font-size:12px;">' + label + " · " + dateText + "</span><br>" +
+        '<span style="color:#888;font-size:12px;">' + evt.city + " · " + evt.address + "</span>" +
+        (evt.organizer ? '<br><span style="color:#888;font-size:12px;">主办：' + evt.organizer + "</span>" : "") +
+        (evt.theme ? '<br><span style="color:#666;font-size:12px;font-weight:600;">主题：' + evt.theme + "</span>" : "") +
+        (evt.url ? '<br><a href="' + evt.url + '" target="_blank" style="color:#6b4cf6;font-size:12px;">查看详情 →</a>' : "") +
+        "</div>";
+      amapInfoWindow.setContent(content);
+      amapInfoWindow.open(amapInstance, [evt.lng, evt.lat]);
+    }
+
+    function updateMap() {
+      if (!amapInstance) return;
+      amapMarkers.forEach(function(m) { amapInstance.remove(m); });
+      amapMarkers = [];
+
+      var filtered = filterEvents();
+      filtered.forEach(function(evt) {
+        var marker = new AMap.Marker({
+          position: [evt.lng, evt.lat],
+          title: evt.title
+        });
+        marker.on("click", function() {
+          amapInstance.setZoomAndCenter(14, [evt.lng, evt.lat]);
+          showInfoWindow(evt);
+        });
+        amapMarkers.push(marker);
+        amapInstance.add(marker);
+      });
+
+      var coord = cityCoords[evtCityFilter] || cityCoords["all"];
+      var zoom = cityZoom[evtCityFilter] || 11;
+      amapInstance.setZoomAndCenter(zoom, coord);
+    }
+
+    /* --- Events 初始化 --- */
+    loadEvents().then(function(data) {
+      // 过滤掉过期超过 7 天的活动
+      var cutoff = new Date();
+      cutoff.setDate(cutoff.getDate() - 7);
+      var cutoffStr = fmtDate(cutoff);
+      eventsData = data.filter(function(evt) {
+        var endDate = evt.endDate || evt.date;
+        return endDate >= cutoffStr;
+      });
+      initCalendar();
+      renderEventList();
+      if (window.AMap) {
+        initMap();
+      } else if (AMAP_KEY) {
+        var checkMap = setInterval(function() {
+          if (window.AMap) { clearInterval(checkMap); initMap(); }
+        }, 300);
+        setTimeout(function() { clearInterval(checkMap); }, 10000);
+      }
+    });
+  </script>
+</body>
+</html>

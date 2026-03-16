@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好点 AI 资讯平台 · 活动管理后台</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, 'PingFang SC', sans-serif; background: #f5f5f5; color: #333; }
+    .header { background: #1a1a2e; color: #fff; padding: 16px 24px; display: flex; justify-content: space-between; align-items: center; }
+    .header h1 { font-size: 18px; font-weight: 600; }
+    .container { max-width: 1200px; margin: 20px auto; padding: 0 20px; }
+    .card { background: #fff; border-radius: 8px; padding: 20px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .card h2 { font-size: 16px; margin-bottom: 12px; color: #1a1a2e; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 16px; }
+    .tab { padding: 8px 16px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; background: #fff; font-size: 14px; }
+    .tab.active { background: #1a1a2e; color: #fff; border-color: #1a1a2e; }
+    .form-row { display: flex; gap: 12px; margin-bottom: 12px; flex-wrap: wrap; }
+    .form-row input, .form-row select, .form-row textarea { padding: 8px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; }
+    .form-row input { flex: 1; min-width: 200px; }
+    .form-row textarea { width: 100%; min-height: 120px; resize: vertical; }
+    .btn { padding: 8px 20px; border: none; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 500; }
+    .btn-primary { background: #1a1a2e; color: #fff; }
+    .btn-success { background: #10b981; color: #fff; }
+    .btn-danger { background: #ef4444; color: #fff; }
+    .btn-secondary { background: #6b7280; color: #fff; }
+    .btn:hover { opacity: 0.9; }
+    table { width: 100%; border-collapse: collapse; font-size: 13px; }
+    th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #eee; }
+    th { background: #f9fafb; font-weight: 600; color: #6b7280; font-size: 12px; text-transform: uppercase; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 10px; font-size: 12px; font-weight: 500; }
+    .badge-approved { background: #d1fae5; color: #065f46; }
+    .badge-pending { background: #fef3c7; color: #92400e; }
+    .badge-rejected { background: #fee2e2; color: #991b1b; }
+    .actions { display: flex; gap: 6px; }
+    .actions button { padding: 4px 10px; font-size: 12px; }
+    .toast { position: fixed; top: 20px; right: 20px; padding: 12px 20px; background: #1a1a2e; color: #fff; border-radius: 8px; z-index: 1000; display: none; }
+    #api-key-form { display: flex; gap: 8px; align-items: center; }
+    #api-key-form input { padding: 6px 12px; border: 1px solid rgba(255,255,255,0.3); border-radius: 6px; background: rgba(255,255,255,0.1); color: #fff; font-size: 14px; width: 280px; }
+    .status-filter { display: flex; gap: 8px; margin-bottom: 12px; }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>好点 AI 资讯平台 · 活动管理后台</h1>
+    <div id="api-key-form">
+      <input type="password" id="apiKey" placeholder="输入 Admin API Key" />
+      <button class="btn btn-primary" onclick="saveApiKey()">保存</button>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="tabs">
+      <div class="tab active" onclick="switchTab('events')">活动管理</div>
+      <div class="tab" onclick="switchTab('extract')">小红书提取</div>
+    </div>
+
+    <!-- 活动管理面板 -->
+    <div id="panel-events">
+      <div class="card">
+        <div class="status-filter">
+          <button class="btn btn-secondary" onclick="loadEvents()">全部</button>
+          <button class="btn btn-success" onclick="loadEvents('approved')">已通过</button>
+          <button class="btn" style="background:#f59e0b;color:#fff" onclick="loadEvents('pending')">待审核</button>
+          <button class="btn btn-danger" onclick="loadEvents('rejected')">已拒绝</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table>
+            <thead>
+              <tr>
+                <th>标题</th><th>日期</th><th>城市</th><th>类别</th><th>来源</th><th>状态</th><th>操作</th>
+              </tr>
+            </thead>
+            <tbody id="events-table"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- 小红书提取面板 -->
+    <div id="panel-extract" style="display:none">
+      <div class="card">
+        <h2>粘贴小红书笔记文本</h2>
+        <div class="form-row">
+          <textarea id="extract-text" placeholder="粘贴小红书笔记全文..."></textarea>
+        </div>
+        <button class="btn btn-primary" onclick="extractEvents()">AI 提取</button>
+      </div>
+      <div class="card" id="extract-result" style="display:none">
+        <h2>提取结果</h2>
+        <div id="extract-events"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const API_BASE = location.origin
+    let apiKey = localStorage.getItem('yes123_admin_key') || ''
+    if (apiKey) document.getElementById('apiKey').value = '••••••••'
+
+    function saveApiKey() {
+      const v = document.getElementById('apiKey').value.trim()
+      if (v && v !== '••••••••') { apiKey = v; localStorage.setItem('yes123_admin_key', v) }
+      showToast('API Key 已保存')
+    }
+
+    function headers() {
+      return { 'Content-Type': 'application/json', Authorization: `Bearer ${apiKey}` }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast'); t.textContent = msg; t.style.display = 'block'
+      setTimeout(() => t.style.display = 'none', 3000)
+    }
+
+    function switchTab(name) {
+      document.querySelectorAll('.tab').forEach((t, i) => {
+        t.classList.toggle('active', (name === 'events' && i === 0) || (name === 'extract' && i === 1))
+      })
+      document.getElementById('panel-events').style.display = name === 'events' ? 'block' : 'none'
+      document.getElementById('panel-extract').style.display = name === 'extract' ? 'block' : 'none'
+    }
+
+    async function loadEvents(status) {
+      const qs = status ? `?status=${status}` : ''
+      try {
+        const r = await fetch(`${API_BASE}/api/admin/events${qs}`, { headers: headers() })
+        const d = await r.json()
+        if (!r.ok) { showToast(d.error || '加载失败'); return }
+        renderEvents(d.events || [])
+      } catch (e) { showToast('请求失败: ' + e.message) }
+    }
+
+    function renderEvents(events) {
+      const tbody = document.getElementById('events-table')
+      tbody.innerHTML = events.map(e => `
+        <tr>
+          <td title="${e.title}">${e.title.slice(0, 30)}${e.title.length > 30 ? '...' : ''}</td>
+          <td>${e.date}</td>
+          <td>${e.city}</td>
+          <td>${e.category}</td>
+          <td>${e.source || '-'}</td>
+          <td><span class="badge badge-${e.status || 'pending'}">${e.status || 'pending'}</span></td>
+          <td class="actions">
+            <button class="btn btn-success" onclick="reviewEvent('${e.id}','approved')">通过</button>
+            <button class="btn btn-danger" onclick="reviewEvent('${e.id}','rejected')">拒绝</button>
+            <button class="btn btn-secondary" onclick="deleteEvent('${e.id}')">删除</button>
+          </td>
+        </tr>`).join('')
+    }
+
+    async function reviewEvent(id, status) {
+      try {
+        const r = await fetch(`${API_BASE}/api/admin/events/${id}/review`, {
+          method: 'POST', headers: headers(), body: JSON.stringify({ status })
+        })
+        const d = await r.json()
+        showToast(d.data?.message || d.error || '操作完成')
+        loadEvents()
+      } catch (e) { showToast('操作失败') }
+    }
+
+    async function deleteEvent(id) {
+      if (!confirm('确定删除此活动？')) return
+      try {
+        const r = await fetch(`${API_BASE}/api/admin/events/${id}`, {
+          method: 'DELETE', headers: headers()
+        })
+        const d = await r.json()
+        showToast(d.data?.message || d.error || '已删除')
+        loadEvents()
+      } catch (e) { showToast('删除失败') }
+    }
+
+    async function extractEvents() {
+      const text = document.getElementById('extract-text').value.trim()
+      if (!text) { showToast('请先粘贴文本'); return }
+      try {
+        const r = await fetch(`${API_BASE}/api/admin/extract`, {
+          method: 'POST', headers: headers(), body: JSON.stringify({ text })
+        })
+        const d = await r.json()
+        if (!r.ok) { showToast(d.error || '提取失败'); return }
+        renderExtractResult(d.events || [])
+      } catch (e) { showToast('提取失败: ' + e.message) }
+    }
+
+    function renderExtractResult(events) {
+      const div = document.getElementById('extract-events')
+      document.getElementById('extract-result').style.display = 'block'
+      if (!events.length) { div.innerHTML = '<p>未提取到活动信息</p>'; return }
+      div.innerHTML = events.map((e, i) => `
+        <div class="card" style="border-left:3px solid #1a1a2e">
+          <p><strong>${e.title}</strong></p>
+          <p>日期: ${e.date || '?'} | 城市: ${e.city || '?'} | 类别: ${e.category || '?'}</p>
+          <p>主办: ${e.organizer || '-'} | 主题: ${e.theme || '-'}</p>
+          <p>标签: ${(e.tags || []).join(', ')}</p>
+          <button class="btn btn-primary" style="margin-top:8px" onclick="importEvent(${i})">导入</button>
+        </div>`).join('')
+      window._extractedEvents = events
+    }
+
+    async function importEvent(index) {
+      const evt = window._extractedEvents[index]
+      if (!evt) return
+      try {
+        const r = await fetch(`${API_BASE}/api/admin/events/batch`, {
+          method: 'POST', headers: headers(),
+          body: JSON.stringify({ events: [evt], status: 'approved' })
+        })
+        const d = await r.json()
+        showToast(d.imported ? `已导入 ${d.imported} 条` : (d.error || '导入失败'))
+      } catch (e) { showToast('导入失败') }
+    }
+
+    // 初始化
+    if (apiKey) loadEvents()
+  </script>
+</body>
+</html>
