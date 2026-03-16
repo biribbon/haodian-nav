@@ -704,9 +704,9 @@
     var activeKeyword = "";
 
     var engines = {
-      doubao: { name: "豆包", url: "https://www.doubao.com/chat/", queryParam: "q" },
-      gemini: { name: "Gemini", url: "https://gemini.google.com/app", queryParam: "q" },
-      claude: { name: "Claude", url: "https://claude.ai/new", queryParam: "q" },
+      doubao:  { name: "豆包",    url: "https://www.doubao.com/chat/" },
+      gemini:  { name: "Gemini",  url: "https://gemini.google.com/app" },
+      claude:  { name: "Claude",  url: "https://claude.ai/new" },
       chatgpt: { name: "ChatGPT", url: "https://chatgpt.com/", queryParam: "q" }
     };
 
@@ -860,7 +860,7 @@
       if (!selected) return;
       var query = aiSearch.value.trim();
       var url = selected.url;
-      if (query) {
+      if (query && selected.queryParam) {
         var sep = url.indexOf("?") === -1 ? "?" : "&";
         url = url + sep + selected.queryParam + "=" + encodeURIComponent(query);
       }
