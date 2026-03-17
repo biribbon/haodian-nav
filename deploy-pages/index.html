@@ -714,7 +714,6 @@
         <div class="events-header">
           <h2 id="eventsTitle">OPC 政策地图</h2>
           <div class="events-filters" id="evtViewBtns" style="display:none;">
-            <button class="evt-filter-btn evt-view-btn" data-view="today">今日活动</button>
             <button class="evt-filter-btn evt-view-btn active" data-view="all">全部活动</button>
             <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
           </div>
@@ -1059,10 +1058,6 @@
         if (evtDateFilter) {
           var ds = evt.date, de = evt.endDate || evt.date;
           if (evtDateFilter < ds || evtDateFilter > de) return false;
-        }
-        if (evtViewMode === "today") {
-          var today = fmtDate(new Date());
-          if (evt.date > today || (evt.endDate || evt.date) < today) return false;
         }
         return true;
       });
