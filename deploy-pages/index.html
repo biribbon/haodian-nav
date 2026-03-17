@@ -385,7 +385,7 @@
     .article p { margin: 0 0 8px; color: var(--muted); line-height: 1.65; font-size: 0.88rem; }
 
     /* ===== Events Section ===== */
-    .events-section { padding: 32px 0 24px; scroll-margin-top: 200px; }
+    .events-section { padding: 32px 0 24px; scroll-margin-top: 260px; }
     .events-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 12px; flex-wrap: wrap; gap: 10px;
@@ -601,8 +601,8 @@
         <span>好点 AI</span>
       </a>
       <nav class="nav">
-        <a href="#events">OPC 地图</a>
-        <a href="#events">AI 线下活动地图</a>
+        <a href="#events" id="navOpc" data-map-mode="policy">OPC 地图</a>
+        <a href="#events" id="navEvents" data-map-mode="events">AI 线下活动地图</a>
         <a href="#">首页</a>
         <a href="#events">AI 活动</a>
         <a class="active" href="#">AI 网站</a>
@@ -714,8 +714,8 @@
         <div class="events-header">
           <h2 id="eventsTitle">OPC 政策地图</h2>
           <div class="events-filters" id="evtViewBtns" style="display:none;">
-            <button class="evt-filter-btn evt-view-btn active" data-view="today">今日活动</button>
-            <button class="evt-filter-btn evt-view-btn" data-view="all">全部活动</button>
+            <button class="evt-filter-btn evt-view-btn" data-view="today">今日活动</button>
+            <button class="evt-filter-btn evt-view-btn active" data-view="all">全部活动</button>
             <button class="evt-filter-btn evt-view-btn" data-view="nearby">附近活动</button>
           </div>
         </div>
@@ -1020,7 +1020,7 @@
     var policyParks = window.HaodianParks || [];
     var evtCityFilter = "all";
     var evtDateFilter = null;
-    var evtViewMode = "today";
+    var evtViewMode = "all";
     var mapMode = "policy";
     var calYear, calMonth;
     var amapInstance = null;
@@ -1485,7 +1485,7 @@
         var endDate = evt.endDate || evt.date;
         return endDate >= cutoffStr;
       });
-      evtViewMode = "today";
+      evtViewMode = "all";
       initCalendar();
       renderEventList();
       switchMapMode("policy");
