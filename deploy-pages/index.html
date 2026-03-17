@@ -989,6 +989,20 @@
     }
 
     /* ===== 事件绑定 ===== */
+    document.querySelectorAll("[data-map-mode]").forEach(function(link) {
+      link.addEventListener("click", function(e) {
+        e.preventDefault();
+        var mode = link.dataset.mapMode;
+        switchMapMode(mode);
+        var target = document.getElementById("events");
+        if (target) {
+          var headerH = document.querySelector(".topbar").offsetHeight +
+                        document.querySelector(".search-dock").offsetHeight;
+          var y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 10;
+          window.scrollTo({ top: y, behavior: "smooth" });
+        }
+      });
+    });
     modeButtons.forEach(function(button) {
       button.addEventListener("click", function() { setMode(button.dataset.mode); });
     });
