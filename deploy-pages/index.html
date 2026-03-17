@@ -400,14 +400,6 @@
     .evt-mode-btn.active { color: #fff; background: var(--brand); border-color: var(--brand); }
     .evt-mode-btn:not(.active):hover { color: var(--brand); border-color: rgba(107,76,246,0.3); }
     .events-filters { display: flex; gap: 6px; flex-wrap: wrap; }
-    .evt-city-select {
-      width: 100%; min-height: 36px; padding: 0 12px; margin-bottom: 10px;
-      border-radius: 8px; border: 1.5px solid var(--line);
-      background: #fff; color: var(--text);
-      font-size: 0.9rem; font-weight: 700;
-      cursor: pointer; outline: none; appearance: auto;
-    }
-    .evt-city-select:focus { border-color: var(--brand); color: var(--brand); }
     .evt-filter-btn {
       min-height: 28px; padding: 0 12px; border-radius: 999px;
       border: 1px solid var(--line); background: var(--chip);
@@ -731,9 +723,6 @@
             </div>
           </div>
           <div class="events-sidebar">
-            <select id="evtCitySelect" class="evt-city-select">
-              <option value="all">全国</option>
-            </select>
             <div class="cal-card" id="calCard" style="display:none;">
               <div class="cal-nav">
                 <button id="calPrev">◀</button>
@@ -1099,7 +1088,6 @@
         clearTreeActive();
         this.classList.add("active");
         applyFilter();
-        syncCitySelect();
       });
 
       document.querySelectorAll(".pt-prov-row").forEach(function(row) {
@@ -1127,35 +1115,11 @@
         });
       });
 
-      /* 填充城市下拉框 */
-      var sel = document.getElementById("evtCitySelect");
-      sel.innerHTML = '<option value="all">全国</option>';
-      provOrder.forEach(function(prov) {
-        sel.innerHTML += '<optgroup label="' + prov + '">';
-        Object.keys(provMap[prov]).sort(function(a,b){ return provMap[prov][b]-provMap[prov][a]; }).forEach(function(city) {
-          sel.innerHTML += '<option value="' + city + '">' + city + '</option>';
-        });
-        sel.innerHTML += '</optgroup>';
-      });
-      sel.addEventListener("change", function() {
-        evtCityFilter = sel.value;
-        clearTreeActive();
-        applyFilter();
-      });
     }
 
     function clearTreeActive() {
       document.getElementById("ptAllBtn").classList.remove("active");
       document.querySelectorAll(".pt-prov-row.active, .pt-city-row.active").forEach(function(el) { el.classList.remove("active"); });
-    }
-
-    function syncCitySelect() {
-      var sel = document.getElementById("evtCitySelect");
-      if (evtCityFilter === "all" || evtCityFilter.startsWith("province:")) {
-        sel.value = "all";
-      } else {
-        sel.value = evtCityFilter;
-      }
     }
 
     function applyFilter() {
