@@ -30,11 +30,8 @@
     .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
 
     .topbar {
-      position: sticky;
-      top: 0;
       z-index: 40;
       background: rgba(244, 244, 246, 0.92);
-      backdrop-filter: blur(14px);
     }
     .topbar-inner {
       min-height: 86px;
@@ -66,7 +63,7 @@
 
     .search-dock {
       position: sticky;
-      top: 86px;
+      top: 0;
       z-index: 35;
       padding: 8px 0 6px;
       background: linear-gradient(180deg, rgba(244, 244, 246, 0.96), rgba(244, 244, 246, 0.84));
@@ -385,7 +382,7 @@
     .article p { margin: 0 0 8px; color: var(--muted); line-height: 1.65; font-size: 0.88rem; }
 
     /* ===== Events Section ===== */
-    .events-section { padding: 32px 0 24px; scroll-margin-top: 260px; }
+    .events-section { padding: 32px 0 24px; scroll-margin-top: 160px; }
     .events-header {
       display: flex; justify-content: space-between; align-items: center;
       margin-bottom: 12px; flex-wrap: wrap; gap: 10px;
@@ -566,7 +563,7 @@
     @media (max-width: 860px) {
       .topbar-inner { min-height: 72px; }
       .nav { gap: 16px; font-size: 0.92rem; }
-      .search-dock { top: 72px; }
+      .search-dock { top: 0; }
       .search-dock-inner { grid-template-columns: 1fr; }
       .search-dock-side { display: none; }
       .search-row.ai-mode, .article { grid-template-columns: 1fr; }
@@ -995,8 +992,7 @@
         switchMapMode(mode);
         var target = document.getElementById("events");
         if (target) {
-          var headerH = document.querySelector(".topbar").offsetHeight +
-                        document.querySelector(".search-dock").offsetHeight;
+          var headerH = document.querySelector(".search-dock").offsetHeight;
           var y = target.getBoundingClientRect().top + window.pageYOffset - headerH - 10;
           window.scrollTo({ top: y, behavior: "smooth" });
         }
