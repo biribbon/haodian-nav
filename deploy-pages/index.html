@@ -402,12 +402,11 @@
     .evt-mode-btn.active { color: #fff; background: var(--brand); border-color: var(--brand); }
     .evt-mode-btn:not(.active):hover { color: var(--brand); border-color: rgba(107,76,246,0.3); }
     .events-filters { display: flex; gap: 6px; flex-wrap: wrap; }
-    .evt-city-row { margin-bottom: 12px; }
     .evt-city-select {
-      width: 100%; min-height: 44px; padding: 0 16px;
-      border-radius: 10px; border: 2px solid var(--line);
+      width: 100%; min-height: 36px; padding: 0 12px; margin-bottom: 10px;
+      border-radius: 8px; border: 1.5px solid var(--line);
       background: #fff; color: var(--text);
-      font-size: 1rem; font-weight: 700;
+      font-size: 0.9rem; font-weight: 700;
       cursor: pointer; outline: none; appearance: auto;
     }
     .evt-city-select:focus { border-color: var(--brand); color: var(--brand); }
@@ -724,11 +723,6 @@
           <button class="evt-mode-btn active" data-mode="policy">OPC 政策地图</button>
           <button class="evt-mode-btn" data-mode="events">AI 线下活动</button>
         </div>
-        <div class="evt-city-row">
-          <select id="evtCitySelect" class="evt-city-select">
-            <option value="all">全国</option>
-          </select>
-        </div>
         <div class="events-layout">
           <div>
             <div class="map-container">
@@ -754,6 +748,9 @@
             </div>
           </div>
           <div class="events-sidebar">
+            <select id="evtCitySelect" class="evt-city-select">
+              <option value="all">全国</option>
+            </select>
             <div class="province-tree" id="provinceTree">
               <h3>园区总览</h3>
               <p class="pt-desc">按省市折叠查看园区，点击城市可聚焦地图。</p>
