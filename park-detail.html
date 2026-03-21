@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>园区详情 - 好点 AI</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 986 769'%3E%3Cg transform='translate(0,769) scale(0.1,-0.1)' fill='%231a1d2e' stroke='none'%3E%3Cpath d='M9459 7647c-46-24-100-53-119-64-37-21-145-79-270-146-41-22-79-43-85-47-5-4-55-31-110-60-120-63-321-171-465-250-58-32-136-74-175-95-38-21-92-50-120-65-75-41-170-92-270-145-49-27-106-57-125-68-72-41-118-66-222-121-59-31-125-66-145-77-80-45-389-213-410-223-50-24-40-34 137-137 114-66 116-67 288-171 156-95 187-108 208-89 5 4 45 28 89 51 44 24 94 51 111 61 17 9 75 40 130 69 54 29 104 56 109 60 6 4 45 26 88 49 126 67 230 123 266 143 18 11 36 17 38 14 3-3-6-24-19-48-14-24-41-72-60-108-97-179-112-206-291-520-134-236-297-508-435-730-95-153-439-668-524-786-40-56-107-148-148-205-41-57-79-107-85-111-14-11-25-10-25 1 0 9-103 257-140 338-11 24-20 45-20 48 0 2-13 34-30 70-16 36-30 68-30 70 0 2-12 30-26 62-14 32-33 74-42 93-28 63-118 252-187 394-245 499-504 876-735 1070-207 173-371 252-580 277-122 15-254 0-384-42-279-92-548-332-799-716-143-220-196-314-336-598-100-202-124-254-188-400-20-44-44-99-54-122-11-24-27-62-38-85-10-24-55-128-99-233-44-104-119-281-166-393-47-112-86-205-86-207 0-3-11-28-24-57-13-29-47-109-76-178-238-570-552-1173-763-1465-132-182-199-272-224-300-10-11-49-56-88-100-181-205-441-428-616-528-334-191-635-278-1034-299l-50-3-3-263-2-262 1037 3c680 3 1055 7 1088 14 47 10 87 18 218 43 28 5 70 14 92 19 22 5 65 14 95 21 30 7 71 16 90 21 19 4 53 12 75 18 45 11 184 48 230 61 17 5 46 13 65 18 169 46 628 213 855 312 818 357 1541 835 2230 1475 457 425 915 937 1310 1465 305 407 701 1002 957 1435 36 61 102 170 147 244 44 73 81 135 81 137 0 3 20 37 44 77 24 39 114 196 200 347 87 151 161 279 165 283 10 10 18-87 31-368 22-466 30-596 35-605 4-6 21-17 38-26 38-20 306-176 360-211 21-13 52-32 70-42 18-10 63-37 101-61 41-25 72-38 77-33 6 6 6 83 0 194-10 179-20 389-41 844-6 121-15 301-20 400-5 99-14 279-20 400-6 121-15 321-21 445-5 124-14 300-19 392-6 91-10 206-10 255 0 48-4 94-9 101-6 10-27 3-92-31z'/%3E%3Cpath fill='%23fff' d='M5056 5575c154-75 319-261 513-578 57-94 217-405 291-566 79-174 316-727 390-911 33-80 72-176 89-214 23-56 27-73 18-87-12-16-134-151-272-299-128-138-379-384-525-514-80-71-161-143-180-161-126-114-540-422-745-554-237-153-236-153-355-219-25-13-70-39-100-56-87-50-364-189-490-246-249-112-677-275-847-321-18-5-49-13-68-19-19-5-50-14-67-19-161-46-290-76-528-124-232-46-260-51-260-39 0 5 39 44 86 88 77 70 267 281 365 404 156 197 373 529 499 765 29 55 69 129 88 165 43 80 135 265 172 345 15 33 42 90 59 128 76 165 91 198 91 201 0 2 15 37 34 78 19 40 55 123 80 183 26 61 51 119 56 130 10 20 147 349 250 600 109 265 142 341 268 615 264 576 447 884 641 1079 171 170 307 214 447 146z'/%3E%3Cpath d='M7179 2673c-94-112-218-251-299-336-30-32-58-64-62-71-10-17 142-316 261-515 354-589 742-1039 1151-1331 252-180 445-283 720-382 30-11 65-24 78-29 13-5 205-9 428-9l404 0-2 263-3 262-45 2c-580 28-1057 239-1490 657-343 332-635 762-961 1419-46 92-87 167-90 167-4 0-44-44-90-97z'/%3E%3C/g%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #f4f4f6;
+      --panel: #ffffff;
+      --line: #dfdfe6;
+      --text: #111318;
+      --muted: #747889;
+      --brand: #6b4cf6;
+      --brand-soft: rgba(107, 76, 246, 0.08);
+      --chip: #f8f8fb;
+      --max: 960px;
+      --shadow: 0 18px 42px rgba(17, 19, 24, 0.08);
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+    a { color: inherit; text-decoration: none; }
+    .shell { width: min(calc(100% - 32px), var(--max)); margin: 0 auto; }
+
+    /* Topbar */
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(244, 244, 246, 0.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(17, 19, 24, 0.06);
+    }
+    .topbar-inner {
+      min-height: 56px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 24px;
+    }
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 900;
+      font-size: 1.15rem;
+    }
+    .brand-mark { height: 36px; width: auto; display: block; }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--brand);
+      cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .back-link:hover { opacity: 0.7; }
+
+    /* Main content */
+    .detail-wrap { padding: 24px 0 60px; }
+
+    /* Hero card */
+    .hero-card {
+      background: var(--panel);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 36px 40px 32px;
+      margin-bottom: 20px;
+    }
+    .hero-name {
+      font-size: 1.6rem;
+      font-weight: 900;
+      margin: 0 0 12px;
+      line-height: 1.35;
+    }
+    .hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      color: var(--muted);
+      font-size: 0.92rem;
+    }
+    .hero-meta span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .hero-tags {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+    }
+    .hero-tag {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      background: var(--brand-soft);
+      color: var(--brand);
+    }
+
+    /* Info grid */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+    .info-card {
+      background: var(--panel);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 24px 28px;
+    }
+    .info-label {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .info-value {
+      font-size: 1.02rem;
+      font-weight: 700;
+      line-height: 1.5;
+    }
+    .info-value.highlight {
+      color: var(--brand);
+    }
+
+    /* Section card */
+    .section-card {
+      background: var(--panel);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+      padding: 28px 32px;
+      margin-bottom: 20px;
+    }
+    .section-title {
+      font-size: 1.08rem;
+      font-weight: 800;
+      margin: 0 0 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-icon {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--brand-soft);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+    }
+
+    /* Advantages */
+    .adv-list { list-style: none; padding: 0; margin: 0; }
+    .adv-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.95rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      line-height: 1.5;
+    }
+    .adv-list li:last-child { border-bottom: none; }
+    .adv-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--brand);
+      flex-shrink: 0;
+      margin-top: 7px;
+    }
+
+    /* Policy */
+    .policy-text {
+      font-size: 1.02rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .policy-source {
+      margin-top: 12px;
+      font-size: 0.88rem;
+      color: var(--muted);
+    }
+    .policy-source a {
+      color: var(--brand);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .policy-source a:hover { opacity: 0.7; }
+
+    /* Official button */
+    .official-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      background: var(--brand);
+      color: #fff;
+      border-radius: 14px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      border: none;
+    }
+    .official-btn:hover { opacity: 0.85; }
+
+    /* Not found */
+    .not-found {
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .not-found h2 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .not-found p {
+      color: var(--muted);
+      margin-bottom: 24px;
+    }
+
+    /* Footer */
+    .foot {
+      text-align: center;
+      padding: 32px 0;
+      color: var(--muted);
+      font-size: 0.82rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 640px) {
+      .hero-card { padding: 24px 20px 20px; }
+      .hero-name { font-size: 1.25rem; }
+      .info-grid { grid-template-columns: 1fr; }
+      .info-card { padding: 18px 20px; }
+      .section-card { padding: 20px 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="topbar">
+    <div class="shell topbar-inner">
+      <a class="brand" href="index.html">
+        <img class="brand-mark" src="logo-header.png" alt="好点AI">
+        好点 AI
+      </a>
+      <a class="back-link" href="index.html#policy-map" onclick="history.back(); return false;">
+        ← 返回政策地图
+      </a>
+    </div>
+  </div>
+
+  <div class="shell detail-wrap" id="detailContent">
+    <!-- JS 动态渲染 -->
+  </div>
+
+  <div class="foot shell">好点 AI &copy; 2025 — 让每位创业者都能拥有 AI 超能力</div>
+
+  <script src="haodianai-parks.js"></script>
+  <script>
+    (function() {
+      var params = new URLSearchParams(window.location.search);
+      var parkId = params.get("id");
+      var parks = window.HaodianParks || [];
+      var park = parks.find(function(p) { return p.id === parkId; });
+      var container = document.getElementById("detailContent");
+
+      if (!park) {
+        container.innerHTML =
+          '<div class="not-found">' +
+            '<h2>园区不存在</h2>' +
+            '<p>未找到 ID 为 "' + (parkId || '') + '" 的园区信息</p>' +
+            '<a class="official-btn" href="index.html">返回首页</a>' +
+          '</div>';
+        document.title = "园区未找到 - 好点 AI";
+        return;
+      }
+
+      document.title = park.name + " - 好点 AI";
+
+      var tagsHtml = (park.tags || []).map(function(t) {
+        return '<span class="hero-tag">' + t + '</span>';
+      }).join("");
+
+      var advHtml = (park.advantages || []).map(function(a) {
+        return '<li><span class="adv-dot"></span><span>' + a + '</span></li>';
+      }).join("");
+
+      var html =
+        /* Hero card */
+        '<div class="hero-card">' +
+          '<h1 class="hero-name">' + park.name + '</h1>' +
+          '<div class="hero-meta">' +
+            '<span>📍 ' + (park.province || '') + ' ' + park.city + ' ' + park.district + '</span>' +
+            (park.publishDate ? '<span>📅 ' + park.publishDate + '</span>' : '') +
+          '</div>' +
+          (tagsHtml ? '<div class="hero-tags">' + tagsHtml + '</div>' : '') +
+        '</div>' +
+
+        /* Info grid */
+        '<div class="info-grid">' +
+          '<div class="info-card">' +
+            '<div class="info-label">详细地址</div>' +
+            '<div class="info-value">' + (park.address || park.city + park.district) + '</div>' +
+          '</div>' +
+          '<div class="info-card">' +
+            '<div class="info-label">所在省市区</div>' +
+            '<div class="info-value">' + (park.province || '') + ' ' + park.city + ' ' + park.district + '</div>' +
+          '</div>' +
+          '<div class="info-card">' +
+            '<div class="info-label">工位租金</div>' +
+            '<div class="info-value highlight">' + (park.rent || '请联系园区') + '</div>' +
+          '</div>' +
+          '<div class="info-card">' +
+            '<div class="info-label">园区面积</div>' +
+            '<div class="info-value">' + (park.area || '暂无数据') + '</div>' +
+          '</div>' +
+        '</div>' +
+
+        /* Advantages */
+        (advHtml ?
+          '<div class="section-card">' +
+            '<h2 class="section-title"><span class="section-icon">✦</span>核心优势</h2>' +
+            '<ul class="adv-list">' + advHtml + '</ul>' +
+          '</div>' : '') +
+
+        /* Policy */
+        '<div class="section-card">' +
+          '<h2 class="section-title"><span class="section-icon">📋</span>园区政策</h2>' +
+          '<div class="policy-text">' + park.policy + '</div>' +
+          (park.policySource ?
+            '<div class="policy-source">政策来源：' +
+              (park.officialUrl ?
+                '<a href="' + park.officialUrl + '" target="_blank" rel="noopener">' + park.policySource + ' →</a>' :
+                park.policySource) +
+            '</div>' : '') +
+        '</div>' +
+
+        /* Official link */
+        (park.officialUrl ?
+          '<div style="text-align:center; margin-top:8px;">' +
+            '<a class="official-btn" href="' + park.officialUrl + '" target="_blank" rel="noopener">' +
+              '🔗 访问官网' +
+            '</a>' +
+          '</div>' : '');
+
+      container.innerHTML = html;
+    })();
+  </script>
+
+</body>
+</html>

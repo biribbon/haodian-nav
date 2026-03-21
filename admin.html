@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>好点 AI - 后台管理</title>
+  <link rel="stylesheet" href="admin/admin-style.css">
+</head>
+<body>
+  <aside class="sidebar">
+    <div class="sidebar-brand">好点 AI 管理</div>
+    <ul class="sidebar-nav">
+      <li class="active" data-tab="tools">工具管理</li>
+      <li data-tab="categories">分类管理</li>
+      <li data-tab="io">导入 / 导出</li>
+    </ul>
+    <div style="padding:20px;font-size:.75rem;color:var(--muted);position:absolute;bottom:0">
+      <a href="index.html" style="color:var(--brand)">返回前台</a>
+    </div>
+  </aside>
+  <main class="main" id="main"></main>
+
+  <!-- 加载种子数据(首次使用) -->
+  <script src="haodianai-data.js"></script>
+  <!-- 数据层 -->
+  <script src="admin/admin-data.js"></script>
+  <!-- UI 层 -->
+  <script src="admin/admin-app.js"></script>
+</body>
+</html>

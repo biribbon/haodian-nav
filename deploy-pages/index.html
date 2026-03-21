@@ -20,6 +20,7 @@
     }
 
     * { box-sizing: border-box; }
+    html { font-size: 118%; }
     body {
       margin: 0;
       font-family: "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
@@ -234,14 +235,43 @@
     }
     .card-media {
       position: relative;
-      aspect-ratio: 1.15 / 0.38;
-      padding: 12px 14px;
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
       display: flex;
       align-items: end;
       color: #fff;
       font-weight: 800;
       font-size: 0.88rem;
       letter-spacing: -0.03em;
+    }
+    .card-media img.card-screenshot {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-media .card-media-fallback {
+      position: relative;
+      z-index: 1;
+      padding: 12px 14px;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: end;
+    }
+    .card-media-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%);
+      z-index: 1;
+    }
+    .card-media .card-media-text-over {
+      position: relative;
+      z-index: 2;
+      padding: 12px 14px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
     }
     .media-gradient-1 { background: linear-gradient(135deg, #0b1020, #1a2668 54%, #52b0ff); }
     .media-gradient-2 { background: linear-gradient(135deg, #151515, #4d2fbf 60%, #f9a826); }
@@ -332,29 +362,30 @@
     .rank-tabs, .news-tabs {
       display: flex;
       align-items: center;
-      gap: 16px;
-      padding: 18px 20px;
+      gap: 12px;
+      padding: 12px 16px;
       border-bottom: 1px solid #f0f1f5;
       font-weight: 800;
+      font-size: 0.82rem;
       flex-wrap: wrap;
     }
     .rank-tabs span, .news-tabs span { cursor: pointer; color: var(--muted); transition: color 0.15s; }
     .rank-tabs span.active, .news-tabs span.active { color: #19b36b; }
     .rank-tabs span:hover, .news-tabs span:hover { color: var(--text); }
     .rank-loading, .news-loading { padding: 28px 0; text-align: center; color: var(--muted); font-size: 0.88rem; }
-    .rank-body { padding: 10px 18px 18px; }
+    .rank-body { padding: 8px 14px 14px; }
     .rank-item {
       display: grid;
-      grid-template-columns: 24px minmax(0, 1fr) auto;
-      gap: 10px;
+      grid-template-columns: 20px minmax(0, 1fr) auto;
+      gap: 8px;
       align-items: center;
-      padding: 10px 0;
+      padding: 7px 0;
       border-bottom: 1px dashed #eceef3;
-      font-size: 0.94rem;
+      font-size: 0.78rem;
     }
     .rank-item:last-child { border-bottom: 0; }
-    .rank-index { font-weight: 900; color: #ff7d2d; }
-    .rank-item small, .article-meta, .video-info span { color: var(--muted); font-size: 0.82rem; }
+    .rank-index { font-weight: 900; color: #ff7d2d; font-size: 0.72rem; }
+    .rank-item small, .article-meta, .video-info span { color: var(--muted); font-size: 0.7rem; }
     .rank-refresh { margin-top: 10px; text-align: center; color: var(--muted); font-weight: 700; }
     .news-body { padding: 18px 20px 20px; display: grid; gap: 16px; }
     .headline-box {
@@ -538,6 +569,33 @@
       color: #fff; font-size: 9px; font-weight: 900;
     }
 
+    /* ===== picks-section 通用样式（智能体/提示词） ===== */
+    .picks-section { margin-top: 28px; }
+    .picks-section h2 { font-size: 1.05rem; font-weight: 800; margin: 0 0 14px; }
+
+    /* ===== AI 提示词 ===== */
+    .prompts-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .prompt-card {
+      border-radius: 14px; padding: 16px; cursor: pointer;
+      background: var(--panel); border: 1px solid rgba(17,19,24,0.06);
+      box-shadow: 0 10px 20px rgba(17,19,24,0.04); transition: transform 0.18s;
+    }
+    .prompt-card:hover { transform: translateY(-3px); }
+    .prompt-card h3 { margin: 0 0 6px; font-size: 0.88rem; font-weight: 800; }
+    .prompt-card p { margin: 0 0 8px; font-size: 0.78rem; color: var(--muted); line-height: 1.5; }
+    .prompt-card .prompt-tag { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-size: 0.72rem; font-weight: 700; margin-right: 6px; }
+    .prompt-card .copy-btn { display: inline-block; padding: 4px 12px; border-radius: 999px; background: var(--brand); color: #fff; font-size: 0.72rem; font-weight: 700; border: none; cursor: pointer; float: right; }
+
+    /* ===== 社交页脚 ===== */
+    .footer-social { display: flex; gap: 14px; justify-content: center; margin-bottom: 12px; }
+    .footer-social a {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--chip); display: grid; place-items: center;
+      font-size: 0.78rem; font-weight: 800; color: var(--muted);
+      transition: background 0.2s, color 0.2s;
+    }
+    .footer-social a:hover { background: var(--brand); color: #fff; }
+
     .footer {
       padding: 0 0 30px;
       color: var(--muted);
@@ -552,6 +610,7 @@
       .events-layout { grid-template-columns: 1fr; }
       .events-sidebar { grid-template-columns: repeat(2, 1fr); }
       .events-bottom { grid-template-columns: 1fr; }
+      .prompts-grid { grid-template-columns: repeat(2, 1fr); }
     }
     @media (max-width: 860px) {
       .topbar-inner { min-height: 72px; }
@@ -566,6 +625,7 @@
       .nav { display: none; }
       .hero { padding-top: 24px; }
       .cards-grid { grid-template-columns: 1fr; }
+      .prompts-grid { grid-template-columns: 1fr; }
       .search-row { grid-template-columns: 1fr 60px; }
       .search-input, .search-select { min-height: 62px; }
       .search-button { width: 60px; height: 60px; }
@@ -699,6 +759,22 @@
       </div>
     </section>
 
+    <!-- AI 智能体 -->
+    <section class="picks-section" id="agents">
+      <div class="shell">
+        <h2>AI 智能体</h2>
+        <div class="cards-grid" id="agentsGrid"></div>
+      </div>
+    </section>
+
+    <!-- AI 提示词 -->
+    <section class="picks-section" id="prompts">
+      <div class="shell">
+        <h2>AI 提示词</h2>
+        <div class="prompts-grid" id="promptsGrid"></div>
+      </div>
+    </section>
+
     <section class="events-section" id="events">
       <div class="shell">
         <div class="events-header">
@@ -753,6 +829,11 @@
   </main>
 
   <footer class="footer">
+    <div class="footer-social">
+      <a href="https://space.bilibili.com/" target="_blank" title="B站">B</a>
+      <a href="https://www.xiaohongshu.com/" target="_blank" title="小红书">红</a>
+      <a href="https://twitter.com/" target="_blank" title="Twitter">X</a>
+    </div>
     好点 AI — 精选最好用的 AI 网站和 APP
   </footer>
 
@@ -889,17 +970,42 @@
       return String(text || "").toLowerCase().trim();
     }
 
+    var activeGroup = "all";
     function renderCategoryChips() {
-      var categories = ["all"].concat(content.categories || []);
-      categoryChips.innerHTML = categories.map(function(category) {
-        var label = category === "all" ? "全部" : category;
-        return '<button class="chip' + (category === "all" ? " active" : "") + '" type="button" data-category="' + category + '">' + label + "</button>";
+      var groups = ["all", "文本", "图像", "视频", "音频", "效率"];
+      var groupLabels = { "all": "全部" };
+      var html = groups.map(function(g) {
+        var label = groupLabels[g] || g;
+        var cls = "chip" + (g === activeGroup ? " active" : "");
+        return '<button class="' + cls + '" type="button" data-group="' + g + '">' + label + '</button>';
       }).join("");
+
+      if (activeGroup !== "all") {
+        var subCats = [];
+        (content.tools || []).forEach(function(t) {
+          if (t.group === activeGroup && t.category && subCats.indexOf(t.category) === -1) subCats.push(t.category);
+        });
+        if (subCats.length > 1) {
+          html += '<span style="margin:0 4px;color:var(--line)">|</span>';
+          subCats.forEach(function(c) {
+            var cls2 = "chip" + (c === activeCategory ? " active" : "");
+            html += '<button class="' + cls2 + '" type="button" data-category="' + c + '">' + c + '</button>';
+          });
+        }
+      }
+
+      categoryChips.innerHTML = html;
 
       Array.from(categoryChips.querySelectorAll(".chip")).forEach(function(chip) {
         chip.addEventListener("click", function() {
-          activeCategory = chip.dataset.category;
-          Array.from(categoryChips.querySelectorAll(".chip")).forEach(function(item) { item.classList.toggle("active", item === chip); });
+          if (chip.dataset.group !== undefined) {
+            activeGroup = chip.dataset.group;
+            activeCategory = "all";
+            renderCategoryChips();
+          } else if (chip.dataset.category) {
+            activeCategory = activeCategory === chip.dataset.category ? "all" : chip.dataset.category;
+            renderCategoryChips();
+          }
           renderCards();
         });
       });
@@ -909,15 +1015,26 @@
       var keyword = normalize(activeKeyword);
       var visibleTools = (content.tools || []).filter(function(tool) {
         var haystack = normalize([tool.title, tool.description, tool.category, (tool.tags || []).join(" ")].join(" "));
+        var matchGroup = activeGroup === "all" || tool.group === activeGroup;
         var matchCategory = activeCategory === "all" || tool.category === activeCategory;
         var matchKeyword = !keyword || haystack.includes(keyword);
-        return matchCategory && matchKeyword;
+        return matchGroup && matchCategory && matchKeyword;
       });
 
       cardsGrid.innerHTML = visibleTools.map(function(tool) {
-        return '<article class="card">' +
-          '<div class="card-media ' + tool.mediaClass + '">' + tool.mediaText +
-          '<div class="card-logo">' + tool.logo + "</div></div>" +
+        var mediaContent;
+        if (tool.screenshot) {
+          mediaContent = '<div class="card-media">' +
+            '<img class="card-screenshot" src="' + tool.screenshot + '" alt="' + tool.title + '" loading="lazy">' +
+            '<div class="card-media-overlay"></div>' +
+            '<div class="card-media-text-over">' + tool.mediaText + '</div>' +
+            '<div class="card-logo">' + tool.logo + "</div></div>";
+        } else {
+          mediaContent = '<div class="card-media ' + tool.mediaClass + '">' +
+            '<div class="card-media-fallback">' + tool.mediaText + '</div>' +
+            '<div class="card-logo">' + tool.logo + "</div></div>";
+        }
+        return '<article class="card">' + mediaContent +
           '<div class="card-body">' +
           '<div class="card-title">' + tool.title + "</div>" +
           '<div class="card-desc">' + tool.description + "</div>" +
@@ -928,9 +1045,10 @@
       }).join("");
 
       resultCount.textContent = visibleTools.length;
-      currentFilter.textContent = activeCategory === "all"
-        ? (keyword ? "全部工具 / 关键词：" + activeKeyword : "全部工具")
-        : (keyword ? activeCategory + " / 关键词：" + activeKeyword : activeCategory);
+      var filterLabel = activeGroup === "all" ? "全部工具" : activeGroup;
+      if (activeCategory !== "all") filterLabel += " / " + activeCategory;
+      if (keyword) filterLabel += " / 关键词：" + activeKeyword;
+      currentFilter.textContent = filterLabel;
       emptyState.style.display = visibleTools.length ? "none" : "block";
     }
 
@@ -1012,6 +1130,57 @@
     fetchHot("toutiao").then(function(data) {
       if (data) renderHeadlineStrip(data);
     });
+
+    /* ===== AI 智能体 ===== */
+    (function renderAgents() {
+      var agents = seed.agents || [];
+      var grid = document.getElementById("agentsGrid");
+      if (!grid || !agents.length) return;
+      grid.innerHTML = agents.map(function(a) {
+        var mediaHtml;
+        if (a.screenshot) {
+          mediaHtml = '<div class="card-media">' +
+            '<img class="card-screenshot" src="' + a.screenshot + '" alt="' + a.title + '" loading="lazy">' +
+            '<div class="card-media-overlay"></div>' +
+            '<div class="card-media-text-over">' + a.mediaText + '</div>' +
+            '<div class="card-logo">' + a.logo + '</div></div>';
+        } else {
+          mediaHtml = '<div class="card-media ' + a.mediaClass + '">' +
+            '<div class="card-media-fallback">' + a.mediaText + '</div>' +
+            '<div class="card-logo">' + a.logo + '</div></div>';
+        }
+        return '<a class="card" href="' + a.url + '" target="_blank">' +
+          mediaHtml +
+          '<div class="card-body">' +
+            '<div class="card-title">' + a.title + '</div>' +
+            '<div class="card-desc">' + a.description + '</div>' +
+          '</div></a>';
+      }).join("");
+    })();
+
+    /* ===== AI 提示词 ===== */
+    (function renderPrompts() {
+      var prompts = seed.prompts || [];
+      var grid = document.getElementById("promptsGrid");
+      if (!grid || !prompts.length) return;
+      grid.innerHTML = prompts.map(function(p) {
+        return '<div class="prompt-card">' +
+          '<h3>' + p.title + '</h3>' +
+          '<p>' + p.description + '</p>' +
+          '<span class="prompt-tag">' + p.category + '</span>' +
+          '<button class="copy-btn" data-template="' + encodeURIComponent(p.template) + '">复制模板</button>' +
+          '</div>';
+      }).join("");
+      grid.addEventListener("click", function(e) {
+        var btn = e.target.closest(".copy-btn");
+        if (!btn) return;
+        var tpl = decodeURIComponent(btn.dataset.template);
+        navigator.clipboard.writeText(tpl).then(function() {
+          btn.textContent = "已复制";
+          setTimeout(function() { btn.textContent = "复制模板"; }, 1500);
+        });
+      });
+    })();
 
     /* ===== Events 活动地图模块 ===== */
     var EVENTS_API = "";
