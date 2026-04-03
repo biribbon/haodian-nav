@@ -179,33 +179,49 @@
       line-height: 1.65;
     }
 
-    .chips { padding: 16px 0 12px; }
-    .chip-row { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; }
+    .chips { padding: 12px 0 8px; }
+    .chip-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      justify-content: center;
+    }
     .chip {
-      min-height: 42px;
-      padding: 0 16px;
-      border-radius: 12px;
-      border: 1px solid var(--line);
-      background: var(--chip);
-      color: #22252d;
-      font-weight: 700;
-      font-size: 0.98rem;
-      cursor: pointer;
-    }
-    .chip.active, .chip:hover {
-      color: var(--brand);
-      border-color: rgba(107, 76, 246, 0.18);
+      min-height: 40px;
+      padding: 0 18px;
+      border-radius: 20px;
+      border: 1.5px solid #e8e9f0;
       background: #fff;
+      color: #5a5d6e;
+      font-weight: 700;
+      font-size: 0.88rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s ease;
     }
+    .chip:hover {
+      color: var(--brand);
+      border-color: rgba(107, 76, 246, 0.25);
+      background: rgba(107, 76, 246, 0.04);
+    }
+    .chip.active {
+      color: #fff;
+      background: var(--brand);
+      border-color: var(--brand);
+      box-shadow: 0 4px 14px rgba(107, 76, 246, 0.3);
+    }
+    .chip-emoji { font-size: 0.95rem; }
 
     .portal-row { padding-bottom: 32px; }
     .portal-grid {
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(320px, 0.9fr);
-      gap: 22px;
+      grid-template-columns: 1fr 320px;
+      gap: 20px;
       align-items: start;
     }
-    .toolbar { padding: 8px 0 12px; }
+    .toolbar { padding: 4px 0 14px; }
     .toolbar-inner {
       display: flex;
       justify-content: space-between;
@@ -213,128 +229,134 @@
       align-items: center;
       flex-wrap: wrap;
       color: var(--muted);
+      font-size: 0.82rem;
     }
-    .toolbar strong { color: var(--text); }
+    .toolbar strong { color: var(--text); font-weight: 800; }
 
+    /* === 工具卡片网格 === */
     .cards-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 14px;
+      gap: 16px;
     }
     .card {
-      border-radius: 22px;
-      overflow: hidden;
-      background: var(--panel);
-      border: 1px solid rgba(17, 19, 24, 0.06);
-      box-shadow: 0 16px 30px rgba(17, 19, 24, 0.05);
-      transition: transform 0.22s ease, box-shadow 0.22s ease;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 20px;
+      border-radius: 16px;
+      background: #fff;
+      border: 1px solid rgba(107, 76, 246, 0.06);
+      cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 1px 3px rgba(17, 19, 24, 0.04);
     }
     .card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow);
+      box-shadow: 0 8px 28px rgba(107, 76, 246, 0.12);
+      transform: translateY(-2px);
+      border-color: rgba(107, 76, 246, 0.15);
     }
-    .card-media {
-      position: relative;
-      aspect-ratio: 16 / 9;
-      overflow: hidden;
-      display: flex;
-      align-items: end;
-      color: #fff;
-      font-weight: 800;
-      font-size: 0.88rem;
-      letter-spacing: -0.03em;
-    }
-    .card-media img.card-screenshot {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      display: block;
-    }
-    .card-media .card-media-fallback {
-      position: relative;
-      z-index: 1;
-      padding: 12px 14px;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      align-items: end;
-    }
-    .card-media-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%);
-      z-index: 1;
-    }
-    .card-media .card-media-text-over {
-      position: relative;
-      z-index: 2;
-      padding: 12px 14px;
-      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
-    }
-    .media-gradient-1 { background: linear-gradient(135deg, #0b1020, #1a2668 54%, #52b0ff); }
-    .media-gradient-2 { background: linear-gradient(135deg, #151515, #4d2fbf 60%, #f9a826); }
-    .media-gradient-3 { background: linear-gradient(135deg, #191b20, #2d566d 58%, #d8f062); color: #f3fbff; }
-    .media-gradient-4 { background: linear-gradient(135deg, #161616, #692d31 52%, #f1d47a); }
-    .media-gradient-5 { background: linear-gradient(135deg, #0d1321, #174a9b 60%, #57d5c0); }
-    .media-gradient-6 { background: linear-gradient(135deg, #141414, #343e66 60%, #bb87ff); }
-    .media-gradient-7 { background: linear-gradient(135deg, #1b1c27, #375440 56%, #f3df6e); color: #fff6cf; }
-    .media-gradient-8 { background: linear-gradient(135deg, #151515, #204051 58%, #fe7f5e); }
-    .media-gradient-9 { background: linear-gradient(135deg, #121212, #223260 55%, #7dc3ff); }
-    .media-gradient-10 { background: linear-gradient(135deg, #21171c, #7542aa 57%, #ff8ba7); }
-    .media-gradient-11 { background: linear-gradient(135deg, #14181f, #2a5669 55%, #9cf5d2); color: #f2fff7; }
-    .media-gradient-12 { background: linear-gradient(135deg, #1f1d16, #8f6840 58%, #f7d67d); color: #fffaf1; }
-    .card-logo {
-      position: absolute;
-      left: 16px;
-      bottom: -12px;
-      width: 28px;
-      height: 28px;
-      border-radius: 10px;
-      background: #0c0f17;
-      color: #fff;
+    .card-icon {
+      flex-shrink: 0;
+      width: 46px;
+      height: 46px;
+      border-radius: 14px;
       display: grid;
       place-items: center;
-      border: 3px solid #fff;
-      font-size: 0.58rem;
+      font-size: 0.82rem;
       font-weight: 900;
-      box-shadow: 0 10px 16px rgba(17, 19, 24, 0.12);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
     }
-    .card-body {
-      padding: 14px 14px 12px;
-      display: grid;
-      gap: 8px;
+    .card-info { min-width: 0; flex: 1; }
+    .card-title {
+      font-size: 0.92rem;
+      font-weight: 800;
+      line-height: 1.35;
+      color: var(--text);
+      margin-bottom: 4px;
     }
-    .card-title { font-size: 0.88rem; font-weight: 900; line-height: 1.2; }
     .card-desc {
-      min-height: 36px;
       color: var(--muted);
-      line-height: 1.45;
-      font-size: 0.74rem;
+      font-size: 0.76rem;
+      line-height: 1.55;
       display: -webkit-box;
       -webkit-line-clamp: 2;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
-    .card-foot {
-      display: flex;
-      justify-content: space-between;
-      gap: 12px;
-      align-items: center;
+    .card-tag {
+      display: inline-block;
+      margin-top: 8px;
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-size: 0.66rem;
+      font-weight: 700;
+    }
+
+    /* === Agents 区域保留旧卡片样式 === */
+    #agentsGrid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+    #agentsGrid .card {
+      display: block; padding: 0;
+      border-radius: 22px; overflow: hidden;
+      box-shadow: 0 16px 30px rgba(17, 19, 24, 0.05);
+    }
+    #agentsGrid .card:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
+    #agentsGrid .card-media {
+      position: relative; aspect-ratio: 16 / 9; overflow: hidden;
+      display: flex; align-items: end; color: #fff;
+      font-weight: 800; font-size: 0.88rem; letter-spacing: -0.03em;
+    }
+    #agentsGrid .card-media img.card-screenshot {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+    #agentsGrid .card-media .card-media-fallback {
+      position: relative; z-index: 1; padding: 12px 14px;
+      width: 100%; height: 100%; display: flex; align-items: end;
+    }
+    #agentsGrid .card-media-overlay {
+      position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(0deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0) 60%);
+    }
+    #agentsGrid .card-media .card-media-text-over {
+      position: relative; z-index: 2; padding: 12px 14px;
+      text-shadow: 0 1px 4px rgba(0,0,0,0.5);
+    }
+    #agentsGrid .media-gradient-1 { background: linear-gradient(135deg, #0b1020, #1a2668 54%, #52b0ff); }
+    #agentsGrid .media-gradient-2 { background: linear-gradient(135deg, #151515, #4d2fbf 60%, #f9a826); }
+    #agentsGrid .media-gradient-3 { background: linear-gradient(135deg, #191b20, #2d566d 58%, #d8f062); color: #f3fbff; }
+    #agentsGrid .media-gradient-4 { background: linear-gradient(135deg, #161616, #692d31 52%, #f1d47a); }
+    #agentsGrid .media-gradient-5 { background: linear-gradient(135deg, #0d1321, #174a9b 60%, #57d5c0); }
+    #agentsGrid .media-gradient-6 { background: linear-gradient(135deg, #141414, #343e66 60%, #bb87ff); }
+    #agentsGrid .media-gradient-7 { background: linear-gradient(135deg, #1b1c27, #375440 56%, #f3df6e); color: #fff6cf; }
+    #agentsGrid .media-gradient-8 { background: linear-gradient(135deg, #151515, #204051 58%, #fe7f5e); }
+    #agentsGrid .media-gradient-9 { background: linear-gradient(135deg, #121212, #223260 55%, #7dc3ff); }
+    #agentsGrid .media-gradient-10 { background: linear-gradient(135deg, #21171c, #7542aa 57%, #ff8ba7); }
+    #agentsGrid .media-gradient-11 { background: linear-gradient(135deg, #14181f, #2a5669 55%, #9cf5d2); color: #f2fff7; }
+    #agentsGrid .media-gradient-12 { background: linear-gradient(135deg, #1f1d16, #8f6840 58%, #f7d67d); color: #fffaf1; }
+    #agentsGrid .card-logo {
+      position: absolute; left: 16px; bottom: -12px;
+      width: 28px; height: 28px; border-radius: 10px;
+      background: #0c0f17; color: #fff; display: grid; place-items: center;
+      border: 3px solid #fff; font-size: 0.58rem; font-weight: 900;
+      box-shadow: 0 10px 16px rgba(17, 19, 24, 0.12);
+    }
+    #agentsGrid .card-body { padding: 14px 14px 12px; display: grid; gap: 8px; }
+    #agentsGrid .card-title { white-space: normal; }
+    #agentsGrid .card-desc {
+      min-height: 36px; white-space: normal;
+      display: -webkit-box; -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical; overflow: hidden;
     }
     .badge {
-      display: inline-flex;
-      align-items: center;
-      min-height: 24px;
-      padding: 0 8px;
-      border-radius: 999px;
-      font-size: 0.68rem;
-      font-weight: 800;
-      color: var(--brand);
-      background: var(--brand-soft);
+      display: inline-flex; align-items: center;
+      min-height: 24px; padding: 0 8px; border-radius: 999px;
+      font-size: 0.68rem; font-weight: 800;
+      color: var(--brand); background: var(--brand-soft);
     }
-    .arrow-link { color: var(--brand); font-size: 0.96rem; font-weight: 900; }
     .empty-state {
       display: none;
       margin-top: 14px;
@@ -350,7 +372,7 @@
       display: grid;
       gap: 16px;
       position: sticky;
-      top: 188px;
+      top: 80px;
     }
     .news-card, .rank-card {
       border-radius: 24px;
@@ -605,12 +627,16 @@
 
     @media (max-width: 1120px) {
       .portal-grid { grid-template-columns: 1fr; }
-      .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .news-panel { position: static; }
+      .news-panel { position: static; grid-template-columns: repeat(3, 1fr); }
+      #agentsGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .events-layout { grid-template-columns: 1fr; }
       .events-sidebar { grid-template-columns: repeat(2, 1fr); }
       .events-bottom { grid-template-columns: 1fr; }
       .prompts-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 860px) {
+      .cards-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .news-panel { grid-template-columns: 1fr; }
     }
     @media (max-width: 860px) {
       .topbar-inner { min-height: 72px; }
@@ -625,12 +651,15 @@
       .nav { display: none; }
       .hero { padding-top: 24px; }
       .cards-grid { grid-template-columns: 1fr; }
+      #agentsGrid { grid-template-columns: 1fr; }
       .prompts-grid { grid-template-columns: 1fr; }
       .search-row { grid-template-columns: 1fr 60px; }
       .search-input, .search-select { min-height: 62px; }
       .search-button { width: 60px; height: 60px; }
       .headline-strip { display: none; }
       .events-bottom { grid-template-columns: 1fr; }
+      .chip-row { overflow-x: auto; flex-wrap: nowrap; -webkit-overflow-scrolling: touch; }
+      .chip { white-space: nowrap; flex-shrink: 0; padding: 0 14px; font-size: 0.84rem; }
     }
   </style>
   <script id="amap-init">
@@ -729,10 +758,10 @@
         <aside class="news-panel">
           <div class="rank-card">
             <div class="rank-tabs" id="rankTabs">
-              <span class="active" data-source="toutiao">头条</span>
-              <span data-source="douyin">抖音</span>
+              <span class="active" data-source="douyin">抖音</span>
               <span data-source="weibo">微博</span>
-              <span data-source="baidu">百度</span>
+              <span data-source="bilibili">B站</span>
+              <span data-source="toutiao">头条</span>
             </div>
             <div class="rank-body" id="hotList"></div>
           </div>
@@ -745,15 +774,6 @@
               <span data-source="ithome">IT之家</span>
             </div>
             <div class="news-body" id="newsList"></div>
-          </div>
-
-          <div class="rank-card">
-            <div class="rank-tabs" id="videoTabs">
-              <span class="active" data-source="bilibili">B站热门</span>
-              <span data-source="douyin">抖音热点</span>
-              <span data-source="toutiao">今日头条</span>
-            </div>
-            <div class="rank-body" id="videoHotList"></div>
           </div>
         </aside>
       </div>
@@ -971,13 +991,15 @@
     }
 
     var activeGroup = "all";
+    var groupEmojis = { "all": "\uD83D\uDD25", "\u6587\u672C": "\uD83D\uDCDD", "\u56FE\u50CF": "\uD83C\uDFA8", "\u89C6\u9891": "\uD83C\uDFAC", "\u97F3\u9891": "\uD83C\uDFB5", "\u6548\u7387": "\u26A1" };
+    var groupLabelsNew = { "all": "\u7CBE\u9009\u5DE5\u5177", "\u6587\u672C": "\u6587\u672C\u5DE5\u5177", "\u56FE\u50CF": "\u56FE\u50CF\u5DE5\u5177", "\u89C6\u9891": "\u89C6\u9891\u5DE5\u5177", "\u97F3\u9891": "\u97F3\u9891\u5DE5\u5177", "\u6548\u7387": "\u6548\u7387\u5DE5\u5177" };
     function renderCategoryChips() {
       var groups = ["all", "文本", "图像", "视频", "音频", "效率"];
-      var groupLabels = { "all": "全部" };
       var html = groups.map(function(g) {
-        var label = groupLabels[g] || g;
+        var label = groupLabelsNew[g] || g;
+        var emoji = groupEmojis[g] || "";
         var cls = "chip" + (g === activeGroup ? " active" : "");
-        return '<button class="' + cls + '" type="button" data-group="' + g + '">' + label + '</button>';
+        return '<button class="' + cls + '" type="button" data-group="' + g + '"><span class="chip-emoji">' + emoji + '</span>' + label + '</button>';
       }).join("");
 
       if (activeGroup !== "all") {
@@ -1011,6 +1033,13 @@
       });
     }
 
+    var groupColors = {
+      "\u6587\u672C": ["#6b4cf6", "rgba(107,76,246,0.1)"],
+      "\u56FE\u50CF": ["#e74c8b", "rgba(231,76,139,0.1)"],
+      "\u89C6\u9891": ["#f59e0b", "rgba(245,158,11,0.1)"],
+      "\u97F3\u9891": ["#10b981", "rgba(16,185,129,0.1)"],
+      "\u6548\u7387": ["#3b82f6", "rgba(59,130,246,0.1)"]
+    };
     function renderCards() {
       var keyword = normalize(activeKeyword);
       var visibleTools = (content.tools || []).filter(function(tool) {
@@ -1022,32 +1051,20 @@
       });
 
       cardsGrid.innerHTML = visibleTools.map(function(tool) {
-        var mediaContent;
-        if (tool.screenshot) {
-          mediaContent = '<div class="card-media">' +
-            '<img class="card-screenshot" src="' + tool.screenshot + '" alt="' + tool.title + '" loading="lazy">' +
-            '<div class="card-media-overlay"></div>' +
-            '<div class="card-media-text-over">' + tool.mediaText + '</div>' +
-            '<div class="card-logo">' + tool.logo + "</div></div>";
-        } else {
-          mediaContent = '<div class="card-media ' + tool.mediaClass + '">' +
-            '<div class="card-media-fallback">' + tool.mediaText + '</div>' +
-            '<div class="card-logo">' + tool.logo + "</div></div>";
-        }
-        return '<article class="card">' + mediaContent +
-          '<div class="card-body">' +
-          '<div class="card-title">' + tool.title + "</div>" +
-          '<div class="card-desc">' + tool.description + "</div>" +
-          '<div class="card-foot">' +
-          '<span class="badge">' + tool.category + "</span>" +
-          '<a class="arrow-link" href="' + tool.url + '" target="_blank" rel="noreferrer">→</a>' +
-          "</div></div></article>";
+        var colors = groupColors[tool.group] || ["#6b4cf6", "rgba(107,76,246,0.1)"];
+        return '<a class="card" href="' + tool.url + '" target="_blank" rel="noreferrer">' +
+          '<div class="card-icon" style="background:' + colors[0] + '">' + tool.logo + '</div>' +
+          '<div class="card-info">' +
+          '<div class="card-title">' + tool.title + '</div>' +
+          '<div class="card-desc">' + tool.description + '</div>' +
+          '<span class="card-tag" style="color:' + colors[0] + ';background:' + colors[1] + '">' + tool.category + '</span>' +
+          '</div></a>';
       }).join("");
 
       resultCount.textContent = visibleTools.length;
-      var filterLabel = activeGroup === "all" ? "全部工具" : activeGroup;
+      var filterLabel = activeGroup === "all" ? "\u7CBE\u9009\u5DE5\u5177" : activeGroup;
       if (activeCategory !== "all") filterLabel += " / " + activeCategory;
-      if (keyword) filterLabel += " / 关键词：" + activeKeyword;
+      if (keyword) filterLabel += " / \u5173\u952E\u8BCD\uFF1A" + activeKeyword;
       currentFilter.textContent = filterLabel;
       emptyState.style.display = visibleTools.length ? "none" : "block";
     }
@@ -1121,13 +1138,12 @@
     renderCards();
     setMode("onsite");
 
-    // 右侧三个面板：热搜榜、科技资讯、热门视频
+    // 右侧两个面板：热搜榜（抖音/微博/B站/头条合并）、科技资讯
     setupTabs("rankTabs", hotList, function(el, data) { renderRankList(el, data, 10); });
     setupTabs("newsTabs", newsList, function(el, data) { renderNewsList(el, data, 8); });
-    setupTabs("videoTabs", videoHotList, function(el, data) { renderRankList(el, data, 8); });
 
-    // 顶部热点条：取百度热搜前4条
-    fetchHot("toutiao").then(function(data) {
+    // 顶部热点条：取抖音热搜前4条
+    fetchHot("douyin").then(function(data) {
       if (data) renderHeadlineStrip(data);
     });
 
