@@ -1199,7 +1199,7 @@
     })();
 
     /* ===== Events 活动地图模块 ===== */
-    var EVENTS_API = "";
+    var EVENTS_API = "https://api.haodianai.com/api/events";
     var eventsData = [];
     var policyParks = window.HaodianParks || [];
     var evtCityFilter = "all";
@@ -1214,10 +1214,18 @@
     var categoryLabels = { conference: "峰会", salon: "沙龙", hackathon: "黑客松", meetup: "聚会" };
 
     function loadEvents() {
+      var seedEvents = (seed.events || []).slice();
       if (EVENTS_API) {
-        return fetch(EVENTS_API).then(function(r) { return r.json(); });
+        return fetch(EVENTS_API)
+          .then(function(r) { return r.ok ? r.json() : null; })
+          .then(function(j) {
+            if (!j) return seedEvents;
+            var arr = j.events || (Array.isArray(j) ? j : []);
+            return arr.length ? arr : seedEvents;
+          })
+          .catch(function() { return seedEvents; });
       }
-      return Promise.resolve((seed.events || []).slice());
+      return Promise.resolve(seedEvents);
     }
 
     function pad2(n) { return n < 10 ? "0" + n : "" + n; }

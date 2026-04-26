@@ -151,12 +151,12 @@ export async function crawlHuodongxing(env: Env): Promise<number> {
       }
     }
 
-    const id = await insertEvent(env.DB, input, 'pending')
+    const id = await insertEvent(env.DB, input, 'approved')
     await insertAuditLog(env.DB, {
       eventId: id,
       action: 'crawl',
       actor: 'huodongxing-crawler',
-      newStatus: 'pending',
+      newStatus: 'approved',
     })
     imported++
   }

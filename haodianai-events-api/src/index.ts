@@ -79,7 +79,7 @@ export default {
   },
 
   async scheduled(event: ScheduledEvent, env: Env, ctx: ExecutionContext): Promise<void> {
-    if (event.cron === '0 4 * * *') {
+    if (event.cron === '0 18 * * *') {
       ctx.waitUntil(runCleanup(env))
     } else {
       ctx.waitUntil(runScheduledCrawl(env))
